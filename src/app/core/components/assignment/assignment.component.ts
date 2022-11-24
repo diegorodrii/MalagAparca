@@ -27,7 +27,7 @@ export class AssignmentComponent implements OnInit {
   }
 
   getUser(): User{
-    var idUser = this.assignment.idTenant;
+    var idUser = this.assignment.idUser;
     if(idUser)
       return this.peopleSVC.getUserById(idUser);
     return undefined;

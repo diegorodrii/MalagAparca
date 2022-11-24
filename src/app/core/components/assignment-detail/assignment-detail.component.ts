@@ -18,7 +18,7 @@ export class AssignmentDetailComponent implements OnInit {
     if(assignment){
       this.form.controls.id.setValue(assignment.id);
       this.form.controls.idPark.setValue(assignment.idPark);
-      this.form.controls.idTenant.setValue(assignment.idTenant);
+      this.form.controls.idUser.setValue(assignment.idUser);
       this.form.controls.finishsAt.setValue(assignment.finishsAt);
 
       this.mode = "Edit";
@@ -36,7 +36,7 @@ export class AssignmentDetailComponent implements OnInit {
     this.form = this.fb.group({
       id:[null],
       idPark:[-1, [Validators.min(1)]],
-      idTenant:[-1, [Validators.min(1)]],
+      idUser:[-1, [Validators.min(1)]],
       finishsAt:[null, [Validators.required]],
     });
   }

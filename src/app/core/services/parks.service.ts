@@ -9,16 +9,16 @@ export class ParksService {
   private _parks:Park[] = [
     {
       id: 1,
-      idOwner: 1,
       location: "C/Eolo 15",
       image: "",
+      type:""
     },
     {
        
       id: 2,
-      idOwner: 1,
       location: "C/Eolo 15",
       image: "",
+      type:""
       }
   ];
 
@@ -49,7 +49,6 @@ export class ParksService {
   updatePark(park:Park){
     var _park = this._parks.find(t=>t.id==park.id);
     if(_park){
-      _park.idOwner = park.idOwner;
       _park.location = park.location;
       _park.image = park.image;
 

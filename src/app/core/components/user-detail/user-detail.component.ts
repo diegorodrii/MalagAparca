@@ -17,7 +17,7 @@ export class UserDetailComponent implements OnInit {
       this.form.controls.id.setValue(user.id);
       this.form.controls.name.setValue(user.name);
       this.form.controls.subname.setValue(user.subname);
-      this.form.controls.type.setValue(user.type);
+      this.form.controls.vehicle.setValue(user.vehicle);
       this.form.controls.image.setValue(user.image);
       this.mode = "Edit";
     }
@@ -32,7 +32,7 @@ export class UserDetailComponent implements OnInit {
       id:[null],
       name:['', [Validators.required]],
       subname:['', [Validators.required]],
-      type:['',[Validators.required]],
+      vehicle:['',[Validators.required]],
       image:['']
     });
   }

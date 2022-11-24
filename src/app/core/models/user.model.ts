@@ -3,5 +3,5 @@ export interface User {
     name: string;
     subname: string;
     image: string;
-    type: string;
+    vehicle: string;
 }

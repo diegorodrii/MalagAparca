@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IonItemSliding } from '@ionic/angular';
 import { User } from '../../models/user.model';
 import { PeopleService } from '../../services/people.service';
 
@@ -19,11 +20,15 @@ export class UserComponent implements OnInit {
   ngOnInit() {}
 
 
-  onEditClick(){
+  onEditClick(slide:IonItemSliding){
+    slide.close();
     this.onEdit.emit(this.userInput);
   }
 
-  onDeleteClick(){
+  onDeleteClick(slide:IonItemSliding){
+    slide.close();
+
     this.onDelete.emit(this.userInput);
   } 
+  
 }

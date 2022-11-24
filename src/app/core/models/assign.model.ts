@@ -1,8 +1,8 @@
 
 export interface Assignment {
     id: number;
-    idPark: number;
-    idTenant:number;
+    idUser: number;
+    idPark:number;
     startsAt: string;
     finishsAt: string;
 }

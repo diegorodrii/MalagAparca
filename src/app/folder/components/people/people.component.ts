@@ -89,7 +89,7 @@ export class PeopleComponent implements OnInit {
   async onUserExistsAlert(park){
     const alert = await this.alert.create({
       header: 'Error',
-      message: 'No es posible borrar la persona porque está asignada a una tarea',
+      message: 'No es posible borrar la persona porque está asignada a un aparcamiento',
       buttons: [
         {
           text: 'Cerrar',

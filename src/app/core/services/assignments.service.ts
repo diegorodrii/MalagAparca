@@ -12,14 +12,14 @@ export class AssignmentsService {
     {
       id: 1,
       idPark: 1,
-      idTenant: 4,
+      idUser: 4,
       startsAt: moment().toISOString(),
       finishsAt: moment().add(1, 'days').toISOString(),
     },
     {
       id: 2,
       idPark: 2,
-      idTenant: 4,
+      idUser: 4,
       startsAt: moment().toISOString(),
       finishsAt: moment().add(1, 'days').toISOString(),
     }
@@ -39,8 +39,8 @@ export class AssignmentsService {
   getAssignmentsByParkId(idPark: number): Assignment[] {
     return this._assignments.filter(a => a.idPark == idPark);
   }
-  getAssignmentsByUserId(idTenant: number): Assignment[] {
-    return this._assignments.filter(a => a.idTenant == idTenant);
+  getAssignmentsByUserId(idUser: number): Assignment[] {
+    return this._assignments.filter(a => a.idUser == idUser);
   }
 
 
@@ -59,7 +59,7 @@ export class AssignmentsService {
     var _assignment = this._assignments.find(a => a.id == assignment.id);
     if (_assignment) {
       _assignment.idPark = assignment.idPark;
-      _assignment.idTenant = assignment.idTenant;
+      _assignment.idUser = assignment.idUser;
       _assignment.startsAt = assignment.startsAt;
       _assignment.finishsAt = assignment.finishsAt;
     }

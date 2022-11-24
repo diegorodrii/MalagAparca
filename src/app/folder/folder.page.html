@@ -16,9 +16,11 @@
     
     <app-people *ngIf="folder=='People'"></app-people>    
     <app-park *ngIf="folder=='Park'"></app-park>
-    <app-assign *ngIf="folder=='People'"></app-assign>
+    <app-assign *ngIf="folder=='Assign'"></app-assign>
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-
+      <ion-fab-button (click)="onNewItem()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
     </ion-fab>
   </ion-content>
