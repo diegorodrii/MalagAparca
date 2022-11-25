@@ -19,7 +19,10 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {}
 
-
+  onIconClick(slide:IonItemSliding){
+    slide.open('end');
+  }
+  
   onEditClick(slide:IonItemSliding){
     slide.close();
     this.onEdit.emit(this.userInput);

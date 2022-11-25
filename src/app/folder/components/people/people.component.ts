@@ -12,7 +12,7 @@ import { PeopleService } from 'src/app/core/services/people.service';
 })
 export class PeopleComponent implements OnInit {
 
-  public user: User[];
+
   constructor(private peopleSVC: PeopleService,
     private fb: FormBuilder,
     private modal: ModalController,

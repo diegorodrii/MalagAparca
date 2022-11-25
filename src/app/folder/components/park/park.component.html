@@ -1,3 +1,4 @@
-<p>
-  park works!
-</p>
+<ion-list>
+<app-parking *ngFor="let park of (getParks() | async)" [parkInput]="park" (onEdit)="onEditPark($event)"
+  (onDelete)="onDeletePark($event)"></app-parking>
+</ion-list>

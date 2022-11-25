@@ -11,14 +11,14 @@ export class ParksService {
       id: 1,
       location: "C/Eolo 15",
       image: "",
-      type:""
+      vehicle:"Coche"
     },
     {
        
       id: 2,
       location: "C/Eolo 15",
       image: "",
-      type:""
+      vehicle:"Camión"
       }
   ];
 

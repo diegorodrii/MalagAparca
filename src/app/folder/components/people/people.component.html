@@ -1,2 +1,4 @@
+<ion-list>
 <app-user *ngFor="let user of (getPeople() | async)" [userInput]="user" (onEdit)="onEditUser($event)"
   (onDelete)="onDeleteUser($event)"></app-user>
+</ion-list>

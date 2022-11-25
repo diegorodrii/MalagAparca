@@ -1,3 +1,28 @@
-<p>
-  parking works!
-</p>
+<ion-item-sliding #sliding>
+  <ion-item>
+    <ion-avatar class="parkInput">
+      <img *ngIf="!parkInput.image" src="/assets/avatar1.jpeg" />
+      <img *ngIf="parkInput.image" [src]="parkInput.image" />
+    </ion-avatar>
+    <ion-label> Plaza de {{parkInput.vehicle | lowercase}} </ion-label>
+    <ion-label>{{parkInput.location}}</ion-label>
+    <ion-item-option color="white">
+      
+      <ion-icon name="caret-forward-outline"></ion-icon>
+    </ion-item-option>
+    
+  </ion-item>
+
+ 
+  <ion-item-options side="end" >
+    
+    <ion-item-option (click)="onEditClick(sliding)">
+      <ion-icon slot="top" name="create" ></ion-icon>
+      {{'Editar' | uppercase}}
+    </ion-item-option>
+    <ion-item-option (click)="onDeleteClick(sliding)" color="danger" expandable="Borrar">
+      <ion-icon slot="top" name="trash" ></ion-icon>
+      {{'Borrar' | uppercase}}
+    </ion-item-option>
+  </ion-item-options>
+</ion-item-sliding>

@@ -1,11 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Datos de la persona</ion-title>
+    <ion-title>Formulario creación usuario</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onDismiss(null)">Cerrar</ion-button>
+    </ion-buttons>
   </ion-toolbar>
+  
 </ion-header>
 
 <ion-content>
-  <ion-item>Formulario creación usuario</ion-item>
+
   <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
     <ion-item>
       <ion-label position="floating"> Nombre </ion-label>
@@ -36,11 +40,15 @@
 
     <ion-item>
       <ion-label position="floating"> Tipo de vehículo </ion-label>
-      <ion-input
-      type="text"
+      <ion-select type="text"
       placeholder="Introduce un tipo de vehículo"
-      formControlName="vehicle"
-      ></ion-input>
+      formControlName="vehicle" placeholder="Seleccione uno">
+      <ion-select-option> Camión </ion-select-option>
+      <ion-select-option> Coche </ion-select-option>
+      <ion-select-option> Ciclomotor / Moto </ion-select-option>
+      <ion-select-option> Bicicleta</ion-select-option>
+    </ion-select>
+      
     </ion-item>
 
 
