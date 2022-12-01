@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { UserComponent } from './components/user/user.component';
-import { AssignmentComponent, AssignmentDetailComponent, ParkDetailComponent, ParkingComponent, UserDetailComponent } from './components';
+import { AssignmentComponent, AssignmentDetailComponent, GooglemapsComponent, ParkDetailComponent, ParkingComponent, UserDetailComponent } from './components';
 
 
 
@@ -16,6 +16,7 @@ import { AssignmentComponent, AssignmentDetailComponent, ParkDetailComponent, Pa
     AssignmentDetailComponent,
     ParkingComponent,
     AssignmentComponent,
+    GooglemapsComponent,
 
     
     
@@ -38,6 +39,7 @@ import { AssignmentComponent, AssignmentDetailComponent, ParkDetailComponent, Pa
     AssignmentDetailComponent,
     ParkingComponent,
     AssignmentComponent,
+    GooglemapsComponent,
     
   ]
 })

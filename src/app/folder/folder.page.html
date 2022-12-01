@@ -14,9 +14,12 @@
       </ion-toolbar>
     </ion-header>
     
+    <app-home *ngIf="folder=='Home'"></app-home>    
     <app-people *ngIf="folder=='People'"></app-people>    
     <app-park *ngIf="folder=='Park'"></app-park>
     <app-assign *ngIf="folder=='Assign'"></app-assign>
+    <app-contact *ngIf="folder=='Contact'"></app-contact>
+
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button (click)="onNewItem()">

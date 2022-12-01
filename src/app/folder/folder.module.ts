@@ -8,6 +8,8 @@ import { FolderPageRoutingModule } from './folder-routing.module';
 import { PeopleComponent } from './components/people/people.component';
 import { AssignComponent } from './components/assign/assign.component';
 import { ParkComponent } from './components/park/park.component';
+import { HomePage } from './components/home/home.page';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   imports: [
@@ -18,6 +20,8 @@ import { ParkComponent } from './components/park/park.component';
   declarations: [FolderPage,
   AssignComponent,
   ParkComponent,
-  PeopleComponent,]
+  PeopleComponent,
+  HomePage,
+  ContactComponent,]
 })
 export class FolderPageModule {}

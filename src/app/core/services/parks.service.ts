@@ -10,7 +10,7 @@ export class ParksService {
     {
       id: 1,
       location: "C/Eolo 15",
-      image: "",
+      image: "/assets/avatar1.jpeg",
       vehicle:"Coche"
     },
     {
