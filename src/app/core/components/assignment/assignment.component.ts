@@ -11,35 +11,41 @@ import { AssignmentsService, ParksService, PeopleService } from '../../services'
 export class AssignmentComponent implements OnInit {
   @Output() onEdit = new EventEmitter;
   @Output() onDelete = new EventEmitter;
-  @Input() assignment:Assignment;
+  @Input() assignmentInput:Assignment;
 
-  constructor( private peopleSVC:PeopleService,
+  constructor( private userSVC:PeopleService,
     private parksSVC:ParksService,
     private assignmentsSVC:AssignmentsService) { }
 
   ngOnInit() {}
 
   getPark():Park{
-    var idPark = this.assignment.idPark;
+    var idPark = this.assignmentInput.idPark;
     if(idPark)
       return this.parksSVC.getParkById(idPark);
     return undefined;
   }
 
   getUser(): User{
-    var idUser = this.assignment.idUser;
+    var idUser = this.assignmentInput.idUser;
     if(idUser)
-      return this.peopleSVC.getUserById(idUser);
+      return this.userSVC.getUserById(idUser);
     return undefined;
   }
 
-  onEditClick(slide:IonItemSliding){
-    slide.close();
-    this.onEdit.emit(this.assignment);
+  onEditClick(){
+    this.onEdit.emit(this.assignmentInput);
   }
 
-  onDeleteClick(slide:IonItemSliding){
-    slide.close();
-    this.onDelete.emit(this.assignment);
+  onDeleteClick(){
+    this.onDelete.emit(this.assignmentInput);
+  }
+
+  getUserSVC(id:number){
+    return this.userSVC.getUserById(id);
+  }
+
+  getParkService(id:number){
+    return this.parksSVC.getParkById(id);
   }
 }

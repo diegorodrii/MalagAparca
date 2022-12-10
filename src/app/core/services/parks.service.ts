@@ -16,7 +16,7 @@ export class ParksService {
     {
        
       id: 2,
-      location: "C/Eolo 15",
+      location: "C/Navarro 15",
       image: "",
       vehicle:"Camión"
       }
@@ -32,11 +32,11 @@ export class ParksService {
   }
 
   getParkById(id:number){
-    return this._parks.find(t=>t.id==id);
+    return this._parks.find(p=>p.id==id);
   }
 
   deleteParkById(id:number){
-    this._parks = this._parks.filter(t=>t.id != id); 
+    this._parks = this._parks.filter(p=>p.id != id); 
     this._parksSubject.next(this._parks);
   }
 
@@ -47,7 +47,7 @@ export class ParksService {
   }
 
   updatePark(park:Park){
-    var _park = this._parks.find(t=>t.id==park.id);
+    var _park = this._parks.find(p=>p.id==park.id);
     if(_park){
       _park.location = park.location;
       _park.image = park.image;

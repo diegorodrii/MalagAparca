@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Formulario creación usuario</ion-title>
+    <ion-title>{{'modal.user.title' | translate}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="onDismiss(null)">Cerrar</ion-button>
+      <ion-button (click)="onDismiss(null)">{{'modal.cancel' | translate}}</ion-button>
     </ion-buttons>
   </ion-toolbar>
   
@@ -12,45 +12,44 @@
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
     <ion-item>
-      <ion-label position="floating"> Nombre </ion-label>
+      <ion-label position="floating"> {{'modal.user.name' |translate}} </ion-label>
       <ion-input
       type="text"
-      placeholder="Introduce un nombre"
+      placeholder="{{'modal.placeholder.name' | translate}}"
       formControlName="name"
       ></ion-input>
     </ion-item>
     
     <ion-item>
-      <ion-label position="floating"> Apellidos </ion-label>
+      <ion-label position="floating"> {{'modal.user.subname'| translate}} </ion-label>
       <ion-input
       type="text"
-      placeholder="Introduce un apellido"
+      placeholder="{{'modal.placeholder.subname' | translate}}"
       formControlName="subname"
       ></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating"> Foto </ion-label>
+      <ion-label position="floating"> {{'modal.image' | translate}} </ion-label>
       <ion-input
       type="text"
-      placeholder="Introduce una foto"
+      placeholder="{{'modal.placeholder.image'| translate}}"
       formControlName="image"
       ></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating"> Tipo de vehículo </ion-label>
+      <ion-label position="floating"> {{'modal.vehicle' | translate}} </ion-label>
       <ion-select type="text"
-      placeholder="Introduce un tipo de vehículo"
-      formControlName="vehicle" placeholder="Seleccione uno">
-      <ion-select-option> Camión </ion-select-option>
-      <ion-select-option> Coche </ion-select-option>
-      <ion-select-option> Ciclomotor / Moto </ion-select-option>
-      <ion-select-option> Bicicleta</ion-select-option>
+      placeholder= "{{'modal.placeholder.vehicle' | translate}}"
+      formControlName="vehicle" placeholder="{{'modal.placeholder.choose' | translate}}">
+      <ion-select-option> {{'modal.vehicle.truck' | translate}} </ion-select-option>
+      <ion-select-option> {{'modal.vehicle.car' | translate}} </ion-select-option>
+      <ion-select-option> {{'modal.vehicle.motorbike' | translate}} </ion-select-option>
+      <ion-select-option> {{'modal.vehicle.bike' | translate}}</ion-select-option>
     </ion-select>
       
     </ion-item>
-
 
     <ion-button [disabled]="!form.valid" type="submit">{{mode=="Edit"?"Modificar":"Añadir"}}</ion-button> 
 

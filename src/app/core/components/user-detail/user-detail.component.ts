@@ -27,6 +27,7 @@ export class UserDetailComponent implements OnInit {
   constructor(
     private fb:FormBuilder,
     private modal:ModalController
+    
   ) { 
     this.form = this.fb.group({
       id:[null],

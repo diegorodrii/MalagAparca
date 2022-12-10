@@ -4,7 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { UserComponent } from './components/user/user.component';
-import { AssignmentComponent, AssignmentDetailComponent, GooglemapsComponent, ParkDetailComponent, ParkingComponent, UserDetailComponent } from './components';
+import { AssignmentComponent, AssignmentDetailComponent,  ParkDetailComponent, ParkingComponent, UserDetailComponent } from './components';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { createTranslateLoader } from './utils/translate';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -16,19 +19,26 @@ import { AssignmentComponent, AssignmentDetailComponent, GooglemapsComponent, Pa
     AssignmentDetailComponent,
     ParkingComponent,
     AssignmentComponent,
-    GooglemapsComponent,
+    
 
-    
-    
+
+
   ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule.forRoot(),
     ReactiveFormsModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
 
-  exports:[
+  exports: [
     CommonModule,
     FormsModule,
     IonicModule,
@@ -39,8 +49,7 @@ import { AssignmentComponent, AssignmentDetailComponent, GooglemapsComponent, Pa
     AssignmentDetailComponent,
     ParkingComponent,
     AssignmentComponent,
-    GooglemapsComponent,
-    
+
   ]
 })
 

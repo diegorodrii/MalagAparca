@@ -6,13 +6,14 @@
     </ion-avatar>
     <ion-label> Plaza de {{parkInput.vehicle | lowercase}} </ion-label>
     <ion-label>{{parkInput.location}}</ion-label>
+ 
     <ion-item-option color="white">
       
-      <ion-icon name="caret-forward-outline"></ion-icon>
+      <ion-icon name="caret-forward-outline" (click)="onIconClick(sliding)"></ion-icon>
     </ion-item-option>
-    
   </ion-item>
 
+  
  
   <ion-item-options side="end" >
     

@@ -12,14 +12,14 @@ export class AssignmentsService {
     {
       id: 1,
       idPark: 1,
-      idUser: 4,
+      idUser: 2,
       startsAt: moment().toISOString(),
       finishsAt: moment().add(1, 'days').toISOString(),
     },
     {
       id: 2,
-      idPark: 2,
-      idUser: 4,
+      idPark: 1,
+      idUser: 1,
       startsAt: moment().toISOString(),
       finishsAt: moment().add(1, 'days').toISOString(),
     }

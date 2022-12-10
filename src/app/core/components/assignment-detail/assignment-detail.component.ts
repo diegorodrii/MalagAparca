@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+import { lastValueFrom } from 'rxjs';
 import { Assignment } from '../../models';
 import { AssignmentsService, ParksService, PeopleService } from '../../services';
 
@@ -30,7 +32,7 @@ export class AssignmentDetailComponent implements OnInit {
     private assignmentsSVC: AssignmentsService,
     private fb: FormBuilder,
     private modal: ModalController,
-    
+    private translateSVC : TranslateService
     
   ) { 
     this.form = this.fb.group({
@@ -40,9 +42,15 @@ export class AssignmentDetailComponent implements OnInit {
       finishsAt:[null, [Validators.required]],
     });
   }
-  async ngOnInit() {
 
-  }
+  
+   async ngOnInit() {
+     if(this.mode == "Edit")
+       this.button_text = await lastValueFrom(this.translateSVC.get('assignment.edit'));  
+     else
+       this.button_text = await this.translateSVC.get('assignment.new').toPromise();
+
+   }
 
   onSubmit(){
     

@@ -1,0 +1,45 @@
+{
+    "title":{
+        "home": "Inicio"
+
+    },
+
+    "modal":{
+        "user":{
+            "title":"Formulario Usuario",
+            "name":"Nombre",
+            "subname":"Apellido",
+            "vehicle":"Vehículo"
+            
+
+        },
+  
+        "placeholder":{
+            "name":"Introduce tu nombre",
+            "subname":"Introduce tus apellidos",
+            "ubication":"Elige la ubicación",
+            "image":"Elige una imagen",
+            "vehicle":"Elige un vehículo"
+        },
+
+        "park":{
+            "title":"Formulario Parking",
+            "ubication":"Ubicación",
+            "vehicle":"Vehículo"
+        },
+    
+        "vehicle":{
+            "truck":"Camión",
+            "bike":"Bicicleta",
+            "motorbike":"Motocicleta",
+            "car":"Coche"
+
+        },
+        
+        "cancel":"Cancelar",
+        "image":"Imagen"
+    
+    }
+
+
+}

@@ -1,0 +1,43 @@
+{
+    "title":{
+        "home": "Introduccion"
+
+    },
+
+    "modal":{
+        "user":{
+            "title":"User Form",
+            "name":"Name",
+            "subname":"Subname",
+            "vehicle":"Vehicle"
+            
+        },
+
+        "placeholder":{
+            "name":"Introduce your name",
+            "subname":"Introduce your subname",
+            "ubication":"Introduce your ubication",
+            "image":"Introduce your image",
+            "choose":"Introduce your vehicle"
+        },
+       
+
+        "park":{
+            "title":"Parking Form",
+            "ubication":"Ubication",
+            "vehicle":"Vehicle"
+
+        },
+    
+        "vehicle":{
+            "truck":"Truck",
+            "bike":"Bike",
+            "motorbike":"Motorbike",
+            "car":"Car"
+
+        },
+        "cancel":"Cancel",
+        "image":"Image"
+    }
+
+}

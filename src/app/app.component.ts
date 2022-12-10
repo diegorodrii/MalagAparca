@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -15,6 +17,22 @@ export class AppComponent {
 
   ];
   public labels = [];
+  language = 1;
+  constructor(private translateSVC: TranslateService,
+    ) {
+    this.translateSVC.setDefaultLang('en');
+  }
 
-  constructor() {}
+  onTranslate(){
+    this.language = (this.language+1)%2;
+    switch(this.language){
+      case 0:
+        this.translateSVC.setDefaultLang('es');
+        break;
+      case 1:
+        this.translateSVC.setDefaultLang('en');
+        break;
+    }
+  }
+
 }

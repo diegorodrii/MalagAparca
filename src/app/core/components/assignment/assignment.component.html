@@ -1,0 +1,22 @@
+<ion-item>
+    <ion-label>
+  
+  
+      <ion-card>
+
+        <ion-card-header>
+          
+          <ion-card-title>
+            {{ getUser().name }} tiene alquilada la plaza localizada en
+            {{getPark().location}}
+          </ion-card-title>
+          
+        </ion-card-header>
+  
+      </ion-card>
+  
+      <ion-button slot="end" color="danger" (click)="onDeleteClick()"><ion-icon name="trash-outline"></ion-icon></ion-button>
+      <ion-button slot="end" (click)="onEditClick()"><ion-icon name="create-outline"></ion-icon></ion-button>
+  
+    </ion-label>
+  </ion-item>
