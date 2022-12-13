@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Park } from '../models/park.model';
+import { ShareService } from './share.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class ParksService {
   private _parksSubject:BehaviorSubject<Park[]> = new BehaviorSubject(this._parks);
   public park$ = this._parksSubject.asObservable();
   id:number = this._parks.length+1;
-  constructor() { }
+  constructor(private shareSVC : ShareService) { }
 
   getParks(){
     return this._parks;
@@ -44,6 +45,7 @@ export class ParksService {
     park.id = this.id++;
     this._parks.push(park);
     this._parksSubject.next(this._parks);
+    this.shareSVC.onShareClicked();
   }
 
   updatePark(park:Park){

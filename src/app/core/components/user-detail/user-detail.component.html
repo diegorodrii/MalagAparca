@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>{{'modal.user.title' | translate}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="onDismiss(null)">{{'modal.cancel' | translate}}</ion-button>
+      <ion-button (click)="onDismiss(null)">{{'cancel' | translate}}</ion-button>
     </ion-buttons>
   </ion-toolbar>
   
@@ -39,9 +39,9 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating"> {{'modal.vehicle' | translate}} </ion-label>
+      <ion-label position="floating"> {{'modal.user.vehicle' | translate}} </ion-label>
       <ion-select type="text"
-      placeholder= "{{'modal.placeholder.vehicle' | translate}}"
+      placeholder= "{{'modal.user.vehicle' | translate}}"
       formControlName="vehicle" placeholder="{{'modal.placeholder.choose' | translate}}">
       <ion-select-option> {{'modal.vehicle.truck' | translate}} </ion-select-option>
       <ion-select-option> {{'modal.vehicle.car' | translate}} </ion-select-option>

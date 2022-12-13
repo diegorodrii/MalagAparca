@@ -1,22 +1,25 @@
 <ion-item>
-    <ion-label>
-  
-  
-      <ion-card>
+  <ion-label>
 
-        <ion-card-header>
-          
-          <ion-card-title>
-            {{ getUser().name }} tiene alquilada la plaza localizada en
-            {{getPark().location}}
-          </ion-card-title>
-          
-        </ion-card-header>
-  
-      </ion-card>
-  
-      <ion-button slot="end" color="danger" (click)="onDeleteClick()"><ion-icon name="trash-outline"></ion-icon></ion-button>
-      <ion-button slot="end" (click)="onEditClick()"><ion-icon name="create-outline"></ion-icon></ion-button>
-  
-    </ion-label>
-  </ion-item>
+
+    <ion-card>
+      <img src="{{ getUserSVC(assignmentInput.idUser).image}}" />
+      <ion-icon name="analytics-outline" style="padding-bottom: 5.5%; margin-left: 3.5%;"></ion-icon>
+      <img style="margin-left: 4%;" src="{{getParkService(assignmentInput.idPark).image}}" />
+      <ion-card-header>
+        
+        <ion-card-title>{{ getUserSVC(assignmentInput.idUser).name }} {{'txtHired'| translate}}
+          {{getParkService(assignmentInput.idPark).location}}
+        </ion-card-title>
+        <!-- <ion-card-subtitle>
+          {{assign.dateTime | date: 'short'}}
+        </ion-card-subtitle> -->
+      </ion-card-header>
+
+    </ion-card>
+
+    <ion-button slot="end" color="danger" (click)="onDeleteClick()"><ion-icon name="trash-outline"></ion-icon></ion-button>
+    <ion-button slot="end" (click)="onEditClick()"><ion-icon name="create-outline"></ion-icon></ion-button>
+
+  </ion-label>
+</ion-item>

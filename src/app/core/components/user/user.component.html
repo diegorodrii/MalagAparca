@@ -5,7 +5,7 @@
       <img *ngIf="userInput.image" [src]="userInput.image" />
     </ion-avatar>
     <ion-label>{{userInput.subname}}, {{userInput.name}}</ion-label>
-    <ion-label>{{userInput.vehicle}}</ion-label>
+    <ion-label>{{userInput.vehicle  | translate}}</ion-label>
     <ion-item-option color="white">
       
       <ion-icon name="caret-forward-outline" (click)="onIconClick(sliding)"></ion-icon>
@@ -18,11 +18,11 @@
     
     <ion-item-option (click)="onEditClick(sliding)">
       <ion-icon slot="top" name="create" ></ion-icon>
-      {{'Editar' | uppercase}}
+      {{'edit' | translate | uppercase}}
     </ion-item-option>
     <ion-item-option (click)="onDeleteClick(sliding)" color="danger" expandable="Borrar">
       <ion-icon slot="top" name="trash" ></ion-icon>
-      {{'Borrar' | uppercase}}
+      {{'delete' | translate | uppercase}}
     </ion-item-option>
   </ion-item-options>
 </ion-item-sliding>

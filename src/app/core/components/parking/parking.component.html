@@ -4,8 +4,8 @@
       <img *ngIf="!parkInput.image" src="/assets/avatar1.jpeg" />
       <img *ngIf="parkInput.image" [src]="parkInput.image" />
     </ion-avatar>
-    <ion-label> Plaza de {{parkInput.vehicle | lowercase}} </ion-label>
-    <ion-label>{{parkInput.location}}</ion-label>
+    <ion-label>{{'modal.park.parkText' | translate }} {{(parkInput.vehicle | lowercase )| translate}} </ion-label>
+    <ion-label>{{parkInput.location | translate}}</ion-label>
  
     <ion-item-option color="white">
       
@@ -18,12 +18,12 @@
   <ion-item-options side="end" >
     
     <ion-item-option (click)="onEditClick(sliding)">
-      <ion-icon slot="top" name="create" ></ion-icon>
-      {{'Editar' | uppercase}}
+      <ion-icon width="200px" slot="top" name="create" ></ion-icon>
+      {{'edit' | translate | uppercase}}
     </ion-item-option>
     <ion-item-option (click)="onDeleteClick(sliding)" color="danger" expandable="Borrar">
       <ion-icon slot="top" name="trash" ></ion-icon>
-      {{'Borrar' | uppercase}}
+      {{'delete' | translate | uppercase }}
     </ion-item-option>
   </ion-item-options>
 </ion-item-sliding>

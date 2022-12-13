@@ -17,7 +17,7 @@
             "name":"Introduce your name",
             "subname":"Introduce your subname",
             "ubication":"Introduce your ubication",
-            "image":"Introduce your image",
+            "image":"Introduce your image(optional)",
             "choose":"Introduce your vehicle"
         },
        
@@ -25,7 +25,8 @@
         "park":{
             "title":"Parking Form",
             "ubication":"Ubication",
-            "vehicle":"Vehicle"
+            "choose":"Introduce your vehicle",
+            "parkText":"Parking of"
 
         },
     
@@ -36,8 +37,23 @@
             "car":"Car"
 
         },
-        "cancel":"Cancel",
         "image":"Image"
-    }
+    },
+    "cancel":"Cancel",
+    "edit":"Edit",
+    "delete":"Delete",
 
+    "homeText1":"",
+    "homeText2":"",
+    "homeText3":"",
+    "homeText4":"",
+    "txtHired":"has hired the park located in",
+
+    "folder":{
+        "home":"Home",
+        "people":"User",
+        "park":"Parks",
+        "assign":"Assignment",
+        "contact":"Contact"
+    }
 }

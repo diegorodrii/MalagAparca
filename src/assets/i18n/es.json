@@ -18,14 +18,17 @@
             "name":"Introduce tu nombre",
             "subname":"Introduce tus apellidos",
             "ubication":"Elige la ubicación",
-            "image":"Elige una imagen",
-            "vehicle":"Elige un vehículo"
+            "image":"Elige una imagen(opcional)",
+            "choose":"Elige un vehículo"
+            
         },
 
         "park":{
             "title":"Formulario Parking",
             "ubication":"Ubicación",
-            "vehicle":"Vehículo"
+            "vehicle":"Vehículo",
+            "parkText":"Plaza de "
+
         },
     
         "vehicle":{
@@ -36,10 +39,25 @@
 
         },
         
-        "cancel":"Cancelar",
         "image":"Imagen"
     
+    },
+
+    "cancel":"Cancelar",
+    "edit":"Editar",
+    "delete":"Borrar",
+    
+    "homeText1":"¿Cansado de perder tiempo en Málaga buscando aparcamiento? ¡MalagAparca es tu app! Con nuestra aplicación podrás encontrar nuestras plazas privadas, ver su estado y sus horarios.",
+    "homeText2":"Con MalagAparca te aseguramos tener una plaza antes de que salgas de casa, adaptándonos al tipo de vehículo que tengas.",
+    "homeText3":"Viaja por Málaga con la tranquilidad de dejar tu preciado vehículo en un lugar seguro y cerca tu destino ¡Adelante! ¡Apárcate!",
+    "homeText4":"Asignar plaza",
+    "txtHired":"ha alquilado la plaza localizada en ",
+    
+    "folder":{
+        "home":"Inicio",
+        "people":"Usuarios",
+        "park":"Plazas",
+        "assign":"Asignamiento",
+        "contact":"Contacto"
     }
-
-
 }

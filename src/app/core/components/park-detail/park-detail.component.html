@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>{{'modal.park.title' |translate}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="onDismiss(null)">{{'modal.cancel' |translate}}</ion-button>
+      <ion-button (click)="onDismiss(null)">{{'cancel' |translate}}</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -12,9 +12,9 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
 
       <ion-item>
-        <ion-label position="floating"> {{'modal.vehicle' | translate}} </ion-label>
-        <ion-select type="text" placeholder="{{'modal.placeholder.vehicle' | translate}}" formControlName="vehicle"
-          placeholder="{{'placeholder.vehicle' | translate}}">
+        <ion-label position="floating"> {{'modal.user.vehicle' | translate}} </ion-label>
+        <ion-select type="text" formControlName="vehicle"
+          placeholder="{{'modal.placeholder.choose' | translate}}">
           <ion-select-option> {{'modal.vehicle.truck' | translate}} </ion-select-option>
           <ion-select-option> {{'modal.vehicle.car' | translate}} </ion-select-option>
           <ion-select-option> {{'modal.vehicle.motorbike' | translate}} </ion-select-option>
@@ -22,12 +22,12 @@
         </ion-select>
       </ion-item>
         <ion-item>
-          <ion-label position="floating"> {{'modal.ubication'}} </ion-label>
+          <ion-label position="floating"> {{'modal.park.ubication' | translate}} </ion-label>
           <ion-input type="text" placeholder="{{'modal.placeholder.ubication' | translate}}" formControlName="location"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating"> {{'modal.image'}} </ion-label>
+          <ion-label position="floating"> {{'modal.image' |translate}} </ion-label>
           <ion-input type="text" placeholder="{{'modal.placeholder.image' | translate}}" formControlName="image"></ion-input>
         </ion-item>
 
