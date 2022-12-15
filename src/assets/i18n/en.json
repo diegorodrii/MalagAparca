@@ -43,10 +43,10 @@
     "edit":"Edit",
     "delete":"Delete",
 
-    "homeText1":"",
-    "homeText2":"",
-    "homeText3":"",
-    "homeText4":"",
+    "homeText1":"Tired of losse time looking for parking in Málaga? MalagAparca is your app! With this app you are able to rent a private park and their schedules",
+    "homeText2":"MalagAparca ensures to give you a park before you leave your home, adapting to your vehicle type",
+    "homeText3":"Travel around Málaga calmly knowing you have a safe place to park your vehicle and near of your destiny. C'mon! Park!  ",
+    "homeText4":"Assign a park",
     "txtHired":"has hired the park located in",
 
     "folder":{
@@ -55,5 +55,23 @@
         "park":"Parks",
         "assign":"Assignment",
         "contact":"Contact"
-    }
+    },
+
+    "txtStarts":"Beggining Hour: ",
+    "txtEnds":"Ending Hour: ",
+    "modify":"Modify",
+    "welcome":"Welcome to MalagAparca",
+    "whatDoes":"What MalagAparca does?",
+    "timeToPark":"It's time to park",
+
+    "presentationTitle":"Diego Rodríguez Barcos",
+    "presentationSubtitle":"Programmer Student",
+    "presentation": "Hello, my name is Diego and I'm finishing a programming degree in Málaga. I've been working in this app the last two months. I hope you are enjoying it! Here you have some buttons. If you click anyone, you will get extra infomation about me. Thanks for your time!",
+
+    "computing":"Computing",
+    "passions":"Passions",
+    "future":"Future",
+    "computingTxt":" My computing relationship starts when I was a child. I have always liked computers and a few years ago I decided to make my first step in programming.",
+    "passionsTxt":"I love music, specially flamenco. I also like hang out with friends and playing videogames.",
+    "futureTxt":"I would like to obtein a lot of knowledge and in the future have a computing business. Programming is something I would like to do my entire life."
 }

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IonItemSliding } from '@ionic/angular';
 import { Park } from '../../models';
 import { UserComponent } from '../user/user.component';
 
@@ -17,17 +16,12 @@ export class ParkingComponent implements OnInit {
 
   ngOnInit() {}
   
-  onIconClick(slide:IonItemSliding){
-    slide.open('end');
-  }
-  onEditClick(slide:IonItemSliding){
-    slide.close();
+  onEditClick(){
+ 
     this.onEdit.emit(this.parkInput);
   }
 
-  onDeleteClick(slide:IonItemSliding){
-    slide.close();
-
+  onDeleteClick(){
     this.onDelete.emit(this.parkInput);
   } 
 

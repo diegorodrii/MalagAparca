@@ -1,29 +1,25 @@
-<ion-item-sliding #sliding>
+
+<ion-card>
+
+    <img *ngIf="!parkInput.image" src="/assets/plazaPredeterminada.jpg" />
+    <img *ngIf="parkInput.image" [src]="parkInput.image" />
+
   <ion-item>
-    <ion-avatar class="parkInput">
-      <img *ngIf="!parkInput.image" src="/assets/avatar1.jpeg" />
-      <img *ngIf="parkInput.image" [src]="parkInput.image" />
-    </ion-avatar>
-    <ion-label>{{'modal.park.parkText' | translate }} {{(parkInput.vehicle | lowercase )| translate}} </ion-label>
-    <ion-label>{{parkInput.location | translate}}</ion-label>
- 
-    <ion-item-option color="white">
-      
-      <ion-icon name="caret-forward-outline" (click)="onIconClick(sliding)"></ion-icon>
-    </ion-item-option>
+    <ion-icon name="pin" item-start large></ion-icon>
+    <h2> {{'modal.park.parkText' | translate }}
+      {{parkInput.location | translate}}
+    </h2>
+
   </ion-item>
 
-  
- 
-  <ion-item-options side="end" >
-    
-    <ion-item-option (click)="onEditClick(sliding)">
-      <ion-icon width="200px" slot="top" name="create" ></ion-icon>
-      {{'edit' | translate | uppercase}}
-    </ion-item-option>
-    <ion-item-option (click)="onDeleteClick(sliding)" color="danger" expandable="Borrar">
-      <ion-icon slot="top" name="trash" ></ion-icon>
-      {{'delete' | translate | uppercase }}
-    </ion-item-option>
-  </ion-item-options>
-</ion-item-sliding>
+  <ion-item>
+    <ion-icon name="rocket-outline" item-start large></ion-icon>
+    <h2>{{parkInput.vehicle |translate}}</h2>
+  </ion-item>
+
+  <ion-label>
+    <ion-button slot="end" color="danger" (click)="onDeleteClick()"><ion-icon
+        name="trash-outline"></ion-icon></ion-button>
+    <ion-button slot="end" (click)="onEditClick()"><ion-icon name="create-outline"></ion-icon></ion-button>
+  </ion-label>
+</ion-card>

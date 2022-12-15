@@ -4,7 +4,6 @@ import { ModalController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { lastValueFrom } from 'rxjs';
 import { Assignment } from '../../models';
-import { AssignmentsService, ParksService, PeopleService } from '../../services';
 
 @Component({
   selector: 'app-assignment-detail',
@@ -21,15 +20,12 @@ export class AssignmentDetailComponent implements OnInit {
       this.form.controls.id.setValue(assignment.id);
       this.form.controls.idPark.setValue(assignment.idPark);
       this.form.controls.idUser.setValue(assignment.idUser);
+      this.form.controls.startsAt.setValue(assignment.startsAt);
       this.form.controls.finishsAt.setValue(assignment.finishsAt);
-
       this.mode = "Edit";
     }
   }
   constructor(
-    private parksSVC: ParksService,
-    private peopleSVC: PeopleService,
-    private assignmentsSVC: AssignmentsService,
     private fb: FormBuilder,
     private modal: ModalController,
     private translateSVC : TranslateService
@@ -39,7 +35,9 @@ export class AssignmentDetailComponent implements OnInit {
       id:[null],
       idPark:[-1, [Validators.min(1)]],
       idUser:[-1, [Validators.min(1)]],
-      finishsAt:[null, [Validators.required]],
+      startsAt:[, [Validators.required]],
+      finishsAt:["", [Validators.required]],
+
     });
   }
 
@@ -63,10 +61,6 @@ export class AssignmentDetailComponent implements OnInit {
 
   onChangeDateTime(dateTime){
     this.form.controls.dateTime.setValue(dateTime);
-  }
-
-  onDateTime(){
-    
   }
 
 

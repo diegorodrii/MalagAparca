@@ -11,13 +11,13 @@ export class ParksService {
     {
       id: 1,
       location: "C/Eolo 15",
-      image: "/assets/avatar1.jpeg",
+      image: "/assets/garaje1.jpg",
       vehicle:"Coche"
     },
     {
        
       id: 2,
-      location: "C/Navarro 15",
+      location: "C/Navarro 9",
       image: "",
       vehicle:"Camión"
       }
@@ -26,7 +26,7 @@ export class ParksService {
   private _parksSubject:BehaviorSubject<Park[]> = new BehaviorSubject(this._parks);
   public park$ = this._parksSubject.asObservable();
   id:number = this._parks.length+1;
-  constructor(private shareSVC : ShareService) { }
+  constructor() { }
 
   getParks(){
     return this._parks;
@@ -45,7 +45,6 @@ export class ParksService {
     park.id = this.id++;
     this._parks.push(park);
     this._parksSubject.next(this._parks);
-    this.shareSVC.onShareClicked();
   }
 
   updatePark(park:Park){

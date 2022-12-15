@@ -47,7 +47,7 @@
     "edit":"Editar",
     "delete":"Borrar",
     
-    "homeText1":"¿Cansado de perder tiempo en Málaga buscando aparcamiento? ¡MalagAparca es tu app! Con nuestra aplicación podrás encontrar nuestras plazas privadas, ver su estado y sus horarios.",
+    "homeText1":"¿Cansado de perder tiempo en Málaga buscando aparcamiento? ¡MalagAparca es tu app! Con nuestra aplicación podrás encontrar nuestras plazas privadas y sus horarios.",
     "homeText2":"Con MalagAparca te aseguramos tener una plaza antes de que salgas de casa, adaptándonos al tipo de vehículo que tengas.",
     "homeText3":"Viaja por Málaga con la tranquilidad de dejar tu preciado vehículo en un lugar seguro y cerca tu destino ¡Adelante! ¡Apárcate!",
     "homeText4":"Asignar plaza",
@@ -59,5 +59,24 @@
         "park":"Plazas",
         "assign":"Asignamiento",
         "contact":"Contacto"
-    }
+    },
+    
+    "txtStarts":"Hora de Inicio: ",
+    "txtEnds":"Hora de finalización: ",
+    "modify":"Modificar",
+    "welcome":"Bienvenido a MalagAparca",
+    "whatDoes":"¿Qué hace MalagAparca",
+    "timeToPark":"Es hora de aparcar",
+
+    
+    "presentationTitle":"Diego Rodríguez Barcos",
+    "presentationSubtitle":"Estudiante de Programación",
+    "presentation": "Hola, me llamo Diego y estoy terminando un curso de programación en Málaga. He estado trabajando los últimos dos meses en esta aplicación. Espero que la estés disfrutando. Aquí te dejo unos botones que, al clickar se desplegará información extra sobre mí. Gracias por tu tiempo.",
+
+    "computing":"Informática",
+    "passions":"Pasiones",
+    "future":"Futuro",
+    "computingTxt":"Mi relación con la informática viene de muy pequeño. Siempre me han gustado los ordenadores y hace unos años decidí a dar el paso a la programación",
+    "passionsTxt":"Me apasiona la música, en especial el flamenco. También me gusta mucho salir con amigos y jugar videojuegos",
+    "futureTxt":"Me gustaría obtener muchos conocimientos y el futuro tener una empresa de informática ya que es algo a lo que me quiero dedicar toda mi vida"
 }

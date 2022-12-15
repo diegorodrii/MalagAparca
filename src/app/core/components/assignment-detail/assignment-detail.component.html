@@ -1,39 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Datos del usuario</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="onDismiss(null)">Cerrar</ion-button>
+    <ion-title slot="end">Formulario Asignaciones</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="onDismiss(null)">X</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  
   <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
-    <ion-item-divider>
-      <ion-label>
-       Persona que la realiza
-      </ion-label>
-    </ion-item-divider>
-    <app-park-selectable formControlName="idPark"></app-park-selectable>
-    <ion-item-divider>
-      <ion-label>
-        Plaza a ocupar
-      </ion-label>
-    </ion-item-divider>
-    <app-user-selectable formControlName="idUser"></app-user-selectable>
-    <ion-item-divider>
-      <ion-label>
-       Fecha y hora
-      </ion-label>
-    </ion-item-divider>
+    <ion-item>
+      <ion-list>
+        <ion-item >
+            <app-select-user formControlName="idUser"></app-select-user>
+        </ion-item>
+      </ion-list>
+      <ion-icon name="repeat-outline"></ion-icon>
+      <ion-list>
+        <ion-item>
+          <app-select-park formControlName="idPark"></app-select-park>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+
+    <ion-card-subtitle>{{'txtStarts'| translate}}</ion-card-subtitle>
+    <app-select-datetime formControlName="startsAt"></app-select-datetime>
+
+    <ion-card-subtitle>{{'txtEnds' | translate}}</ion-card-subtitle>
+    <app-select-finish-datetime formControlName="finishsAt"></app-select-finish-datetime>
+
+    <ion-button [disabled]="!form.valid" type="submit">{{mode=="Edit"?"Modificar":"Añadir"}}</ion-button>
   </form>
 </ion-content>
-<ion-footer>
-  <ion-grid>
-    <ion-row>
-      <ion-col class="ion-text-center">
-        <ion-button [disabled]="!form.valid" (click)="onSubmit()">{{button_text}}</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-footer>

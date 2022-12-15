@@ -1,18 +1,42 @@
-h3{
-    padding-bottom: 2%;
-}
-img{
-    width: 25%;
-    height: 25%;
+ion-slides {
+    height: 100%;
+    margin-top: 5%; 
+  }
+
+  .swiper-slide {
+    display: block;
+  }
+
+  .swiper-slide h2 {
+    margin-top: 2.8rem;
+  }
+
+ img {
+    height: 300px;
+    width: 300px;
+    margin: 60px 0 40px;
+    pointer-events: none;
     background-color: rgb(62, 166, 166);
     border-radius: 30%;
-   
+  }
+
+  b {
+    font-weight: 500;
+  }
+
+  p {
+    padding: 0 40px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ion-color-step-600, #60646b);
+  }
+
+  p b {
+    color: var(--ion-text-color, #000000);
+  }
+  
+  h3{
+    padding-bottom: 2%;
 }
-ion-slide{
-    margin-top: 12%;
-    padding-left: 10%;
-    padding-right: 10%;
-    margin-bottom: 15%;
-    
-}
+
 

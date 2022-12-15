@@ -8,6 +8,10 @@ import { AssignmentComponent, AssignmentDetailComponent,  ParkDetailComponent, P
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { createTranslateLoader } from './utils/translate';
 import { HttpClient } from '@angular/common/http';
+import { SelectParkComponent } from './components/select-park/select-park.component';
+import { SelectUserComponent } from './components/select-user/select-user.component';
+import { SelectDatetimeComponent } from './components/select-datetime/select-datetime.component';
+import { SelectFinishDatetimeComponent } from './components/select-finish-datetime/select-finish-datetime.component';
 
 
 
@@ -19,7 +23,12 @@ import { HttpClient } from '@angular/common/http';
     AssignmentDetailComponent,
     ParkingComponent,
     AssignmentComponent,
+    SelectParkComponent,
+    SelectUserComponent,
+    SelectDatetimeComponent,
+    SelectFinishDatetimeComponent,
     
+
 
 
 
@@ -49,6 +58,13 @@ import { HttpClient } from '@angular/common/http';
     AssignmentDetailComponent,
     ParkingComponent,
     AssignmentComponent,
+    SelectParkComponent,
+    SelectUserComponent,
+    SelectDatetimeComponent,
+    SelectFinishDatetimeComponent,
+
+    
+
 
   ]
 })

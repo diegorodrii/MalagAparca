@@ -3,32 +3,35 @@ import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { BehaviorSubject } from 'rxjs';
 import { Assignment } from '../models/assign.model';
+import { ShareService } from './share.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssignmentsService {
+  private moment: any = moment;
+
   private _assignments: Assignment[] = [
     {
       id: 1,
       idPark: 1,
       idUser: 2,
-      startsAt: moment().toISOString(),
-      finishsAt: moment().add(1, 'days').toISOString(),
+      startsAt: this.moment().toLocaleString(),
+      finishsAt: this.moment().add(2,'days').toLocaleString()
     },
     {
       id: 2,
       idPark: 1,
       idUser: 1,
-      startsAt: moment().toISOString(),
-      finishsAt: moment().add(1, 'days').toISOString(),
+      startsAt: this.moment().toLocaleString(),
+      finishsAt: this.moment().add(2,'days').toLocaleString()
     }
   ]
   private _assignmentsSubject: BehaviorSubject<Assignment[]> = new BehaviorSubject(this._assignments);
   public assign$ = this._assignmentsSubject.asObservable();
 
   id: number = this._assignments.length + 1;
-  constructor() { }
+  constructor(private shareSVC : ShareService) { }
   getAssignments() {
     return this._assignments;
   }
@@ -53,6 +56,7 @@ export class AssignmentsService {
     assingment.id = this.id++;
     this._assignments.push(assingment);
     this._assignmentsSubject.next(this._assignments);
+    this.shareSVC.onShareClicked();
   }
 
   updateAssignment(assignment: Assignment) {

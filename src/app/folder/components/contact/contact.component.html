@@ -1,1 +1,43 @@
-<p>{{'home.title' | translate}}</p>
+<ion-card>
+  <img alt="mi foto" src="assets/diego1.jpeg" />
+  <img alt="mi foto" src="assets/diego3.jpeg" />
+
+  <ion-card-header>
+    <ion-card-title>{{'presentationTitle' |translate}}</ion-card-title>
+    <ion-card-subtitle>{{'presentationSubtitle' |translate}}</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    {{'presentation' | translate}}
+  </ion-card-content>
+
+  <div class="container">
+
+    <ion-button id="left-start">{{'computing'| translate}}</ion-button>
+    <ion-popover trigger="left-start" side="left" alignment="start">
+      <ng-template>  
+        <ion-content class="ion-padding">{{'computingTxt' | translate}}</ion-content>
+      </ng-template>
+    </ion-popover>
+
+    <ion-button id="bottom-start">{{'passions'| translate}}</ion-button>
+    <ion-popover trigger="bottom-start" side="bottom" alignment="start">
+      <ng-template>
+        <ion-content class="ion-padding">{{'passionsTxt' | translate}}</ion-content>
+      </ng-template>
+    </ion-popover>
+  
+ 
+  
+    <ion-button id="right-end">{{'future'| translate}}</ion-button>
+    <ion-popover trigger="right-end" side="right" alignment="end">
+      <ng-template>
+        <ion-content class="ion-padding">{{'futureTxt' | translate}}</ion-content>
+      </ng-template>
+    </ion-popover>
+  </div>
+
+
+
+
+</ion-card>
