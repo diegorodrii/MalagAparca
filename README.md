@@ -8,6 +8,7 @@ Un vídeo explicando el funcionamiento de MalagAparca: https://www.youtube.com/w
 
 ## Home
 Esta es la primera interfaz de mi app, que contiene un slider con una pequeña introducción de lo que es la app.
+
 ![image](https://user-images.githubusercontent.com/91873618/207989982-75ecf85e-64c2-4b52-9feb-a764d4fdaa14.png)
 
 ## Usuarios
@@ -15,14 +16,16 @@ El apartado de usuarios, donde se encontrarán los usuarios con sus respectivos 
 
 ![image](https://user-images.githubusercontent.com/91873618/207990207-64c2bc0f-ed15-48b8-9d66-43e560173b44.png)
 
-
 ## Plazas
 El apartado de aparcamientos, donde se encontrarán los aparcamientos con sus respectivas localizaciones y tipo de vehículo
 
 ![image](https://user-images.githubusercontent.com/91873618/207991428-21571fd2-541a-42f7-8a21-10f9a439ab20.png)
 
-
 ## Asignamiento
+El apartado de asignamiento de plazas, donde asignaremos las plazas a los usuarios.
+
+![image](https://user-images.githubusercontent.com/91873618/207991729-0660ab30-1cb5-49ee-9b29-17a97d2a16e8.png)
+
 
 ## Añadir, editar y borrar
 En las diferentes interfaces, podremos añadir, editar y borrar.
@@ -39,10 +42,12 @@ En las diferentes interfaces, podremos añadir, editar y borrar.
 Aquí una página de contacto donde podrás conocerme mejor
 ![image](https://user-images.githubusercontent.com/91873618/207990402-ba9cb472-b9f0-4a23-bf1b-636b7d4e05de.png)
 
-
 ## Traducción
 
 La app cuenta con un servicio de traducción.
 
 ![image](https://user-images.githubusercontent.com/91873618/207990572-d0624b64-a955-4d03-89c1-afac482223f9.png)
 
+## Conclusión
+
+Este trabajo me ha resultado muy útil ya que he podido plasmar lo aprendido en clase en un proyecto por cuenta propia. Me llena de motivación y felicidad haber aprendido tanto de Angular e Ionic durante este primer trimestre, ya que antes de que empezara no tenía ningún conocimiento de estos lenguajes
