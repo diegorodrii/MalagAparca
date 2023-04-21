@@ -1,0 +1,8 @@
+{
+  "name": "park",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

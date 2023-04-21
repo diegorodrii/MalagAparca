@@ -1,0 +1,26 @@
+{
+    "parking": {
+        "title": "Parking",
+        "description": "Here you can find parking around all Málaga"
+    },
+    "myPark": {
+        "title": "My Parks",
+        "description": "The parks you have are here"
+    },
+    "report": {
+        "title": "Reports",
+        "description": "Did you have any trouble? Report it!"
+    },
+    "myProfile": {
+        "title": "My Profile",
+        "description": "Your personal information "
+    },
+    "enter":"enter",
+    "location": "Location",
+    "price": "Price",
+    "state": "State",
+    "assigned": "This place is assigned",
+    "notAssigned": "This place is not assigned"
+    
+    
+}

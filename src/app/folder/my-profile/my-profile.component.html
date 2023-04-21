@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-title>{{'myProfile.title' |translate}}</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <h1>{{(userSVC.user$ | async)?.email}} {{(userSVC.user$ | async)?.lastname}}</h1>
+  
+
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-toolbar>
+  <ion-title>
+    MalagAparca
+  </ion-title>
+
+</ion-toolbar>
+
+<ion-content class="login-page">
+  <div class="login-header">
+    <ion-img src="./assets/logo.png"></ion-img>
+  </div>
+  <h2 class="login-title">Login</h2>
+
+  <div class="login-form">
+    <form [formGroup]="form" (ngSubmit)="onSignIn()">
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input [enterkeyhint]="'next'" autocomplete="email" type="text" formControlName="identifier"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input (keyup.enter)="form.valid?onSignIn():null" [enterkeyhint]="'enter'" autocomplete="password"
+          type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <div class="login-btn-container">
+        <ion-button [disabled]="!form.valid" (click)="onSignIn()">{{'login.send' | translate}}</ion-button>
+      </div>
+    </form>
+  </div>
+  <div class="login-footer">
+    <p>No tienes una cuenta?</p>
+    <ion-label class="registro" (click)="register()" color="primary" fill="clear">
+      <small>{{'register.register' | translate}}</small>
+    </ion-label>
+  </div>
+  <div class="login-btn-container">
+    <ion-button>Más sobre mí</ion-button>
+  </div>
+</ion-content>

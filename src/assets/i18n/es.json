@@ -1,0 +1,25 @@
+{
+    "parking": {
+        "title": "Parking",
+        "description": "Aquí encontrarás aparcamiento por toda Málaga"
+    },
+    "myPark": {
+        "title": "Mis Plazas",
+        "description": "Tus plazas de aparcamiento se encuentran aquí"
+    },
+    "report": {
+        "title": "Denuncia",
+        "description": "¿Has tenido algún problema y quieres denunciarlo? ¡Repórtalo!"
+    },
+    "myProfile": {
+        "title": "Mi Perfil",
+        "description": "Tu información personal"
+    },
+    "enter":"Entrar",
+    "location": "Localización",
+    "price": "Precio",
+    "state": "Estado",
+    "assigned": "Esta plaza está asignada",
+    "notAssigned": "Esta plaza no está asignada"
+    
+}
