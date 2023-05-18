@@ -5,7 +5,7 @@ import { MyParkComponent } from './folder/my-park/my-park.component';
 import { MyProfileComponent } from './folder/my-profile/my-profile.component';
 import { ParkListComponent } from './folder/park-list/park-list.component';
 import { RegisterComponent } from './folder/register/register.component';
-import { ReportComponent } from './folder/report/report.component';
+import { ReportsComponent } from './folder/reports/reports.component';
 import { AuthGuard } from './core';
 
 const routes: Routes = [
@@ -25,7 +25,7 @@ const routes: Routes = [
     path: 'myPark', component: MyParkComponent
   },
   {
-    path: 'report', component: ReportComponent
+    path: 'reports', component: ReportsComponent
   },
   {
     path: 'myProfile', component: MyProfileComponent

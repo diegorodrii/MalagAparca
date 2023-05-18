@@ -1,3 +1,4 @@
+
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -8,16 +9,15 @@
 </ion-header>
 
 <ion-content>
-  <div>
-    <ion-label> Esto es un Buscador</ion-label>
-
-  </div>
-
-  <app-my-place *ngFor="let park of (getParks() | async)" [myPlaceInput]="park"> </app-my-place>
+  <h1>Aquí se mostrarán tus plazas del parking que están a tu nombre</h1>
+  <h2>Puedes añadir, modificar y borrar si es preciso. Podrás indicar si la plaza está ocupada o no, y también si la quieres publicar</h2>
+  
+  <ion-list>
+    <app-my-place *ngFor="let place of (getPlaces() | async)" [place]="place" (onEdit)="onEditPlace($event)" (onDelete)="onDeletePlace($event)"></app-my-place>
+  </ion-list> 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button >
+    <ion-fab-button (click)="onNewItem()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  
 </ion-content>

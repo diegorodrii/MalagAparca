@@ -1,37 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { MyPlaceComponent, Place } from 'src/app/core';
-import { MyPlaceDetailComponent } from 'src/app/core/components/my-place-detail/my-place-detail.component';
-import { MyParkService } from 'src/app/core/services/my-park.service';
+import { Report, ReportDetailComponent, ReportService } from 'src/app/core';
 import { ParkingService } from 'src/app/core/services/parking.service';
 
 @Component({
-  selector: 'app-my-park',
-  templateUrl: './my-park.component.html',
-  styleUrls: ['./my-park.component.scss'],
+  selector: 'app-reports',
+  templateUrl: './reports.component.html',
+  styleUrls: ['./reports.component.scss'],
 })
-export class MyParkComponent implements OnInit {
+export class ReportsComponent implements OnInit {
 
   constructor(
-    private placeSVC:MyParkService,
-    private parkingsSvc:ParkingService,
-    private modal:ModalController,
     private alert:AlertController,
+    private modal:ModalController,
+    private reportsSVC:ReportService,
+    private parkingsSVC:ParkingService
   ) { }
 
-  ngOnInit() {
-
+  ngOnInit() {}
+  getReports(){
+    return this.reportsSVC.reports$;
   }
 
-getPlaces(){
-    return this.placeSVC.places$;
-  }
-
-  async presentPlaceForm(place:Place){
+  async presentReportForm(report:Report){
     const modal = await this.modal.create({
-      component:MyPlaceDetailComponent,
+      component:ReportDetailComponent,
       componentProps:{
-        place:place
+        report:report
       },
       cssClass:"modal-full-right-side"
     });
@@ -40,10 +35,10 @@ getPlaces(){
       if(result && result.data){
         switch(result.data.mode){
           case 'New':
-            this.placeSVC.addPlace(result.data.place);
+            this.reportsSVC.addReport(result.data.report);
             break;
           case 'Edit':
-            this.placeSVC.updatePlace(result.data.place);
+            this.reportsSVC.updateReport(result.data.report);
             break;
           default:
         }
@@ -51,11 +46,11 @@ getPlaces(){
     });
   }
 
-  onEditPlace(place){
-    this.presentPlaceForm(place);
+  onEditReport(report){
+    this.presentReportForm(report);
   }
 
-  async onDeleteAlert(place){
+  async onDeleteAlert(report){
 
     const alert = await this.alert.create({
       header: 'Atención',
@@ -72,7 +67,7 @@ getPlaces(){
           text: 'Borrar',
           role: 'confirm',
           handler: () => {
-            this.placeSVC.deletePlace(place);
+            this.reportsSVC.deleteReport(report);
           },
         },
       ],
@@ -84,11 +79,14 @@ getPlaces(){
   }
 
   
-  async onDeletePlace(place){
+  async onDeleteReport(report){
     
-      this.onDeleteAlert(place);
+      this.onDeleteAlert(report);
   }
 
+  async onExport(){
+    this.reportsSVC.writeToFile();
+  }
 
   async presentForm(_class, onDismiss:(any)=>void){
     const modal = await this.modal.create({
@@ -104,8 +102,8 @@ getPlaces(){
   }
 
   onNewItem(){
-    this.presentForm(MyPlaceDetailComponent, (data)=>{
-      this.placeSVC.addPlace(data.place);
+    this.presentForm(ReportDetailComponent, (data)=>{
+      this.reportsSVC.addReport(data.report);
     });
   }
 }

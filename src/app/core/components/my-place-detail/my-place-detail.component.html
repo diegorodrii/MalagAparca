@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>{{'my-place-detail.title' | translate}}</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="onDismiss(null)">{{'modal.close' | translate}}</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <input id="fileLoader" type="file" #fileLoader name="files" title="Load Files" hidden>
+    <ion-img  *ngIf="currentImage.value" [src]="currentImage$ | async"></ion-img>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
+      <ion-item>
+        <ion-label position="floating">
+          {{'my-place-detail.number' | translate}}
+        </ion-label>
+        <ion-input type="number" placeholder="{{'my-place-detail.number-placeholder' | translate}}" formControlName="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">
+          {{'my-place-detail.empty' | translate}}
+        </ion-label>
+        <ion-input type="text" placeholder="{{'my-place-detail.empty-placeholder' | translate}}" formControlName="empty"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">
+          {{'my-place-detail.number' | translate}}
+        </ion-label>
+        <ion-input type="text" placeholder="{{'my-place-detail.published-placeholder' | translate}}" formControlName="published"></ion-input>
+      </ion-item>
+    </form>
+  </ion-content>
+  <ion-footer>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button [disabled]="!form.valid" (click)="onSubmit()">{{mode=="Edit"?('modal.edit' | translate):('modal.new' | translate)}}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>

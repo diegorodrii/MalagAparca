@@ -5,7 +5,7 @@ import { createTranslateLoader } from './utils/translate';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { UserComponent } from './components';
+import { DateTimeSelectableComponent, ParkSelectableComponent } from './components';
 import { ParkingComponent } from './components/parking/parking.component';
 import { MyPlaceComponent } from './components/my-place/my-place.component';
 import { environment } from 'src/environments/environment';
@@ -13,13 +13,24 @@ import { FirestoreModule } from '@angular/fire/firestore';
 import { AuthGuard } from '.';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
+import { ProfileComponent } from './components/profile/profile.component';
+import { MyPlaceDetailComponent } from './components/my-place-detail/my-place-detail.component';
+import { ReportComponent } from './components/report/report.component';
+import { ReportDetailComponent } from './components/report-detail/report-detail.component';
+import { ParkingDetailComponent } from './components/parking-detail/parking-detail.component';
 
 
 @NgModule({
   declarations: [
-    UserComponent,
     MyPlaceComponent,
-    ParkingComponent
+    ParkingComponent,
+    ProfileComponent,
+    MyPlaceDetailComponent,
+    ReportComponent,
+    ReportDetailComponent,
+    DateTimeSelectableComponent,
+    ParkingDetailComponent,
+    ParkSelectableComponent
   ],
   imports: [
     CommonModule,
@@ -47,9 +58,19 @@ import { Drivers } from '@ionic/storage';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    UserComponent,
     MyPlaceComponent,
-    ParkingComponent
+    ParkingComponent,
+    ProfileComponent,
+    MyPlaceDetailComponent,
+    ReportComponent,
+    ReportDetailComponent,
+    DateTimeSelectableComponent,
+    ParkingDetailComponent,
+    ParkSelectableComponent
+
+
+
+
   ],
   providers: []
 })

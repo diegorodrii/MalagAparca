@@ -1,7 +1,10 @@
-export interface Assign {
+export interface Parking {
     id: number,
-    idOwner: number;
-    idPark: number;
-    idHired?:number;
-    startsAt: string;
+    docId?: string,
+    startsAt: string,
+    finishsAt: string,
+    placeOwner: string,
+    placeTenant : string,
+    state: string,
+    placeId: string
 }

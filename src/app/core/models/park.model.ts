@@ -1,7 +1,8 @@
-export interface Park {
+export interface Place {
     id: number,
-    image?: string;
-    location: string;
-    price: string;
-    asignado: boolean; //True si el park está asignado a otro usuario
+    uid: string,
+    docId?: string,
+    number: number,
+    empty: string,
+    published: string
 }

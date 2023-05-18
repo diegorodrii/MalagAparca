@@ -1,3 +1,31 @@
-<p>
-  parking works!
-</p>
+<ion-card>
+  
+  <ion-card-content class="place-actions">
+
+    <ion-card-title class="place-number">{{parking.placeOwner}}</ion-card-title>
+    <ion-card-title class="place-date">{{parking.placeTenant}}</ion-card-title>
+    <ion-card-title class="place-date">{{parking.startsAt}}</ion-card-title>
+    <ion-card-title class="place-date">{{parking.finishsAt}}</ion-card-title>
+    <ion-card-title class="place-date">{{parking.state}}</ion-card-title>
+
+    <ion-button class="place-action" fill="clear" (click)="onEditClick()">
+      <ion-icon name="create"></ion-icon>
+      {{'modal.edit' | translate | uppercase}}
+    </ion-button>
+    <ion-button class="place-action" fill="clear" color="danger" (click)="onDeleteClick()">
+      <ion-icon name="trash"></ion-icon>
+      {{'modal.delete' | translate | uppercase}}
+    </ion-button>
+  </ion-card-content>
+
+  <ion-item-options>
+    <ion-item-option (click)="onEditClick()">
+      <ion-icon slot="top" name="create"></ion-icon>
+      {{'modal.edit' | translate | uppercase}}
+    </ion-item-option>
+    <ion-item-option (click)="onDeleteClick()" color="danger">
+      <ion-icon slot="top" name="trash"></ion-icon>
+      {{'modal.delete' | translate | uppercase}}
+    </ion-item-option>
+  </ion-item-options>
+</ion-card>

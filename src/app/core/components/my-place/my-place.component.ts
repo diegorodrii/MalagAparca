@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Park } from '../../models/park.model';
+import { Place } from '../../models/park.model';
 import { MyParkService, ParkingService } from '../../services';
+import { ModalController } from '@ionic/angular';
+import { MyPlaceDetailComponent } from '../my-place-detail/my-place-detail.component';
 
 @Component({
   selector: 'app-my-place',
@@ -9,24 +11,19 @@ import { MyParkService, ParkingService } from '../../services';
   styleUrls: ['./my-place.component.scss'],
 })
 export class MyPlaceComponent implements OnInit {
+  
+  @Output() onEdit = new EventEmitter;
+  @Output() onDelete = new EventEmitter;
+  @Input() place:Place;
+  constructor() { }
 
-    list: Park[] = [];
-    mylistSubject: BehaviorSubject<Park[]> = new BehaviorSubject(this.list);
-    mylist$ = this.mylistSubject.asObservable();
-    emptyPlace: boolean =false;
+  ngOnInit() {}
 
-    @Input() myPlaceInput: Park
+  onEditClick(){
+    this.onEdit.emit(this.place);
+  }
 
-    constructor(private myPlaceSVC: MyParkService) {
-      this.list = this.myPlaceSVC._parks;
-
-      if(this.list.length ==0){
-        this.mylistSubject.next(this.list);
-        this.emptyPlace = true;
-      }
-    }
-
-    ngOnInit() { }
-
- 
+  onDeleteClick(){
+    this.onDelete.emit(this.place);
+  }
 }

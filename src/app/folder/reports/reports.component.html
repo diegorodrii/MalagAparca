@@ -1,15 +1,16 @@
- <ion-header>
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
-      <ion-title>{{'parking.title' |translate}}</ion-title>
+      <ion-title>{{'report.title' |translate}}</ion-title>
     </ion-buttons>
   </ion-toolbar>
-</ion-header> 
+</ion-header>
 
 <ion-content>
+
   <ion-list>
-    <app-parking *ngFor="let parking of (getParkings() | async)" [parking]="parking" (onEdit)="onEditParking($event)" (onDelete)="onDeleteParking($event)"></app-parking>
+    <app-report *ngFor="let report of (getReports() | async)" [report]="report" (onEdit)="onEditReport($event)" (onDelete)="onDeleteReport($event)"></app-report>
   </ion-list> 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="onNewItem()">

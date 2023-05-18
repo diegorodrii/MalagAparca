@@ -10,7 +10,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HomePage } from './home/home.page';
 import { MyParkComponent } from './my-park/my-park.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import { ReportComponent } from './report/report.component';
+import { ReportsComponent } from './reports/reports.component';
 import { ParkListComponent } from './park-list/park-list.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -28,6 +28,6 @@ import { RegisterComponent } from './register/register.component';
       }
     })
   ],
-  declarations: [FolderPage, HomePage, ParkListComponent, MyParkComponent, MyProfileComponent, ReportComponent, LoginComponent, RegisterComponent]
+  declarations: [FolderPage, HomePage, ParkListComponent, MyParkComponent, MyProfileComponent, ReportsComponent, LoginComponent, RegisterComponent]
 })
 export class FolderPageModule {}
