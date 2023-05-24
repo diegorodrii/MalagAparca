@@ -1,66 +1,57 @@
-/* Estilos para pantallas más grandes */
+* {
+  font-family: 'MiFuente';
+}
+
 ion-card {
-  margin: 10px;
-  border-radius: 10px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 16px;
+}
+
+.report-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
 }
 
 .report-avatar {
-  width: 30%;
-  height: auto;
-  margin-right: 10px;
-  order: 0;
-  flex: 0 0 auto;
-  max-width: 150px;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 8px;
 }
 
-.report-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  order: 1;
+.report-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .report-title {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #333;
+  margin-bottom: 4px;
+  text-align: center;
 }
 
 .report-date {
-  font-size: 0.8rem;
-  color: #777;
-}
-
-
-.report-actions {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 16px;
+  text-align: center;
 }
 
 .report-action {
+  margin-bottom: 8px;
   font-size: 0.8rem;
-  color: #333;
-  margin-left: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .report-action ion-icon {
-  margin-right: 5px;
-}
-
-.report-action[fill="clear"]:hover {
-  color: #ff4d4d;
-}
-
-/* Estilos para pantallas más pequeñas (móviles) */
-@media only screen and (max-width: 600px) {
-  .report-avatar {
-    display: none;
-  }
+  margin-right: 4px;
 }

@@ -11,12 +11,6 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
     <ion-item-divider>
       <ion-label>
-        {{'assignment-detail.user' | translate}}
-      </ion-label>
-    </ion-item-divider>
-    <app-user-selectable formControlName="tenantId"></app-user-selectable>
-    <ion-item-divider>
-      <ion-label>
         {{'assignment-detail.number' | translate}}
       </ion-label>
     </ion-item-divider>

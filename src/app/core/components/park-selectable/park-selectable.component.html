@@ -1,18 +1,18 @@
 <ion-accordion-group [multiple]="true" #accordion>
   <ion-accordion value="first">
     <ion-item slot="header" color="light">
-      <ng-container *ngIf="selectedPark!=null">
-   
-        <ion-label>{{selectedPark?.number}}</ion-label>
+      <ng-container *ngIf="selectedPark != null">
+        <ion-label>{{ selectedPark.number }} - {{ selectedPark.ownerEmail }}</ion-label>
       </ng-container>
-      <ion-label *ngIf="!selectedPark">Selecciona una tarea</ion-label>
+      <ng-container *ngIf="selectedPark == null">Selecciona el número de plaza a ocupar</ng-container>
     </ion-item>
     <div class="ion-padding" slot="content">
       <ion-list>
-        <ion-item *ngFor="let park of getParks()" button detail  (click)="onParkClicked(park, accordion)">
-      
-          <ion-label>{{park.number}}</ion-label>
-        </ion-item>
+        <ng-container *ngFor="let park of getParks()">
+          <ion-item *ngIf="isUserPlace(park)" button detail (click)="onParkClicked(park, accordion)">
+            <ion-label>{{ park.number }} - {{ park.ownerEmail }}</ion-label>
+          </ion-item>
+        </ng-container>
       </ion-list>
     </div>
   </ion-accordion>

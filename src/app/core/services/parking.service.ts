@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { DocumentData } from 'firebase/firestore';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, take } from 'rxjs';
 import { FileUploaded, FirebaseService } from './firebase/firebase-service';
 
 import { Parking, Report } from '../models';
+import { UserService } from '..';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,12 @@ export class ParkingService {
 
   unsubscr;
   constructor(
-    private firebase:FirebaseService
+    private firebase:FirebaseService,
+    private userSVC: UserService
+
   ) {
     this.unsubscr = this.firebase.subscribeToCollection('parkings',this._parkingsSubject, this.mapParking);
+    console.log(this.userSVC.getLoggedInUserId())
   }
 
   ngOnDestroy(): void {
@@ -35,7 +39,8 @@ export class ParkingService {
       placeTenant:doc.data().placeTenant,
       startsAt:doc.data().startsAt,
       finishsAt:doc.data().finishsAt,
-      state: doc.data().state
+      state: doc.data().state,
+      placeNumber: doc.data().state
 
     };
   }
@@ -48,16 +53,19 @@ export class ParkingService {
   getParkingById(id:string){
     return new Promise<Parking>(async (resolve, reject)=>{
       try {
+        const user = await this.userSVC.user$.pipe(take(1)).toPromise(); // Obtener el usuario logueado
+
         var response = (await this.firebase.getDocument('parkings', id));
         resolve({
           id:0,
           docId:response.id,
           placeId: response.data.placeId,
-          placeOwner:response.data.placeOwner,
+          placeOwner:user?.email,
           placeTenant:response.data.placeTenant,
           startsAt:response.data.startsAt,
           finishsAt:response.data.finishsAt,
-          state: response.data.state
+          state: response.data.state,
+          placeNumber: response.data.placeNumber
         });
       } catch (error) {
         reject(error);
@@ -77,7 +85,8 @@ export class ParkingService {
             placeTenant:doc.data.placeTenant,
             startsAt:doc.data.startsAt,
             finishsAt:doc.data.finishsAt,
-            state: doc.data.state
+            state: doc.data.state,
+            placeNumber: doc.data.placeNumber
       
           }
         });
@@ -96,17 +105,17 @@ export class ParkingService {
     }
   }
 
-   async addParking(assignment:Parking){
+   async addParking(parking:Parking){
     try {
-      await this.firebase.createDocument('parkings', assignment);  
+      await this.firebase.createDocument('parkings', parking);  
     } catch (error) {
       console.log(error);
     }
   }
 
-  async updateParking(assignment:Parking){
+  async updateParking(parking:Parking){
     try {
-      await this.firebase.updateDocument('parkings', assignment.docId, assignment);
+      await this.firebase.updateDocument('parkings', parking.docId, parking);
     } catch (error) {
       console.log(error);
     }

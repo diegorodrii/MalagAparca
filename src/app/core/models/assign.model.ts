@@ -5,6 +5,7 @@ export interface Parking {
     finishsAt: string,
     placeOwner: string,
     placeTenant : string,
+    placeNumber: number,
     state: string,
     placeId: string
 }

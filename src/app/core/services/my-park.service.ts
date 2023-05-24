@@ -32,10 +32,12 @@ export class MyParkService {
     return {
       id:0,
       docId:doc.id,
-      uid: doc.uid,
+      uid: doc.data().uid,
       number:doc.data().number,
       empty:doc.data().empty,
-      published:doc.data().published
+      published:doc.data().published,
+      ownerEmail:doc.data().ownerEmail,
+      ownerPicture:doc.data().ownerPicture
     };
   }
 
@@ -47,6 +49,7 @@ export class MyParkService {
     return new Promise<Place>(async (resolve, reject)=>{
       try {
         const user = await this.userSVC.user$.pipe(take(1)).toPromise(); // Obtener el usuario logueado
+       
 
         var place = (await this.firebase.getDocument('plazas', id));
         resolve({
@@ -55,7 +58,9 @@ export class MyParkService {
           docId:place.id,
           number:place.data.number,
           empty:place.data.empty,
-          published:place.data.published
+          published:place.data.published,
+          ownerEmail:user?.email,
+          ownerPicture: user?.picture
         });  
       } catch (error) {
         reject(error);
@@ -72,9 +77,12 @@ export class MyParkService {
     var _place = {
       id:0,
       uid:user?.uid,
-      docId:place.id,
+      docId:place.docId,
       number:place.number,
-      published:place.published
+      empty:place.empty,
+      published:place.published,
+      ownerEmail:user?.email,
+      ownerPicture: user?.picture
     };
     if(place['pictureFile']){
       var response = await this.uploadImage(place['pictureFile']);
@@ -85,6 +93,7 @@ export class MyParkService {
     } catch (error) {
       console.log(error);
     }
+    console.log(_place)
   }
 
   uploadImage(file):Promise<any>{  
@@ -103,6 +112,7 @@ export class MyParkService {
       id:0,
       docId:place.docId,
       number:place.number,
+      empty:place.empty,
       published:place.published
     };
     if(place['pictureFile']){
@@ -121,5 +131,6 @@ export class MyParkService {
     var data = new Blob([dataToText], {type: 'text/plain'});
     this.firebase.fileUpload(data, 'text/plain', 'places', '.txt');
   }
+
 
 }

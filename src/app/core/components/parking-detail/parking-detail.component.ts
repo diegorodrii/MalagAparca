@@ -5,6 +5,8 @@ import { ModalController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { ParkingService } from '../../services/parking.service';
 import { Parking } from '../../models';
+import { UserService } from '../..';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-parking-detail',
@@ -16,9 +18,9 @@ export class ParkingDetailComponent implements OnInit {
  
   form:FormGroup;
   mode:"New" | "Edit" = "New";
-
   @Input('parking') set parking(parking:Parking){
     if(parking){
+      
       this.form.controls.id.setValue(parking.id);
       this.form.controls.placeId.setValue(parking.placeId);
       this.form.controls.placeOwner.setValue(parking.placeOwner);
@@ -30,26 +32,29 @@ export class ParkingDetailComponent implements OnInit {
     }
   }
   
-
   
   constructor(
-    private placeSVC:MyParkService,
+    private userSVC:UserService,
     private parkingsSVC:ParkingService,
     private fb:FormBuilder,
     private modal:ModalController,
-    private translate:TranslateService
+    private translate:TranslateService,
+    private parkSVC: MyParkService
   ) { 
+
     this.form = this.fb.group({
       id:[0],
       placeId:[-1, [Validators.min(1)]],
-
+      placeOwner:[null, Validators.min(1)],
       startsAt:[null, [Validators.required]],
       finishsAt:[null, [Validators.required]],
     });
   }
 
   async ngOnInit() {
-
+    this.userSVC.user$.pipe(take(1)).subscribe((user) => {
+      this.form.controls.placeOwner.setValue(user.email);
+    });
   }
 
   onSubmit(){

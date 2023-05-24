@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Parking } from '../../models';
+import { Parking, Place } from '../../models';
 import { MyParkService } from '../../services';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
@@ -14,6 +14,8 @@ export class ParkingComponent implements OnInit {
   @Output() onEdit = new EventEmitter;
   @Output() onDelete = new EventEmitter;
   @Input() parking:Parking;
+  @Input() park:Place;
+
   constructor() { }
 
   ngOnInit() {}

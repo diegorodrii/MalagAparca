@@ -1,13 +1,13 @@
-<ion-accordion-group [multiple]="true" #accordion>
-  <ion-accordion value="first">
-    <ion-item slot="header" color="light">
+<ion-accordion-group [multiple]="true" #accordion class="accordion-group">
+  <ion-accordion value="first" class="accordion">
+    <ion-item slot="header" color="" class="accordion-header">
       <ng-container *ngIf="hasValue">
-        <ion-label>{{(date$ | async) | date:'short':undefined:locale.locale}}</ion-label>
+        <ion-label class="date-label">{{(date$ | async) | date:'short':undefined:locale.locale}}</ion-label>
       </ng-container>
-      <ion-label *ngIf="!hasValue">Seleccione una fecha y hora</ion-label>
+      <ion-label *ngIf="!hasValue" class="placeholder-label">Seleccione una fecha y hora</ion-label>
     </ion-item>
-    <div class="ion-padding" slot="content">
-      <ion-datetime #datetime value="{{(date$ | async)}}" (ionChange)="onDateTimeChanged($event, accordion)" >
+    <div class="ion-padding" slot="content" color="black">
+      <ion-datetime #datetime value="{{(date$ | async)}}" (ionChange)="onDateTimeChanged($event, accordion)" class="datetime-input">
         <ion-buttons slot="buttons">
           <ion-button color="danger" (click)="onCancel(datetime, accordion)">Cancelar</ion-button>
           <ion-button color="primary" (click)="onConfirm(datetime, accordion)">Hecho</ion-button>

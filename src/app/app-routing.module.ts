@@ -11,7 +11,8 @@ import { AuthGuard } from './core';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./folder/home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./folder/home/home.module').then(m => m.HomePageModule), canActivate:[AuthGuard]
+
   },
 
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
     path: 'parkList', component: ParkListComponent
   },
   {
-    path: 'myPark', component: MyParkComponent
+    path: 'myPark', component: MyParkComponent, canActivate:[AuthGuard]
   },
   {
     path: 'reports', component: ReportsComponent

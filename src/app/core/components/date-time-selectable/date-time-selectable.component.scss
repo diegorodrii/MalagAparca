@@ -1,6 +1,37 @@
-ion-accordion{
-    margin-bottom: 10px;
-    ion-item{
-        --border-radius:10px;
-    }
-}
+/* Estilos del grupo de acordeón */
+.accordion-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos del acordeón */
+  .accordion {
+    background-color: #f4f4f4;
+    border-radius: 4px;
+  }
+  
+  /* Estilos del encabezado del acordeón */
+  .accordion-header {
+    padding: 10px;
+    color:#3880FF
+  }
+  
+  .date-label {
+    font-size: 14px;
+  }
+  
+  .placeholder-label {
+    font-size: 14px;
+    color: #999999;
+  }
+  
+  /* Estilos del contenido del acordeón */
+  .datetime-input {
+    margin-top: 10px;
+  }
+  
+  /* Estilos de los botones del acordeón */
+  .datetime-input ion-button {
+    font-size: 14px;
+    margin-right: 8px;
+  }
+  

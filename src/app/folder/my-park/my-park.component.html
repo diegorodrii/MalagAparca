@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -10,11 +9,13 @@
 
 <ion-content>
   <h1>Aquí se mostrarán tus plazas del parking que están a tu nombre</h1>
-  <h2>Puedes añadir, modificar y borrar si es preciso. Podrás indicar si la plaza está ocupada o no, y también si la quieres publicar</h2>
-  
-  <ion-list>
-    <app-my-place *ngFor="let place of (getPlaces() | async)" [place]="place" (onEdit)="onEditPlace($event)" (onDelete)="onDeletePlace($event)"></app-my-place>
-  </ion-list> 
+  <h2>Puedes añadir, modificar y borrar si es preciso. Podrás indicar si la plaza está ocupada o no, y también si la
+    quieres publicar</h2>
+
+  <ion-list *ngFor="let place of (getPlaces() | async)" (onEdit)="onEditPlace($event)"
+    (onDelete)="onDeletePlace($event)">
+    <app-my-place *ngIf="isUserPlace(place)" [place]="place"></app-my-place>
+  </ion-list>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="onNewItem()">
       <ion-icon name="add"></ion-icon>

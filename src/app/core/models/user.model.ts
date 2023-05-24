@@ -16,5 +16,6 @@ export interface User{
     provider:string;
     token:string,
     name:string,
-    lastname:string
+    lastname:string,
+    picture: string,
 }

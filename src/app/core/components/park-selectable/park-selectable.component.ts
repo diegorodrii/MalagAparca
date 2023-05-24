@@ -2,7 +2,7 @@ import { Component, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IonAccordionGroup } from '@ionic/angular';
 import { Place } from '../../models';
-import { MyParkService } from '../../services';
+import { MyParkService, UserService } from '../../services';
 
 
 export const PARK_PROFILE_VALUE_ACCESSOR: any = {
@@ -19,14 +19,20 @@ export const PARK_PROFILE_VALUE_ACCESSOR: any = {
   providers:[PARK_PROFILE_VALUE_ACCESSOR]
 })
 export class ParkSelectableComponent implements OnInit, ControlValueAccessor {
+  userId: string;
 
   selectedPark:Place=null;
   propagateChange = (_: any) => { }
   isDisabled:boolean = false;
 
   constructor(
-    private parksSvc:MyParkService
-  ) { }
+    private parksSvc:MyParkService,
+    private userService: UserService
+  ) { 
+    this.userId = this.userService.getLoggedInUserId();
+    console.log(this.userId)
+    
+  }
 
 
   async writeValue(obj: any) {
@@ -58,4 +64,11 @@ export class ParkSelectableComponent implements OnInit, ControlValueAccessor {
     this.propagateChange(this.selectedPark.docId);
   }
 
+  isUserPlace(place: Place): boolean {
+    if (place.uid == this.userId) {
+      return true
+    } else {
+      return false
+    }
+  }
 }

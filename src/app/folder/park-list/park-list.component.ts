@@ -102,4 +102,6 @@ export class ParkListComponent implements OnInit {
       this.parkingsSVC.addParking(data.parking);
     });
   }
+
+  
 }

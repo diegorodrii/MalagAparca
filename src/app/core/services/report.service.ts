@@ -70,6 +70,8 @@ export class ReportService {
       docId:report.docId,
       title:report.title,
       description:report.description,
+      date:report.date,
+
     };
     if(report['pictureFile']){
       var response = await this.uploadImage(report['pictureFile']);
@@ -99,6 +101,7 @@ export class ReportService {
       docId:report.docId,
       title:report.title,
       description:report.description,
+      report:report.date
     };
     if(report['pictureFile']){
       var response:FileUploaded = await this.uploadImage(report['pictureFile']);

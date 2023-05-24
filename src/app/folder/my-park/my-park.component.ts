@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { MyPlaceComponent, Place } from 'src/app/core';
+import { MyPlaceComponent, Place, UserService } from 'src/app/core';
 import { MyPlaceDetailComponent } from 'src/app/core/components/my-place-detail/my-place-detail.component';
 import { MyParkService } from 'src/app/core/services/my-park.service';
 import { ParkingService } from 'src/app/core/services/parking.service';
@@ -11,34 +11,38 @@ import { ParkingService } from 'src/app/core/services/parking.service';
   styleUrls: ['./my-park.component.scss'],
 })
 export class MyParkComponent implements OnInit {
+  userId: string;
 
   constructor(
-    private placeSVC:MyParkService,
-    private parkingsSvc:ParkingService,
-    private modal:ModalController,
-    private alert:AlertController,
+    private placeSVC: MyParkService,
+    private parkingsSvc: ParkingService,
+    private modal: ModalController,
+    private alert: AlertController,
+    public userService: UserService
   ) { }
 
   ngOnInit() {
+    this.userId = this.userService.getLoggedInUserId();
+    console.log(this.userId)
 
   }
 
-getPlaces(){
+  getPlaces() {
     return this.placeSVC.places$;
   }
 
-  async presentPlaceForm(place:Place){
+  async presentPlaceForm(place: Place) {
     const modal = await this.modal.create({
-      component:MyPlaceDetailComponent,
-      componentProps:{
-        place:place
+      component: MyPlaceDetailComponent,
+      componentProps: {
+        place: place
       },
-      cssClass:"modal-full-right-side"
+      cssClass: "modal-full-right-side"
     });
     modal.present();
-    modal.onDidDismiss().then(result=>{
-      if(result && result.data){
-        switch(result.data.mode){
+    modal.onDidDismiss().then(result => {
+      if (result && result.data) {
+        switch (result.data.mode) {
           case 'New':
             this.placeSVC.addPlace(result.data.place);
             break;
@@ -51,11 +55,11 @@ getPlaces(){
     });
   }
 
-  onEditPlace(place){
+  onEditPlace(place) {
     this.presentPlaceForm(place);
   }
 
-  async onDeleteAlert(place){
+  async onDeleteAlert(place) {
 
     const alert = await this.alert.create({
       header: 'Atención',
@@ -83,29 +87,38 @@ getPlaces(){
     const { role } = await alert.onDidDismiss();
   }
 
-  
-  async onDeletePlace(place){
-    
-      this.onDeleteAlert(place);
+
+  async onDeletePlace(place) {
+
+    this.onDeleteAlert(place);
   }
 
 
-  async presentForm(_class, onDismiss:(any)=>void){
+  async presentForm(_class, onDismiss: (any) => void) {
     const modal = await this.modal.create({
-      component:_class,
-      cssClass:"modal-full-right-side"
+      component: _class,
+      cssClass: "modal-full-right-side"
     });
     modal.present();
-    modal.onDidDismiss().then(result=>{
-      if(result && result.data){
+    modal.onDidDismiss().then(result => {
+      if (result && result.data) {
         onDismiss(result.data);
       }
     });
   }
 
-  onNewItem(){
-    this.presentForm(MyPlaceDetailComponent, (data)=>{
+  onNewItem() {
+    this.presentForm(MyPlaceDetailComponent, (data) => {
       this.placeSVC.addPlace(data.place);
     });
   }
+
+  isUserPlace(place: Place): boolean {
+    if (place.uid == this.userId) {
+      return true
+    } else {
+      return false
+    }
+  }
+
 }
