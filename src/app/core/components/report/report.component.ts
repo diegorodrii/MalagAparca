@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Report } from '../../models';
+import { LocaleService } from '../../services/locale.service';
 
 @Component({
   selector: 'app-report',
@@ -12,7 +13,10 @@ export class ReportComponent implements OnInit {
   @Output() onEdit = new EventEmitter;
   @Output() onDelete = new EventEmitter;
   @Input() report:Report;
-  constructor() { }
+  constructor(
+    public locale:LocaleService
+
+  ) { }
 
   ngOnInit() {}
 

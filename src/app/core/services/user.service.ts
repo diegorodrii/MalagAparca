@@ -16,8 +16,7 @@ export class UserService {
   public user$ = this._user.asObservable();
   private _uid = new BehaviorSubject<string>(null);
   public uid$ = this._uid.asObservable();
-  private _email = new BehaviorSubject<string>(null);
-  public email$ = this._email.asObservable();
+
 
   constructor(
     private firebase: FirebaseService,
@@ -83,6 +82,7 @@ export class UserService {
   getLoggedInUserId(): string {
     return this._uid.value;
   }
-
+  
+ 
   
 }

@@ -6,9 +6,9 @@ ion-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 8px;
   margin: 16px;
+  background-color: #C1D6F8;
+  box-shadow: 10px 12px 8px rgba(0, 0, 0, 0.1);
 }
 
 .report-actions {
@@ -55,3 +55,64 @@ ion-card {
 .report-action ion-icon {
   margin-right: 4px;
 }
+
+
+
+// .report-actions {
+//   display: flex;
+//   align-items: flex-start;
+//   flex-wrap: wrap;
+// }
+
+// .report-content {
+//   display: flex;
+//   align-items: flex-start;
+//   flex-basis: 100%;
+// }
+
+// .report-avatar {
+//   flex-shrink: 0;
+//   width: 150px;
+//   height: 150px;
+//   margin-right: 10px;
+//   border-radius: 0;
+//   object-fit: cover;
+// }
+
+// .report-details {
+//   flex-grow: 1;
+// }
+
+// .report-title {
+//   font-size: 18px;
+//   font-weight: bold;
+//   white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+// }
+
+// .report-date {
+//   font-size: 14px;
+//   color: gray;
+// }
+
+// .report-description {
+//   white-space: normal;
+//   word-break: break-word;
+// }
+
+// .report-actions-right {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-end;
+//   flex-basis: 100%;
+// }
+
+// .report-buttons {
+//   display: flex;
+// }
+
+// .report-action {
+//   margin-top: 10px;
+//   margin-right: 10px;
+// }

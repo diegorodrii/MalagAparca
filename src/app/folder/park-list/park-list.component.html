@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-list>
-    <app-parking *ngFor="let parking of (getParkings() | async)" [parking]="parking" (onEdit)="onEditParking($event)" (onDelete)="onDeleteParking($event)"></app-parking>
+    <app-parking *ngFor="let parking of (getParkings() | async)" [parking]="parking" (onEdit)="onEditParking($event)" (onDelete)="onDeleteParking($event)" (onHire)="onHireParking($event)"></app-parking>
   </ion-list> 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="onNewItem()">

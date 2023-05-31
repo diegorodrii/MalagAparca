@@ -35,7 +35,6 @@ export class MyParkService {
       uid: doc.data().uid,
       number:doc.data().number,
       empty:doc.data().empty,
-      published:doc.data().published,
       ownerEmail:doc.data().ownerEmail,
       ownerPicture:doc.data().ownerPicture
     };
@@ -47,20 +46,16 @@ export class MyParkService {
 
   getPlaceById(id:string):Promise<Place>{
     return new Promise<Place>(async (resolve, reject)=>{
-      try {
-        const user = await this.userSVC.user$.pipe(take(1)).toPromise(); // Obtener el usuario logueado
-       
-
+      try {       
         var place = (await this.firebase.getDocument('plazas', id));
         resolve({
           id:0,
-          uid: user?.uid,
+          uid: place.data.uid,
           docId:place.id,
           number:place.data.number,
           empty:place.data.empty,
-          published:place.data.published,
-          ownerEmail:user?.email,
-          ownerPicture: user?.picture
+          ownerEmail:place.data.ownerEmail,
+          ownerPicture: place.data.ownerPicture
         });  
       } catch (error) {
         reject(error);
@@ -80,7 +75,6 @@ export class MyParkService {
       docId:place.docId,
       number:place.number,
       empty:place.empty,
-      published:place.published,
       ownerEmail:user?.email,
       ownerPicture: user?.picture
     };
@@ -112,8 +106,6 @@ export class MyParkService {
       id:0,
       docId:place.docId,
       number:place.number,
-      empty:place.empty,
-      published:place.published
     };
     if(place['pictureFile']){
       var response:FileUploaded = await this.uploadImage(place['pictureFile']);

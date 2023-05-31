@@ -4,8 +4,8 @@ export interface Parking {
     startsAt: string,
     finishsAt: string,
     placeOwner: string,
-    placeTenant : string,
-    placeNumber: number,
     state: string,
-    placeId: string
+    placeId: string,
+    tenantPicture: string,
+    tenantEmail: string
 }

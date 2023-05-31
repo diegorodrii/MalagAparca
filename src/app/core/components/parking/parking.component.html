@@ -1,32 +1,44 @@
-<ion-card>
-  
+<ion-card [ngClass]="{'assigned-card': parking.state === 'assigned'}">
+
   <ion-card-content class="place-actions">
+    <div class="person-container">
 
-    <ion-card-title class="place-number">{{parking.placeOwner}}</ion-card-title>
-    <ion-card-title class="place-number">{{parking.placeId}}</ion-card-title>
-    <ion-card-title class="place-date">{{parking.placeTenant}}</ion-card-title>
-    <ion-card-title class="place-date">{{parking.startsAt}}</ion-card-title>
-    <ion-card-title class="place-date">{{parking.finishsAt}}</ion-card-title>
-    <ion-card-title class="place-date">{{parking.state}}</ion-card-title>
+      <ion-avatar class="person">
+        <img *ngIf="!(place$ | async)?.ownerPicture" alt="Silhouette of a person's head"
+          src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        <img *ngIf="(place$ | async)?.ownerPicture" alt="Person picture" [src]="(place$ | async)?.ownerPicture" />
+      </ion-avatar>
+      <ion-icon name="arrow-back-outline"></ion-icon>
+      <ion-icon name="arrow-forward-outline"></ion-icon> <!-- <ion-icon name="arrow-undo-outline"></ion-icon>
+      <ion-icon name="arrow-redo-outline"></ion-icon> -->
+      <ion-avatar class="person">
+        <img *ngIf="!parking?.tenantPicture" alt="Silhouette of a person's head"
+          src="https://www.pngfind.com/pngs/m/91-912146_empty-png-icon-empty-transparent-png.png" />
+        <img *ngIf="parking?.tenantPicture" alt="Person picture" [src]="parking?.tenantPicture" />
+      </ion-avatar>
+    </div>
 
-    <ion-button class="place-action" fill="clear" (click)="onEditClick()">
+    <ion-card-title>{{"parking.ownerEmail" | translate}}{{(place$ | async)?.ownerEmail}}</ion-card-title>
+    <ion-card-title>{{"parking.placeNumber" | translate}}{{(place$ | async)?.number}}</ion-card-title>
+    <ion-card-title>{{"parking.tenantEmail" | translate}}{{parking.tenantEmail}}</ion-card-title>
+    <ion-card-subtitle>{{parking.startsAt | date:'short':undefined:locale.locale}}</ion-card-subtitle>
+    <ion-card-subtitle>{{parking.finishsAt | date:'short':undefined:locale.locale}}</ion-card-subtitle>
+    <ion-card-title>{{parking.state}}</ion-card-title>
+
+    <ion-button class="place-action" fill="clear" (click)="onEditClick()" [hidden]="userEmail !== parking.placeOwner">
       <ion-icon name="create"></ion-icon>
       {{'modal.edit' | translate | uppercase}}
     </ion-button>
-    <ion-button class="place-action" fill="clear" color="danger" (click)="onDeleteClick()">
+    <ion-button class="place-action" fill="clear" color="danger" (click)="onDeleteClick()"
+      [hidden]="userEmail !== parking.placeOwner">
       <ion-icon name="trash"></ion-icon>
       {{'modal.delete' | translate | uppercase}}
     </ion-button>
+    <ion-button  [ngClass]="{'assigned-button': parking.state === 'assigned'}" fill="clear" (click)="onHireClick()"
+      [hidden]="userEmail == parking.placeOwner">
+      <ion-icon name="enter-outline"></ion-icon>
+      {{'modal.assign' | translate | uppercase}}
+    </ion-button>
   </ion-card-content>
 
-  <ion-item-options>
-    <ion-item-option (click)="onEditClick()">
-      <ion-icon slot="top" name="create"></ion-icon>
-      {{'modal.edit' | translate | uppercase}}
-    </ion-item-option>
-    <ion-item-option (click)="onDeleteClick()" color="danger">
-      <ion-icon slot="top" name="trash"></ion-icon>
-      {{'modal.delete' | translate | uppercase}}
-    </ion-item-option>
-  </ion-item-options>
 </ion-card>

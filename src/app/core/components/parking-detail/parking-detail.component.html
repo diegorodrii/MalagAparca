@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{'assignment-detail.title' | translate}}</ion-title>
+    <ion-title>{{'parking-detail.title' | translate}}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="onDismiss(null)">Cerrar</ion-button>
     </ion-buttons>
@@ -11,24 +11,19 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
     <ion-item-divider>
       <ion-label>
-        {{'assignment-detail.number' | translate}}
+        {{'parking-detail.number' | translate}}
       </ion-label>
     </ion-item-divider>
     <app-park-selectable formControlName="placeId"></app-park-selectable>
     <ion-item-divider>
       <ion-label>
-        {{'assignment-detail.task' | translate}}
-      </ion-label>
-    </ion-item-divider>
-    <ion-item-divider>
-      <ion-label>
-        {{'assignment-detail.startsAt' | translate}}
+        {{'parking-detail.startsAt' | translate}}
       </ion-label>
     </ion-item-divider>
     <app-date-time-selectable formControlName="startsAt"></app-date-time-selectable>
     <ion-item-divider>
       <ion-label>
-        {{'assignment-detail.finishsAt' | translate}}
+        {{'parking-detail.finishsAt' | translate}}
       </ion-label>
     </ion-item-divider>
     <app-date-time-selectable formControlName="finishsAt"></app-date-time-selectable>

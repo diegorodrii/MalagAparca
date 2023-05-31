@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Place } from '../../models';
 import { MyParkService } from '../../services';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { ModalController } from '@ionic/angular';
 
@@ -12,7 +12,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class MyPlaceDetailComponent implements OnInit {
 
-
+  numberMaxError = false;
   form: FormGroup;
   mode: "New" | "Edit" = "New";
   currentImage = new BehaviorSubject<string>("");
@@ -23,7 +23,6 @@ export class MyPlaceDetailComponent implements OnInit {
       this.form.controls.docId.setValue(place.docId);
       this.form.controls.number.setValue(place.number);
       this.form.controls.empty.setValue(place.empty);
-      this.form.controls.published.setValue(place.published);
       this.mode = "Edit";
     }
   }
@@ -38,8 +37,7 @@ export class MyPlaceDetailComponent implements OnInit {
       id: [null],
       docId: [''],
       number: ['', [Validators.required]],
-      empty: ['', [Validators.required]],
-      published: ['', [Validators.required]],
+      empty: ['Vacío', [Validators.required]],
     });
   }
 
@@ -48,13 +46,30 @@ export class MyPlaceDetailComponent implements OnInit {
   }
 
   onSubmit() {
-
+    if (this.form.valid) {
+      const numberValue = this.form.controls.number.value;
+      if (numberValue > 80) {
+        this.form.controls.number.setErrors({ maxNumber: true });
+        return;
+      } else {
+        this.form.controls.number.setErrors(null);
+      }
+    }
     this.modal.dismiss({ place: this.form.value, mode: this.mode }, 'ok');
+
   }
 
   onDismiss(result) {
     this.modal.dismiss(null, 'cancel');
   }
-
+  hasFormError(error: string): boolean {
+    return this.form?.errors && Object.keys(this.form.errors).filter(e => e == error).length == 1;
+  }
+  errorsToArray(controlErrors: ValidationErrors | null): string[] {
+    if (!controlErrors) {
+      return [];
+    }
+    return Object.keys(controlErrors);
+  }
 
 }

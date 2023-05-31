@@ -1,21 +1,44 @@
-.parkImg::part(image){
-    height: 200px;
-    width: 200px;
+.myplace-card {
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .place-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .place-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
     margin-left: 20px;
-    border-radius: 300px;
-
-}
-
-img{
-    width: 30px;
-
-}
-
-ion-col{
-    margin: 10px;
     text-align: center;
-    min-width: 300px;
-}
-ion-row{
-    text-align: center;
-}
+    margin-right: 5px;
+  }
+  
+  .place-date {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .place-action {
+    font-size: 16px;
+    color: #555;
+    text-transform: uppercase;
+    padding: 0;
+    margin-left: 10px;
+  }
+  
+  .place-action ion-icon {
+    margin-right: 5px;
+  }
+  
+  .place-action:hover {
+    color: #ff0000;
+  }
+  

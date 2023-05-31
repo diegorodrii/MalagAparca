@@ -23,7 +23,6 @@ export class ParkingService {
 
   ) {
     this.unsubscr = this.firebase.subscribeToCollection('parkings',this._parkingsSubject, this.mapParking);
-    console.log(this.userSVC.getLoggedInUserId())
   }
 
   ngOnDestroy(): void {
@@ -36,11 +35,11 @@ export class ParkingService {
       docId:doc.id,
       placeId:doc.data().placeId,
       placeOwner:doc.data().placeOwner,
-      placeTenant:doc.data().placeTenant,
+      tenantEmail:doc.data().tenantEmail,
+      tenantPicture:doc.data().tenantPicture,
       startsAt:doc.data().startsAt,
       finishsAt:doc.data().finishsAt,
       state: doc.data().state,
-      placeNumber: doc.data().state
 
     };
   }
@@ -61,11 +60,11 @@ export class ParkingService {
           docId:response.id,
           placeId: response.data.placeId,
           placeOwner:user?.email,
-          placeTenant:response.data.placeTenant,
+          tenantEmail:response.data.tenantEmail,
+          tenantPicture:response.data.tenantPicture,
           startsAt:response.data.startsAt,
           finishsAt:response.data.finishsAt,
           state: response.data.state,
-          placeNumber: response.data.placeNumber
         });
       } catch (error) {
         reject(error);
@@ -82,11 +81,11 @@ export class ParkingService {
             docId:doc.id,
             placeOwner:doc.data.placeOwner,
             placeId: doc.data.placeId,
-            placeTenant:doc.data.placeTenant,
             startsAt:doc.data.startsAt,
             finishsAt:doc.data.finishsAt,
+            tenantEmail:doc.data.tenantEmail,
+            tenantPicture:doc.data.tenantPicture,
             state: doc.data.state,
-            placeNumber: doc.data.placeNumber
       
           }
         });

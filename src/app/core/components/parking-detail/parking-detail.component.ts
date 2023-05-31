@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { ParkingService } from '../../services/parking.service';
-import { Parking } from '../../models';
+import { Parking, Place } from '../../models';
 import { UserService } from '../..';
 import { take } from 'rxjs';
 
@@ -24,14 +24,12 @@ export class ParkingDetailComponent implements OnInit {
       this.form.controls.id.setValue(parking.id);
       this.form.controls.placeId.setValue(parking.placeId);
       this.form.controls.placeOwner.setValue(parking.placeOwner);
-      this.form.controls.placeTenant.setValue(parking.placeTenant);
       this.form.controls.startsAt.setValue(parking.startsAt);
       this.form.controls.finishsAt.setValue(parking.finishsAt);
-      this.form.controls.state.setValue(parking.state);
       this.mode = "Edit";
     }
   }
-  
+
   
   constructor(
     private userSVC:UserService,
@@ -46,8 +44,10 @@ export class ParkingDetailComponent implements OnInit {
       id:[0],
       placeId:[-1, [Validators.min(1)]],
       placeOwner:[null, Validators.min(1)],
+      tenantEmail:["Vacío"],
       startsAt:[null, [Validators.required]],
       finishsAt:[null, [Validators.required]],
+
     });
   }
 

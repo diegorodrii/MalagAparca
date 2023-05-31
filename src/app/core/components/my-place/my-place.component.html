@@ -1,10 +1,8 @@
-<ion-card>
-  
+<ion-card class="myplace-card">
   <ion-card-content class="place-actions">
-
-    <ion-card-title class="place-number">{{place.number}}</ion-card-title>
-    <ion-card-title class="place-date">{{place.published}}</ion-card-title>
-    <ion-card-title class="place-date">{{place.empty}}</ion-card-title>
+    <ion-card-title class="place-number">{{'place.text' | translate}}{{place.number}}</ion-card-title>
+    <ion-card-subtitle class="place-date">{{place.empty}}</ion-card-subtitle>
+    
 
     <ion-button class="place-action" fill="clear" (click)="onEditClick()">
       <ion-icon name="create"></ion-icon>
@@ -15,15 +13,4 @@
       {{'modal.delete' | translate | uppercase}}
     </ion-button>
   </ion-card-content>
-
-  <ion-item-options>
-    <ion-item-option (click)="onEditClick()">
-      <ion-icon slot="top" name="create"></ion-icon>
-      {{'modal.edit' | translate | uppercase}}
-    </ion-item-option>
-    <ion-item-option (click)="onDeleteClick()" color="danger">
-      <ion-icon slot="top" name="trash"></ion-icon>
-      {{'modal.delete' | translate | uppercase}}
-    </ion-item-option>
-  </ion-item-options>
 </ion-card>

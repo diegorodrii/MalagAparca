@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { Parking, ParkingService } from 'src/app/core';
+import { take } from 'rxjs';
+import { Parking, ParkingService, UserService } from 'src/app/core';
 import { ParkingDetailComponent } from 'src/app/core/components/parking-detail/parking-detail.component';
 
 @Component({
@@ -11,28 +12,31 @@ import { ParkingDetailComponent } from 'src/app/core/components/parking-detail/p
 export class ParkListComponent implements OnInit {
 
   constructor(
-    private alert:AlertController,
-    private modal:ModalController,
-    private parkingsSVC:ParkingService,
+    private alert: AlertController,
+    private modal: ModalController,
+    private parkingsSVC: ParkingService,
+    private userService: UserService,
   ) { }
 
-  ngOnInit() {}
-  getParkings(){
+  ngOnInit() {
+
+  }
+  getParkings() {
     return this.parkingsSVC.parkings$;
   }
 
-  async presentParkingForm(parking:Parking){
+  async presentParkingForm(parking: Parking) {
     const modal = await this.modal.create({
-      component:ParkingDetailComponent,
-      componentProps:{
-        parking:parking
+      component: ParkingDetailComponent,
+      componentProps: {
+        parking: parking
       },
-      cssClass:"modal-full-right-side"
+      cssClass: "modal-full-right-side"
     });
     modal.present();
-    modal.onDidDismiss().then(result=>{
-      if(result && result.data){
-        switch(result.data.mode){
+    modal.onDidDismiss().then(result => {
+      if (result && result.data) {
+        switch (result.data.mode) {
           case 'New':
             this.parkingsSVC.addParking(result.data.parking);
             break;
@@ -45,11 +49,49 @@ export class ParkListComponent implements OnInit {
     });
   }
 
-  onEditParking(parking){
+  onEditParking(parking) {
     this.presentParkingForm(parking);
   }
 
-  async onDeleteAlert(parking){
+  async onHireAlert(parking) {
+    const user = await this.userService.user$.pipe(take(1)).toPromise();
+    if (user.email === parking.tenantEmail) {
+      console.log("Ya tienes asignada esta plaza");
+      return;
+    }
+
+    const alert = await this.alert.create({
+      header: 'Confirmación',
+      message: '¿Estás seguro de que quieres asignarte esta plaza?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log("Operación cancelada");
+          }
+        },
+        {
+          text: 'Aceptar',
+          role: 'confirm',
+          handler: () => {
+            parking.tenantEmail = user.email;
+            parking.tenantPicture = user.picture;
+            parking.state = 'assigned'; // Agregar esta línea para definir el valor del campo 'state'
+            this.parkingsSVC.updateParking(parking).then(() => {
+              console.log("Plaza asignada correctamente");
+            }).catch(error => {
+              console.error("Error al actualizar la plaza en Firebase:", error);
+            });
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async onDeleteAlert(parking) {
 
     const alert = await this.alert.create({
       header: 'Atención',
@@ -77,31 +119,34 @@ export class ParkListComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-  
-  async onDeleteParking(parking){
-    
-      this.onDeleteAlert(parking);
+
+  async onDeleteParking(parking) {
+
+    this.onDeleteAlert(parking);
   }
 
+  async onHireParking(parking) {
+    this.onHireAlert(parking);
+  }
 
-  async presentForm(_class, onDismiss:(any)=>void){
+  async presentForm(_class, onDismiss: (any) => void) {
     const modal = await this.modal.create({
-      component:_class,
-      cssClass:"modal-full-right-side"
+      component: _class,
+      cssClass: "modal-full-right-side"
     });
     modal.present();
-    modal.onDidDismiss().then(result=>{
-      if(result && result.data){
+    modal.onDidDismiss().then(result => {
+      if (result && result.data) {
         onDismiss(result.data);
       }
     });
   }
 
-  onNewItem(){
-    this.presentForm(ParkingDetailComponent, (data)=>{
+  onNewItem() {
+    this.presentForm(ParkingDetailComponent, (data) => {
       this.parkingsSVC.addParking(data.parking);
     });
   }
 
-  
+
 }

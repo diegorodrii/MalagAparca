@@ -9,3 +9,25 @@ div{
     
 }
 
+ion-toolbar {
+    --background: #2c82c9;
+    --color: #fff;
+    --border-width: 0px;
+  
+    ion-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  
+    ion-buttons {
+      ion-button {
+        --color: #fff;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+    }
+  }
+  *{
+    font-family: 'MiFuente';
+  }

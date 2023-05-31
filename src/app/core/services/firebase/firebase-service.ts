@@ -23,7 +23,7 @@ export interface FirestoreImages{
 }
 export const FIRESTORE_REPORTS_COLLECTION = 'malagaparca-reports';
 export const FIRESTORE_PLACES_COLLECTION = 'malagaparca-places';
-export const FIRESTORE_ASSIGNMENTS_COLLECTION = 'malagaparca-assignments';
+export const FIRESTORE_PARKINGS_COLLECTION = 'malagaparca-parkings';
 export const FIRESTORE_IMAGES_COLLECTION = 'malagaparca-images';
 export const FIRESTORAGE_PREFIX_PATH = 'malagaparca-images';
 

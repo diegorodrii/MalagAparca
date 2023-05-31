@@ -1,7 +1,10 @@
 {
     "parking": {
         "title": "Parking",
-        "description": "Here you can find parking around all Málaga"
+        "description": "Here you can find parking around all Málaga",
+        "placeNumber":"Place Number: ",
+        "tenantEmail":"Tenant Email: ",
+        "ownerEmail":"Owner Email: "
     },
     "myPark": {
         "title": "My Parks",
@@ -20,7 +23,33 @@
     "price": "Price",
     "state": "State",
     "assigned": "This place is assigned",
-    "notAssigned": "This place is not assigned"
-    
+    "notAssigned": "This place is not assigned",
+    "modal":{
+        "edit":"Edit",
+        "delete": "Delete",
+        "assign":"Assign",
+        "new":"Add",
+        "close":"Close"
+
+    },
+    "place":{
+        "text":"Place number "
+    },
+
+    "my-place-detail":{
+        "title":"My Parks",
+        "number":"Place number: "
+    },
+    "report-detail":{
+        "title":"Reports",
+        "date":"Incident date",
+        "description":"Incident description"
+    },
+    "parking-detail":{
+        "title":"Place Assignment",
+        "number":"Place number",
+        "startsAt":"Starts at:",
+        "finishsAt":"Finishs at:"
+    }
     
 }

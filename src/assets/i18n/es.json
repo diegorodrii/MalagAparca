@@ -20,6 +20,14 @@
     "price": "Precio",
     "state": "Estado",
     "assigned": "Esta plaza está asignada",
-    "notAssigned": "Esta plaza no está asignada"
-    
+    "notAssigned": "Esta plaza no está asignada",
+    "modal":{
+        "edit":"Editar",
+        "delete": "Eliminar",
+        "assign":"Asignar",
+        "new":"Añadir"
+    },
+    "place":{
+        "text":"Plaza número "
+    }
 }

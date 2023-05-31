@@ -4,7 +4,6 @@ export interface Place {
     docId?: string,
     number: number,
     empty: string,
-    published: string,
     ownerPicture: string,
     ownerEmail : string,
 }
