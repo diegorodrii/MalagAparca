@@ -12,8 +12,8 @@
       <ion-icon name="arrow-forward-outline"></ion-icon> <!-- <ion-icon name="arrow-undo-outline"></ion-icon>
       <ion-icon name="arrow-redo-outline"></ion-icon> -->
       <ion-avatar class="person">
-        <img *ngIf="!parking?.tenantPicture" alt="Silhouette of a person's head"
-          src="https://www.pngfind.com/pngs/m/91-912146_empty-png-icon-empty-transparent-png.png" />
+        <img *ngIf="!parking?.tenantEmail" 
+          src="https://img.freepik.com/vector-premium/archivos-png-fondo-vector-transparente-fondo-png_302321-1276.jpg?w=2000" />
         <img *ngIf="parking?.tenantPicture" alt="Person picture" [src]="parking?.tenantPicture" />
       </ion-avatar>
     </div>
@@ -34,11 +34,12 @@
       <ion-icon name="trash"></ion-icon>
       {{'modal.delete' | translate | uppercase}}
     </ion-button>
-    <ion-button  [ngClass]="{'assigned-button': parking.state === 'assigned'}" fill="clear" (click)="onHireClick()"
-      [hidden]="userEmail == parking.placeOwner">
+    <ion-button *ngIf="parking.state !== 'assigned'" [ngClass]="{'assigned-button': parking.state === 'assigned'}"
+      class="place-action" fill="clear" (click)="onHireClick()" [hidden]="userEmail == parking.placeOwner">
       <ion-icon name="enter-outline"></ion-icon>
       {{'modal.assign' | translate | uppercase}}
     </ion-button>
+
   </ion-card-content>
 
 </ion-card>

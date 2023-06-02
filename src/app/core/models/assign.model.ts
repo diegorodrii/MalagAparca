@@ -6,6 +6,6 @@ export interface Parking {
     placeOwner: string,
     state: string,
     placeId: string,
-    tenantPicture: string,
-    tenantEmail: string
+    tenantPicture?: string,
+    tenantEmail?: string
 }

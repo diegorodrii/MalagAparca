@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ModalController, ToastController } from '@ionic/angular';
 import { AuthGuard, UserService } from 'src/app/core';
 import { RegisterComponent } from '../register/register.component';
+import { PasswordValidation } from 'src/app/core/utils/password-validator';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,7 @@ export class LoginComponent{
     this.form = this.formBuilder.group({
       identifier:["", [Validators.required, Validators.email]],
       password:["", Validators.required]
-    });
+    }, { validator: PasswordValidation.passwordProto });
     
   }
 
@@ -59,13 +60,12 @@ export class LoginComponent{
     
   }
 
-  hasFormError(error){
-    return this.form?.errors && Object.keys(this.form.errors).filter(e=>e==error).length==1;
+  hasFormError(error: string) {
+    return this.form?.errors && Object.keys(this.form.errors).filter(e => e == error).length == 1;
   }
   
-  errorsToArray(errors){
-   
-    if(errors && !('required' in errors))
+  errorsToArray(errors) {
+    if (errors && !('required' in errors))
       return [Object.keys(errors)[0]];
     else
       return [];

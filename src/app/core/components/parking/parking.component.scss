@@ -4,7 +4,7 @@ ion-card {
   align-items: center;
   border-radius: 8px;
   margin: 16px;
-  background-color: #C1D6F8;
+  background-color: #74B743;
   box-shadow: 10px 12px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -15,10 +15,14 @@ ion-card {
   padding: 16px;
 }
 .assigned-card {
-  background-color: #c81a1a;
+  background-color: #FD5545;
 }
 .assigned-button {
   color: #1ac2c8;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .person-container {

@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, forwardRef, OnDestroy, OnInit } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef, OnDestroy, OnInit } from '@angular/core';
+import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { IonAccordionGroup, IonDatetime } from '@ionic/angular';
 import * as moment from 'moment';
-import { BehaviorSubject, interval } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { LocaleService } from '../../services/locale.service';
 
 export const DATETIME_PROFILE_VALUE_ACCESSOR: any = {
@@ -15,17 +15,19 @@ export const DATETIME_PROFILE_VALUE_ACCESSOR: any = {
   selector: 'app-date-time-selectable',
   templateUrl: './date-time-selectable.component.html',
   styleUrls: ['./date-time-selectable.component.scss'],
-  providers:[DATETIME_PROFILE_VALUE_ACCESSOR]
+  providers: [DATETIME_PROFILE_VALUE_ACCESSOR]
 })
 export class DateTimeSelectableComponent implements OnInit, ControlValueAccessor, OnDestroy {
   hasValue = false;
+  dateError: string;
+  dateForm: FormGroup;
+  todayDate: string;
 
   constructor(
-    public locale:LocaleService
-  ){
+    public locale: LocaleService,
+    private formBuilder: FormBuilder
+  ) { }
 
-  }
-  
   ngOnDestroy(): void {
     this.dateSubject.complete();
   }
@@ -34,57 +36,70 @@ export class DateTimeSelectableComponent implements OnInit, ControlValueAccessor
   public date$ = this.dateSubject.asObservable();
   propagateChange = (_: any) => { }
 
-  isDisabled:boolean = false;
+  isDisabled: boolean = false;
 
-  formatDate(date:moment.Moment){
+  formatDate(date: moment.Moment) {
     return date.format('YYYY-MM-DDTHH:mmZ');
   }
 
   ngOnInit() {
+    this.dateForm = this.formBuilder.group({
+      selectedDate: [moment().add(1, 'minute').format('YYYY-MM-DDTHH:mm'), Validators.required]
+    });
+  
+    const currentDateTime = moment();
+    this.todayDate = this.formatDate(currentDateTime);
   }
+  
 
   writeValue(obj: any): void {
-    if(obj){
+    if (obj) {
       this.hasValue = true;
       this.dateSubject.next(this.formatDate(moment(obj)));
     }
   }
+  
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
-  }
+  registerOnTouched(fn: any): void { }
 
   setDisabledState?(isDisabled: boolean): void {
     this.isDisabled = isDisabled;
   }
 
-  onDateTimeChanged(event, accordion:IonAccordionGroup){
-    
+  onDateTimeChanged(event, accordion: IonAccordionGroup) {
     setTimeout(() => {
-      var value = this.formatDate(moment(event.detail.value));
-      if(value!=this.dateSubject.getValue())
-      {
+      const selectedDateTime = moment(event.detail.value);
+      const currentDateTime = moment();
+  
+      if (selectedDateTime.isSameOrBefore(currentDateTime)) {
+        this.dateError = 'Seleccione una fecha y hora válidas.';
+        return;
+      }
+  
+      this.dateError = null;
+      const value = this.formatDate(selectedDateTime);
+  
+      if (value !== this.dateSubject.getValue()) {
         this.hasValue = true;
-
         this.dateSubject.next(value);
-
         accordion.value = '';
         this.propagateChange(value);
       }
-      
     }, 100);
   }
+  
+  
 
-  onCancel(datetime:IonDatetime, accordion:IonAccordionGroup){
+  onCancel(datetime: IonDatetime, accordion: IonAccordionGroup) {
     datetime.cancel();
-    accordion.value='';
+    accordion.value = '';
   }
 
-  onConfirm(datetime:IonDatetime, accordion:IonAccordionGroup){
+  onConfirm(datetime: IonDatetime, accordion: IonAccordionGroup) {
     datetime.confirm();
   }
-
 }

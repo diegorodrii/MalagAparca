@@ -63,12 +63,12 @@ export class UserService {
           await this.firebase.createDocumentWithId('usuarios',
             {
               uid: _user.user.uid,
-              picture: "",
+              picture: "https://ionicframework.com/docs/img/demos/avatar.svg",
               email: data.email,
               provider: 'firebase',
               token: await _user.user.getIdToken(),
               name: data.name,
-              lastname: data.lastname
+              lastname: data.lastname,
             }, _user.user.uid);
           await this.firebase.connectUserWithEmailAndPassword(data.email, data.password);
         } catch (error) {

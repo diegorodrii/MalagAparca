@@ -18,6 +18,7 @@ export class MyPlaceDetailComponent implements OnInit {
   currentImage = new BehaviorSubject<string>("");
   currentImage$ = this.currentImage.asObservable();
   @Input('place') set place(place: Place) {
+    console.log("Received place:", place);
     if (place) {
       this.form.controls.id.setValue(place.id);
       this.form.controls.docId.setValue(place.docId);
@@ -26,6 +27,7 @@ export class MyPlaceDetailComponent implements OnInit {
       this.mode = "Edit";
     }
   }
+  
 
 
   constructor(

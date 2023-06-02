@@ -2,17 +2,19 @@
   <ion-accordion value="first" class="accordion">
     <ion-item slot="header" color="" class="accordion-header">
       <ng-container *ngIf="hasValue">
-        <ion-label class="date-label">{{(date$ | async) | date:'short':undefined:locale.locale}}</ion-label>
+        <ion-label class="date-label">{{ (date$ | async) | date:'short':undefined:locale.locale }}</ion-label>
       </ng-container>
       <ion-label *ngIf="!hasValue" class="placeholder-label">Seleccione una fecha y hora</ion-label>
     </ion-item>
-    <div class="ion-padding" slot="content" color="black">
-      <ion-datetime #datetime value="{{(date$ | async)}}" (ionChange)="onDateTimeChanged($event, accordion)" class="datetime-input">
+    <div class="ion-padding" slot="content" color="black" [formGroup]="dateForm">
+      <ion-datetime #datetime value="{{ (date$ | async) }}" (ionChange)="onDateTimeChanged($event, accordion)"
+        class="datetime-input" [min]="todayDate" formControlName="selectedDate" required>
         <ion-buttons slot="buttons">
           <ion-button color="danger" (click)="onCancel(datetime, accordion)">Cancelar</ion-button>
           <ion-button color="primary" (click)="onConfirm(datetime, accordion)">Hecho</ion-button>
         </ion-buttons>
       </ion-datetime>
+      <div class="error" *ngIf="dateError">{{ "error-message.date" | translate}}</div>
     </div>
   </ion-accordion>
 </ion-accordion-group>

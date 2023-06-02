@@ -36,7 +36,7 @@ export class ParkingService {
       placeId:doc.data().placeId,
       placeOwner:doc.data().placeOwner,
       tenantEmail:doc.data().tenantEmail,
-      tenantPicture:doc.data().tenantPicture,
+      tenantPicture:doc.data().tenantPicture || '',
       startsAt:doc.data().startsAt,
       finishsAt:doc.data().finishsAt,
       state: doc.data().state,
@@ -72,41 +72,27 @@ export class ParkingService {
     });
   }
 
-  getParkingsBy(field, value){
-    return new Promise<Parking[]>(async (resolve, reject)=>{
-      try {
-        var parkings = (await this.firebase.getDocumentsBy('parkings', field, value)).map<Parking>(doc=>{
-          return {
-            id:0,
-            docId:doc.id,
-            placeOwner:doc.data.placeOwner,
-            placeId: doc.data.placeId,
-            startsAt:doc.data.startsAt,
-            finishsAt:doc.data.finishsAt,
-            tenantEmail:doc.data.tenantEmail,
-            tenantPicture:doc.data.tenantPicture,
-            state: doc.data.state,
-      
-          }
-        });
-        resolve(parkings);  
-      } catch (error) {
-        reject(error);
-      }
-    });
-  }
-
-  async deleteParkingById(id:string){
+  async deleteParkingById(parking: Parking){
     try {
-      await this.firebase.deleteDocument('parkings', id);
+      await this.firebase.deleteDocument('parkings', parking.docId);
     } catch (error) {
       console.log(error);
     }
   }
 
    async addParking(parking:Parking){
+    var _parking = {
+      id: 0,
+      docId:parking.docId,
+      placeId: parking.placeId,
+      placeOwner:parking.placeOwner,
+      tenantEmail:parking?.tenantEmail,
+      startsAt:parking.startsAt,
+      finishsAt:parking.finishsAt,
+    };
     try {
-      await this.firebase.createDocument('parkings', parking);  
+      console.log(parking)
+      await this.firebase.createDocument('parkings', _parking);  
     } catch (error) {
       console.log(error);
     }

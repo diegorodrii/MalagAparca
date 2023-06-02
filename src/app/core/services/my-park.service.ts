@@ -11,89 +11,89 @@ import { UserService } from './user.service';
 })
 export class MyParkService {
 
-  private _placesSubject:BehaviorSubject<Place[]> = new BehaviorSubject([]);
+  private _placesSubject: BehaviorSubject<Place[]> = new BehaviorSubject([]);
   public places$ = this._placesSubject.asObservable();
 
   unsubscr;
   constructor(
-    private platform:Platform,
-    private firebase:FirebaseService,
+    private platform: Platform,
+    private firebase: FirebaseService,
     private userSVC: UserService
 
   ) {
-    this.unsubscr = this.firebase.subscribeToCollection('plazas',this._placesSubject, this.mapPlace);
+    this.unsubscr = this.firebase.subscribeToCollection('plazas', this._placesSubject, this.mapPlace);
   }
 
   ngOnDestroy(): void {
     this.unsubscr();
   }
 
-  private mapPlace(doc:DocumentData){
+  private mapPlace(doc: DocumentData) {
     return {
-      id:0,
-      docId:doc.id,
+      id: 0,
+      docId: doc.id,
       uid: doc.data().uid,
-      number:doc.data().number,
-      empty:doc.data().empty,
-      ownerEmail:doc.data().ownerEmail,
-      ownerPicture:doc.data().ownerPicture
+      number: doc.data().number,
+      empty: doc.data().empty,
+      ownerEmail: doc.data().ownerEmail,
+      ownerPicture: doc.data().ownerPicture
     };
   }
 
-  getPlaces(){
+  getPlaces() {
     return this._placesSubject.value;
   }
 
-  getPlaceById(id:string):Promise<Place>{
-    return new Promise<Place>(async (resolve, reject)=>{
-      try {       
+  getPlaceById(id: string): Promise<Place> {
+    return new Promise<Place>(async (resolve, reject) => {
+      try {
         var place = (await this.firebase.getDocument('plazas', id));
         resolve({
-          id:0,
+          id: 0,
+          docId: place.id,
           uid: place.data.uid,
-          docId:place.id,
-          number:place.data.number,
-          empty:place.data.empty,
-          ownerEmail:place.data.ownerEmail,
+          number: place.data.number,
+          empty: place.data.empty,
+          ownerEmail: place.data.ownerEmail,
           ownerPicture: place.data.ownerPicture
-        });  
+        });
       } catch (error) {
         reject(error);
       }
     });
   }
 
-  async deletePlace(place:Place){
+  async deletePlace(place: Place) {
     await this.firebase.deleteDocument('plazas', place.docId);
   }
 
-  async addPlace(place:Place){
+  async addPlace(place: Place) {
     const user = await this.userSVC.user$.pipe(take(1)).toPromise(); // Obtener el usuario logueado
     var _place = {
-      id:0,
-      uid:user?.uid,
-      docId:place.docId,
-      number:place.number,
-      empty:place.empty,
-      ownerEmail:user?.email,
+      id: 0,
+      uid: user?.uid,
+      docId: place.docId,
+      number: place.number,
+      empty: place.empty,
+      ownerEmail: user?.email,
       ownerPicture: user?.picture
     };
-    if(place['pictureFile']){
+    if (place['pictureFile']) {
       var response = await this.uploadImage(place['pictureFile']);
       _place['picture'] = response.image;
     }
     try {
-      await this.firebase.createDocument('plazas', _place);  
+      await this.firebase.createDocument('plazas', _place);
     } catch (error) {
       console.log(error);
     }
     console.log(_place)
   }
 
-  uploadImage(file):Promise<any>{  
-    return new Promise(async (resolve, reject)=>{
+  uploadImage(file): Promise<any> {
+    return new Promise(async (resolve, reject) => {
       try {
-        const data = await this.firebase.imageUpload(file);  
+        const data = await this.firebase.imageUpload(file);
         resolve(data);
       } catch (error) {
         resolve(error);
@@ -101,26 +101,26 @@ export class MyParkService {
     });
   }
 
-  async updatePlace(place:Place){
+  async updatePlace(place: Place) {
     var _place = {
-      id:0,
-      docId:place.docId,
-      number:place.number,
+      id: 0,
+      docId: place.docId,
+      number: place.number,
     };
-    if(place['pictureFile']){
-      var response:FileUploaded = await this.uploadImage(place['pictureFile']);
+    if (place['pictureFile']) {
+      var response: FileUploaded = await this.uploadImage(place['pictureFile']);
       _place['picture'] = response.file;
     }
     try {
-      await this.firebase.updateDocument('plazas', _place.docId, _place);  
+      await this.firebase.updateDocument('plazas', _place.docId, _place);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async writeToFile(){
+  async writeToFile() {
     var dataToText = JSON.stringify(this._placesSubject.value);
-    var data = new Blob([dataToText], {type: 'text/plain'});
+    var data = new Blob([dataToText], { type: 'text/plain' });
     this.firebase.fileUpload(data, 'text/plain', 'places', '.txt');
   }
 
