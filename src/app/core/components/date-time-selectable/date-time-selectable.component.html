@@ -1,20 +1,25 @@
-<ion-accordion-group [multiple]="true" #accordion class="accordion-group">
-  <ion-accordion value="first" class="accordion">
-    <ion-item slot="header" color="" class="accordion-header">
-      <ng-container *ngIf="hasValue">
-        <ion-label class="date-label">{{ (date$ | async) | date:'short':undefined:locale.locale }}</ion-label>
-      </ng-container>
-      <ion-label *ngIf="!hasValue" class="placeholder-label">Seleccione una fecha y hora</ion-label>
-    </ion-item>
-    <div class="ion-padding" slot="content" color="black" [formGroup]="dateForm">
-      <ion-datetime #datetime value="{{ (date$ | async) }}" (ionChange)="onDateTimeChanged($event, accordion)"
-        class="datetime-input" [min]="todayDate" formControlName="selectedDate" required>
-        <ion-buttons slot="buttons">
-          <ion-button color="danger" (click)="onCancel(datetime, accordion)">Cancelar</ion-button>
-          <ion-button color="primary" (click)="onConfirm(datetime, accordion)">Hecho</ion-button>
-        </ion-buttons>
-      </ion-datetime>
-      <div class="error" *ngIf="dateError">{{ "error-message.date" | translate}}</div>
-    </div>
-  </ion-accordion>
-</ion-accordion-group>
+<div class="datetime-selectable-container">
+  <ion-accordion-group [multiple]="true" #accordion>
+    <ion-accordion value="first" class="accordion">
+      <ion-item slot="header" color="light" class="accordion-header">
+        <ion-icon name="calendar" class="icon"></ion-icon>
+        <ng-container *ngIf="hasValue; else selectDate">
+          <ion-label class="selected-date">{{ (date$ | async) | date:'short':undefined:locale.locale }}</ion-label>
+        </ng-container>
+        <ng-template #selectDate>
+          <ion-label class="select-date">Seleccione una fecha y hora</ion-label>
+        </ng-template>
+        <ion-icon name="chevron-down" class="arrow-icon"></ion-icon>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-datetime #datetime value="{{ (date$ | async) }}" (ionChange)="onDateTimeChanged($event, accordion)"
+          [min]="minDate" display-format="DD/MM/YYYY" picker-format="DD/MM/YYYY" cancel-text="Cancelar" done-text="Hecho"
+          class="datetime-picker" placeholder="Seleccione una fecha y hora"></ion-datetime>
+        <div class="buttons-container">
+          <ion-button color="danger" (click)="onCancel(datetime, accordion)" class="cancel-button">Cancelar</ion-button>
+          <ion-button color="primary" (click)="onConfirm(datetime, accordion)" class="confirm-button">Hecho</ion-button>
+        </div>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+</div>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="editedUser.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input [(ngModel)]="editedUser.lastname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Foto</ion-label>
+      <ion-input [(ngModel)]="editedUser.picture"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" (click)="saveChanges()">Guardar cambios</ion-button>
+</ion-content>

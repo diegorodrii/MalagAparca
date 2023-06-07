@@ -4,6 +4,8 @@ import { UserCredential } from 'firebase/auth';
 import { BehaviorSubject } from 'rxjs';
 import { User, UserLogin, UserRegister } from '../models';
 import { FirebaseService } from './firebase/firebase-service';
+import { AlertController } from '@ionic/angular';
+import { deleteUser as firebaseDeleteUser } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,8 @@ export class UserService {
 
   constructor(
     private firebase: FirebaseService,
-    private router: Router
+    private router: Router,
+    private alertController: AlertController
   ) {
     this.init();
   }
@@ -52,7 +55,8 @@ export class UserService {
 
   signOut() {
     this.firebase.signOut();
-    this.router.navigate(['login']);
+    this.router.navigateByUrl('/login');
+    window.location.reload();
   }
 
   register(data: UserRegister) {
@@ -82,7 +86,35 @@ export class UserService {
   getLoggedInUserId(): string {
     return this._uid.value;
   }
-  
- 
-  
+
+  editUser(user: User) {
+    return new Promise<void>(async (resolve, reject) => {
+      try {
+        await this.firebase.updateDocument('usuarios', this._uid.value, user);
+        this._user.next(user);
+        resolve();
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  deleteUser() {
+    return new Promise<void>(async (resolve, reject) => {
+      try {
+        this.router.navigateByUrl('/login');
+        const currentUser = this.firebase.getUser();
+        await currentUser.delete();
+        // Eliminar el documento del usuario de la base de datos
+        await this.firebase.deleteDocument('usuarios', this._uid.value);
+        
+        window.location.reload();
+        resolve();
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+
 }

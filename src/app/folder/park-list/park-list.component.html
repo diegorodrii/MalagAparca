@@ -1,19 +1,27 @@
- <ion-header>
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
-      <ion-title>{{'parking.title' |translate}}</ion-title>
     </ion-buttons>
+    <ion-title>{{ 'parking.title' | translate }}</ion-title>
   </ion-toolbar>
-</ion-header> 
+</ion-header>
 
 <ion-content>
-  <ion-list>
-    <app-parking *ngFor="let parking of (getParkings() | async)" [parking]="parking" (onEdit)="onEditParking($event)" (onDelete)="onDeleteParking($event)" (onHire)="onHireParking($event)"></app-parking>
-  </ion-list> 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="onNewItem()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let parking of (getParkings() | async)" size="12" size-md="6" size-lg="4">
+        <div class="parking-item">
+          <app-parking [parking]="parking" (onEdit)="onEditParking($event)" (onDelete)="onDeleteParking($event)"
+            (onHire)="onHireParking($event)"></app-parking>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="onNewItem()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

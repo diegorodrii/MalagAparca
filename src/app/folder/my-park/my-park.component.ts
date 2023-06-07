@@ -28,7 +28,9 @@ export class MyParkComponent implements OnInit {
   }
 
   getPlaces() {
+    
     return this.placeSVC.places$;
+
   }
 
   async presentPlaceForm(place: Place) {
@@ -63,7 +65,7 @@ export class MyParkComponent implements OnInit {
 
     const alert = await this.alert.create({
       header: 'Atención',
-      message: '¿Está seguro de que desear borrar la tarea?',
+      message: '¿Está seguro de que desear borrar la plaza?',
       buttons: [
         {
           text: 'Cancelar',

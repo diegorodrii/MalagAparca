@@ -42,6 +42,7 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  
   {
     path:'login',
     loadChildren: () => import('./folder/login/login.component').then( m => m.LoginComponent),

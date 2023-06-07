@@ -3,8 +3,9 @@ import { BehaviorSubject, empty, map, take } from 'rxjs';
 import { Place } from '../models/park.model';
 import { FileUploaded, FirebaseService } from './firebase/firebase-service';
 import { DocumentData } from 'firebase/firestore';
-import { Platform } from '@ionic/angular';
+import { Platform, ToastController } from '@ionic/angular';
 import { UserService } from './user.service';
+import { ParkingService } from './parking.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,9 @@ export class MyParkService {
   constructor(
     private platform: Platform,
     private firebase: FirebaseService,
-    private userSVC: UserService
+    private userSVC: UserService,
+    private toastController: ToastController,
+    private parkingService: ParkingService
 
   ) {
     this.unsubscr = this.firebase.subscribeToCollection('plazas', this._placesSubject, this.mapPlace);
@@ -69,6 +72,7 @@ export class MyParkService {
 
   async addPlace(place: Place) {
     const user = await this.userSVC.user$.pipe(take(1)).toPromise(); // Obtener el usuario logueado
+  
     var _place = {
       id: 0,
       uid: user?.uid,
@@ -89,6 +93,7 @@ export class MyParkService {
     }
     console.log(_place)
   }
+  
 
   uploadImage(file): Promise<any> {
     return new Promise(async (resolve, reject) => {

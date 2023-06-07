@@ -77,7 +77,7 @@ export class ParkListComponent implements OnInit {
           handler: () => {
             parking.tenantEmail = user.email;
             parking.tenantPicture = user.picture;
-            parking.state = 'assigned'; // Agregar esta línea para definir el valor del campo 'state'
+            parking.state = 'assigned'; // campo 'state'
             this.parkingsSVC.updateParking(parking).then(() => {
               console.log("Plaza asignada correctamente");
             }).catch(error => {

@@ -12,58 +12,55 @@ import { UserService } from '..';
 })
 export class ParkingService {
 
-  private _parkingsSubject:BehaviorSubject<Parking[]> = new BehaviorSubject([]);
+  private _parkingsSubject: BehaviorSubject<Parking[]> = new BehaviorSubject([]);
   public parkings$ = this._parkingsSubject.asObservable();
-
 
   unsubscr;
   constructor(
-    private firebase:FirebaseService,
+    private firebase: FirebaseService,
     private userSVC: UserService
-
   ) {
-    this.unsubscr = this.firebase.subscribeToCollection('parkings',this._parkingsSubject, this.mapParking);
+    this.unsubscr = this.firebase.subscribeToCollection('parkings', this._parkingsSubject, this.mapParking);
+    this.checkAndDeleteExpiredParkings(); // Llamar a la función para verificar y eliminar los parkings caducados
   }
 
   ngOnDestroy(): void {
     this.unsubscr();
   }
 
-  private mapParking(doc:DocumentData){
+  private mapParking(doc: DocumentData) {
     return {
-      id:0,
-      docId:doc.id,
-      placeId:doc.data().placeId,
-      placeOwner:doc.data().placeOwner,
-      tenantEmail:doc.data().tenantEmail,
-      tenantPicture:doc.data().tenantPicture || '',
-      startsAt:doc.data().startsAt,
-      finishsAt:doc.data().finishsAt,
+      id: 0,
+      docId: doc.id,
+      placeId: doc.data().placeId,
+      placeOwner: doc.data().placeOwner,
+      tenantEmail: doc.data().tenantEmail,
+      tenantPicture: doc.data().tenantPicture || '',
+      startsAt: doc.data().startsAt,
+      finishsAt: doc.data().finishsAt,
       state: doc.data().state,
-
     };
   }
 
-
-  getParkings(){
+  getParkings() {
     return this._parkingsSubject.value;
   }
 
-  getParkingById(id:string){
-    return new Promise<Parking>(async (resolve, reject)=>{
+  getParkingById(id: string) {
+    return new Promise<Parking>(async (resolve, reject) => {
       try {
         const user = await this.userSVC.user$.pipe(take(1)).toPromise(); // Obtener el usuario logueado
 
         var response = (await this.firebase.getDocument('parkings', id));
         resolve({
-          id:0,
-          docId:response.id,
+          id: 0,
+          docId: response.id,
           placeId: response.data.placeId,
-          placeOwner:user?.email,
-          tenantEmail:response.data.tenantEmail,
-          tenantPicture:response.data.tenantPicture,
-          startsAt:response.data.startsAt,
-          finishsAt:response.data.finishsAt,
+          placeOwner: user?.email,
+          tenantEmail: response.data.tenantEmail,
+          tenantPicture: response.data.tenantPicture,
+          startsAt: response.data.startsAt,
+          finishsAt: response.data.finishsAt,
           state: response.data.state,
         });
       } catch (error) {
@@ -72,7 +69,7 @@ export class ParkingService {
     });
   }
 
-  async deleteParkingById(parking: Parking){
+  async deleteParkingById(parking: Parking) {
     try {
       await this.firebase.deleteDocument('parkings', parking.docId);
     } catch (error) {
@@ -80,30 +77,44 @@ export class ParkingService {
     }
   }
 
-   async addParking(parking:Parking){
+  async addParking(parking: Parking) {
     var _parking = {
       id: 0,
-      docId:parking.docId,
+      docId: parking.docId,
       placeId: parking.placeId,
-      placeOwner:parking.placeOwner,
-      tenantEmail:parking?.tenantEmail,
-      startsAt:parking.startsAt,
-      finishsAt:parking.finishsAt,
+      placeOwner: parking.placeOwner,
+      tenantEmail: parking?.tenantEmail,
+      startsAt: parking.startsAt,
+      finishsAt: parking.finishsAt,
     };
     try {
       console.log(parking)
-      await this.firebase.createDocument('parkings', _parking);  
+      await this.firebase.createDocument('parkings', _parking);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async updateParking(parking:Parking){
+  async updateParking(parking: Parking) {
     try {
       await this.firebase.updateDocument('parkings', parking.docId, parking);
     } catch (error) {
       console.log(error);
     }
-    
   }
+
+  private checkAndDeleteExpiredParkings() {
+    setInterval(() => {
+      const currentTimestamp = new Date().getTime();
+  
+      const parkings = this.getParkings();
+      parkings.forEach((parking) => {
+        const finishsAtTimestamp = Date.parse(parking.finishsAt);
+        if (currentTimestamp >= finishsAtTimestamp) {
+          this.deleteParkingById(parking);
+        }
+      });
+    }, 60000); // Verificar cada minuto (ajusta el intervalo según tus necesidades)
+  }
+  
 }

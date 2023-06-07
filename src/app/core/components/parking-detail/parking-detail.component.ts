@@ -87,7 +87,7 @@ export class ParkingDetailComponent implements OnInit {
       const duration = moment.duration(moment(finishsAt).diff(moment(startsAt)));
       const minutes = duration.asMinutes();
 
-      if (minutes < 30) {
+      if (minutes <= 30) {
         control.get('finishsAt').setErrors({ minDuration: true });
         return { minDuration: true };
       }

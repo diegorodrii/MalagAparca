@@ -52,6 +52,8 @@ export class ParkingComponent implements OnInit {
   ngOnInit() {}
 
   onEditClick(){
+    console.log(this.parking.startsAt)
+    console.log(this.parking.finishsAt)
     this.onEdit.emit(this.parking);
   }
 

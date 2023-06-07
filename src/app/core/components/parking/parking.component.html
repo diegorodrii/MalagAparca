@@ -1,4 +1,4 @@
-<ion-card [ngClass]="{'assigned-card': parking.state === 'assigned'}">
+<ion-card [ngClass]="{'my-parking-card': userEmail == parking.placeOwner}" [ngClass]="{'my-parking-card': userEmail == parking.tenantEmail}">
 
   <ion-card-content class="place-actions">
     <div class="person-container">
@@ -9,21 +9,20 @@
         <img *ngIf="(place$ | async)?.ownerPicture" alt="Person picture" [src]="(place$ | async)?.ownerPicture" />
       </ion-avatar>
       <ion-icon name="arrow-back-outline"></ion-icon>
-      <ion-icon name="arrow-forward-outline"></ion-icon> <!-- <ion-icon name="arrow-undo-outline"></ion-icon>
-      <ion-icon name="arrow-redo-outline"></ion-icon> -->
+      <ion-icon name="arrow-forward-outline"></ion-icon>
       <ion-avatar class="person">
-        <img *ngIf="!parking?.tenantEmail" 
+        <img *ngIf="!parking?.tenantPicture" 
           src="https://img.freepik.com/vector-premium/archivos-png-fondo-vector-transparente-fondo-png_302321-1276.jpg?w=2000" />
         <img *ngIf="parking?.tenantPicture" alt="Person picture" [src]="parking?.tenantPicture" />
       </ion-avatar>
     </div>
 
-    <ion-card-title>{{"parking.ownerEmail" | translate}}{{(place$ | async)?.ownerEmail}}</ion-card-title>
+    <ion-card-title  [ngClass]="{'my-parking-ownerEmail': userEmail == parking.placeOwner}" >{{"parking.ownerEmail" | translate}}{{(place$ | async)?.ownerEmail}}</ion-card-title>
     <ion-card-title>{{"parking.placeNumber" | translate}}{{(place$ | async)?.number}}</ion-card-title>
-    <ion-card-title>{{"parking.tenantEmail" | translate}}{{parking.tenantEmail}}</ion-card-title>
+    <ion-card-title [ngClass]="{'my-parking-tenantEmail': userEmail == parking.tenantEmail}">{{"parking.tenantEmail" | translate}}{{parking.tenantEmail}}</ion-card-title>
     <ion-card-subtitle>{{parking.startsAt | date:'short':undefined:locale.locale}}</ion-card-subtitle>
     <ion-card-subtitle>{{parking.finishsAt | date:'short':undefined:locale.locale}}</ion-card-subtitle>
-    <ion-card-title>{{parking.state}}</ion-card-title>
+    <ion-card-title class="state" [ngClass]="{'assigned-park': parking.state === 'assigned'}">{{parking.state}}</ion-card-title>
 
     <ion-button class="place-action" fill="clear" (click)="onEditClick()" [hidden]="userEmail !== parking.placeOwner">
       <ion-icon name="create"></ion-icon>
