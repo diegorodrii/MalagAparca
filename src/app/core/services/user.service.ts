@@ -23,7 +23,8 @@ export class UserService {
   constructor(
     private firebase: FirebaseService,
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    
   ) {
     this.init();
   }
@@ -107,7 +108,7 @@ export class UserService {
         await currentUser.delete();
         // Eliminar el documento del usuario de la base de datos
         await this.firebase.deleteDocument('usuarios', this._uid.value);
-        
+
         window.location.reload();
         resolve();
       } catch (error) {

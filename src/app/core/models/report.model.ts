@@ -5,4 +5,5 @@ export interface Report {
     description : string;
     picture?: string;
     date: string;
+    ownerEmail:string;
 }

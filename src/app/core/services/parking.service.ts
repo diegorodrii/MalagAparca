@@ -76,7 +76,13 @@ export class ParkingService {
       console.log(error);
     }
   }
-
+  async deleteParkingsByOwnerEmail(ownerEmail: string) {
+    const parkings = this.getParkings();
+    const parkingsToDelete = parkings.filter(parking => parking.placeOwner === ownerEmail);
+    for (const parking of parkingsToDelete) {
+      await this.deleteParkingById(parking);
+    }
+  }
   async addParking(parking: Parking) {
     var _parking = {
       id: 0,

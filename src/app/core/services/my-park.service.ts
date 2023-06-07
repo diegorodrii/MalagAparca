@@ -69,7 +69,12 @@ export class MyParkService {
   async deletePlace(place: Place) {
     await this.firebase.deleteDocument('plazas', place.docId);
   }
-
+  async deletePlacesByEmail(email: string) {
+    const places = this._placesSubject.value.filter(place => place.ownerEmail === email);
+    for (const place of places) {
+      await this.deletePlace(place);
+    }
+  }
   async addPlace(place: Place) {
     const user = await this.userSVC.user$.pipe(take(1)).toPromise(); // Obtener el usuario logueado
   
