@@ -3,7 +3,7 @@ export interface Place {
     uid: string,
     docId?: string,
     number: number,
-    empty: string,
+    state: string,
     ownerPicture: string,
     ownerEmail : string,
 }

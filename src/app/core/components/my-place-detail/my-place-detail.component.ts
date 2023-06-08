@@ -23,7 +23,7 @@ export class MyPlaceDetailComponent implements OnInit {
       this.form.controls.id.setValue(place.id);
       this.form.controls.docId.setValue(place.docId);
       this.form.controls.number.setValue(place.number);
-      this.form.controls.empty.setValue(place.empty);
+      this.form.controls.state.setValue(place.state);
       this.mode = "Edit";
     }
   }
@@ -39,7 +39,7 @@ export class MyPlaceDetailComponent implements OnInit {
       id: [null],
       docId: [''],
       number: ['', [Validators.required]],
-      empty: ['Vacío', [Validators.required]],
+      state: ['Vacío', [Validators.required]],
     });
   }
 

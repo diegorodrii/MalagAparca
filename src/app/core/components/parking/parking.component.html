@@ -1,4 +1,4 @@
-<ion-card [ngClass]="{'my-parking-card': userEmail == parking.placeOwner}" [ngClass]="{'my-parking-card': userEmail == parking.tenantEmail}">
+<ion-card [ngClass]="{'my-parking-card': userEmail == parking.placeOwner || userEmail == parking.tenantEmail}">
 
   <ion-card-content class="place-actions">
     <div class="person-container">
@@ -17,7 +17,8 @@
       </ion-avatar>
     </div>
 
-    <ion-card-title  [ngClass]="{'my-parking-ownerEmail': userEmail == parking.placeOwner}" >{{"parking.ownerEmail" | translate}}{{(place$ | async)?.ownerEmail}}</ion-card-title>
+    <ion-card-title >{{"parking.ownerEmail" | translate}} <ion-label  [ngClass]="{'my-parking-ownerEmail': userEmail == parking.placeOwner}"> {{(place$ | async)?.ownerEmail}}</ion-label></ion-card-title>
+    
     <ion-card-title>{{"parking.placeNumber" | translate}}{{(place$ | async)?.number}}</ion-card-title>
     <ion-card-title [ngClass]="{'my-parking-tenantEmail': userEmail == parking.tenantEmail}">{{"parking.tenantEmail" | translate}}{{parking.tenantEmail}}</ion-card-title>
     <ion-card-subtitle>{{parking.startsAt | date:'short':undefined:locale.locale}}</ion-card-subtitle>
