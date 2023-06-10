@@ -43,7 +43,7 @@ export class ParkingDetailComponent implements OnInit {
         docId:[null],
         placeId: [-1, [Validators.min(1)]],
         placeOwner: [null, Validators.min(1)],
-        tenantEmail: ['Vacío'],
+        tenantEmail: [null],
         startsAt: [null, [Validators.required]],
         finishsAt: [null, [Validators.required]],
       },

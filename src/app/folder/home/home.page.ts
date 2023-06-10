@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthGuard, UserService } from 'src/app/core/services';
 import { Platform } from '@ionic/angular';
+import { NotificationComponent } from 'src/app/core/components/notification/notification.component';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,13 @@ export class HomePage {
   userEmail: string;
   isMobile: boolean;
 
-  constructor(    public user:UserService,    private platform: Platform,private translateSVC: TranslateService, private authSVC: AuthGuard, private router: Router, private navCtrl: NavController
+  constructor(public user:UserService,   
+     private platform: Platform,
+     private translateSVC: TranslateService,
+      private authSVC: AuthGuard, 
+      private router: Router, 
+      private navCtrl: NavController,
+      private modalController: ModalController
 
   ) {
     this.translateSVC.setDefaultLang('en');

@@ -3,7 +3,6 @@ export interface Place {
     uid: string,
     docId?: string,
     number: number,
-    state: string,
     ownerPicture: string,
     ownerEmail : string,
 }

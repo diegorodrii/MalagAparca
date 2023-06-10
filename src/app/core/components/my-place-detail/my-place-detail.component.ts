@@ -23,7 +23,6 @@ export class MyPlaceDetailComponent implements OnInit {
       this.form.controls.id.setValue(place.id);
       this.form.controls.docId.setValue(place.docId);
       this.form.controls.number.setValue(place.number);
-      this.form.controls.state.setValue(place.state);
       this.mode = "Edit";
     }
   }
@@ -33,7 +32,8 @@ export class MyPlaceDetailComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private modal: ModalController,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private myParkService: MyParkService
   ) {
     this.form = this.fb.group({
       id: [null],
@@ -50,6 +50,13 @@ export class MyPlaceDetailComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       const numberValue = this.form.controls.number.value;
+  
+      // Verificar si ya existe un lugar con el mismo número
+      const existingPlace = this.myParkService.getPlaces().find(p => p.number === numberValue);
+      if (existingPlace && this.mode === 'New') {
+        this.form.controls.number.setErrors({ duplicateNumber: true });
+        return;
+      }
       if (numberValue > 80) {
         this.form.controls.number.setErrors({ maxNumber: true });
         return;
@@ -58,7 +65,6 @@ export class MyPlaceDetailComponent implements OnInit {
       }
     }
     this.modal.dismiss({ place: this.form.value, mode: this.mode }, 'ok');
-
   }
 
   onDismiss(result) {
@@ -73,5 +79,7 @@ export class MyPlaceDetailComponent implements OnInit {
     }
     return Object.keys(controlErrors);
   }
+
+  
 
 }

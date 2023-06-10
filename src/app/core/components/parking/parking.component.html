@@ -18,20 +18,26 @@
     </div>
 
     <ion-card-title>{{"parking.ownerEmail" | translate}}
-      <ion-label [ngClass]="{'my-parking-ownerEmail': userEmail == parking.placeOwner}"> {{(place$ |
-        async)?.ownerEmail}}
+      <ion-label [ngClass]="{'my-parking-ownerEmail': userEmail == parking.placeOwner}"> {{(place$ | async)?.ownerEmail}}
       </ion-label>
     </ion-card-title>
 
     <ion-card-title>{{"parking.placeNumber" | translate}}{{(place$ | async)?.number}}</ion-card-title>
-    <ion-card-title>{{"parking.tenantEmail" | translate}}
-      <ion-label [ngClass]="{'my-parking-tenantEmail': userEmail == parking.tenantEmail}">{{parking.tenantEmail}}
+    <ion-card-title>
+      {{"parking.tenantEmail" | translate}}
+      <ion-label [ngClass]="{
+        'my-parking-notMyTenantEmail': userEmail !== parking.tenantEmail && parking.tenantEmail,
+        'my-parking-myTenantEmail': userEmail === parking.tenantEmail && parking.tenantEmail,
+        'green-text': !parking.tenantEmail
+      }">
+        {{ parking.tenantEmail ? parking.tenantEmail : 'Vacío' }}
       </ion-label>
     </ion-card-title>
+    
+    
     <ion-card-subtitle>{{parking.startsAt | date:'short':undefined:locale.locale}}</ion-card-subtitle>
     <ion-card-subtitle>{{parking.finishsAt | date:'short':undefined:locale.locale}}</ion-card-subtitle>
-    <ion-card-title class="state"
-      [ngClass]="{'assigned-park': parking.state === 'assigned'}">{{parking.state}}</ion-card-title>
+
 
     <ion-button class="place-action" fill="clear" (click)="onEditClick()" [hidden]="userEmail !== parking.placeOwner">
       <ion-icon name="create"></ion-icon>

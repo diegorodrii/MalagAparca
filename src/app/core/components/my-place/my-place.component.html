@@ -1,9 +1,6 @@
 <ion-card class="myplace-card">
   <ion-card-content class="place-actions">
-    <ion-card-title class="place-number">{{'place.text' | translate}}{{place.number}}</ion-card-title>
-    <ion-card-subtitle class="place-date">{{place.state}}</ion-card-subtitle>
-    
-
+    <ion-card-title class="place-number">{{'place.text' | translate}}{{place.number}}</ion-card-title>    
     <ion-button class="place-action" fill="clear" (click)="onEditClick()">
       <ion-icon name="create"></ion-icon>
       {{'modal.edit' | translate | uppercase}}

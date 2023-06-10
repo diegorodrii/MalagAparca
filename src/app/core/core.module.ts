@@ -5,7 +5,7 @@ import { createTranslateLoader } from './utils/translate';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { DateTimeSelectableComponent, ParkSelectableComponent } from './components';
+import { DateTimeSelectableComponent, NotificationComponent, ParkSelectableComponent } from './components';
 import { ParkingComponent } from './components/parking/parking.component';
 import { MyPlaceComponent } from './components/my-place/my-place.component';
 import { environment } from 'src/environments/environment';
@@ -32,7 +32,8 @@ import { MyProfileDetailComponent } from './components/my-profile-detail/my-prof
     DateTimeSelectableComponent,
     ParkingDetailComponent,
     ParkSelectableComponent,
-    MyProfileDetailComponent
+    MyProfileDetailComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,
@@ -69,7 +70,9 @@ import { MyProfileDetailComponent } from './components/my-profile-detail/my-prof
     DateTimeSelectableComponent,
     ParkingDetailComponent,
     ParkSelectableComponent,
-    MyProfileDetailComponent
+    MyProfileDetailComponent,
+    NotificationComponent
+
 
 
 

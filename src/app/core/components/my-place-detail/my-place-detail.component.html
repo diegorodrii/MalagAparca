@@ -16,9 +16,11 @@
         </ion-label>
         <ion-input type="text" formControlName="number"></ion-input>
         <span class="validationError" *ngIf="form.controls.number.errors && form.controls.number.errors.maxNumber">
-          {{'error.Number'}}
+          {{'error.Number' | translate}}
         </span>
-        
+        <div *ngIf="form.controls.number.errors?.duplicateNumber" class="error-message">
+          {{'error.repeatedNumber'| translate}}
+        </div>
 
       </ion-item>
     </form>
