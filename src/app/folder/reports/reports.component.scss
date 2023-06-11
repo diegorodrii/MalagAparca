@@ -1,22 +1,52 @@
 ion-toolbar {
-    --background: #2c82c9;
-    --color: #fff;
-    --border-width: 0px;
-  
-    ion-title {
-      font-size: 1.2rem;
+  --background: #2c82c9;
+  --color: #fff;
+  --border-width: 0px;
+
+  ion-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  ion-buttons {
+    ion-button {
+      --color: #fff;
       font-weight: bold;
-      text-transform: uppercase;
+      font-size: 1rem;
     }
-  
-    ion-buttons {
+  }
+}
+*{
+  font-family: 'MiFuente';
+}
+ion-header {
+  ion-toolbar {
+    ion-title {
+      text-align: center;
+    }
+
+    ion-buttons[slot="end"] {
       ion-button {
-        --color: #fff;
-        font-weight: bold;
-        font-size: 1rem;
+        margin-right: 10px;
       }
     }
   }
-  *{
-    font-family: 'MiFuente';
+}
+
+ion-content {
+  ion-list {
+    padding: 20px;
+
+    .app-report {
+      ion-card {
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
   }
+}

@@ -39,9 +39,16 @@
 .form-input {
   border-radius: 5px;
   padding: 10px;
+  font-size: 14px;
+  height: 150px;
+  resize: vertical;
 }
 
 .submit-button {
   width: 100%;
   --color: #fff;
 }
+.large-input {
+  height: 150px; /* Ajusta la altura según tus necesidades */
+}
+
