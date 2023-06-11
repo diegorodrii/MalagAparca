@@ -26,7 +26,24 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
-@font-face {
-    font-family: 'MiFuente';
-    src: url('../assets/fonts/KiteOne-Regular.ttf') format('truetype');
+// @font-face {
+//     font-family: 'MiFuente';
+//     src: url('../assets/fonts/KiteOne-Regular.ttf') format('truetype');
+//   }
+
+  .modal-full-right-side{
+    display:flex;
+    --height:100%;
+    justify-content: flex-end;
+    --max-width:550px;
   }
+  
+  .validationError{
+    color:var(--ion-color-danger);
+    font-size:0.8em;
+    display:flex;  
+    width:100%;  
+}
+.required{
+    color:var(--ion-color-danger);
+}

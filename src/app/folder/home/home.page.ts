@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthGuard, UserService } from 'src/app/core/services';
 import { Platform } from '@ionic/angular';
 import { NotificationComponent } from 'src/app/core/components/notification/notification.component';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,8 @@ export class HomePage {
       private authSVC: AuthGuard, 
       private router: Router, 
       private navCtrl: NavController,
-      private modalController: ModalController
+      private modalController: ModalController,
+      private notificationService: NotificationService
 
   ) {
     this.translateSVC.setDefaultLang('en');
@@ -31,7 +33,19 @@ export class HomePage {
   ngOnInit(){
     
   }
+  async openNotificationModal() {
+    const notifications = this.notificationService.getNotifications(); // Obtener las notificaciones desde el servicio
+    this.user.markNotificationsViewed(); // Actualizar estado de notificaciones a "vistas"
 
+    const modal = await this.modalController.create({
+      component: NotificationComponent,
+      componentProps: {
+        notifications: notifications
+      },
+      cssClass:"modal-full-right-side"
+    });
+    await modal.present();
+  }
 
   onTranslate() {
     this.language = (this.language + 1) % 2;

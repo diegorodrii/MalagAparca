@@ -7,10 +7,14 @@
     <ion-button (click)="signOut()">
       <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
     </ion-button>
+    <ion-button (click)="openNotificationModal()">
+      <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+      
+    </ion-button>
   </ion-buttons>
 </ion-toolbar>
 
-<ion-content scrollEnabled="true">
+<ion-content>
   <ion-grid class="content-grid">
     <ion-row>
       <ion-col size="12" size-sm="6">

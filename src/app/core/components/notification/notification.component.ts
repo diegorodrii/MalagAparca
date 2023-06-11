@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -8,16 +8,18 @@ import { ModalController } from '@ionic/angular';
 })
 export class NotificationComponent implements OnInit {
 
+  @Input() notifications: Notification[];
+
   constructor(private modalController: ModalController) {}
 
   closeModal() {
-    const modalElement = document.querySelector('ion-modal');
-    modalElement.classList.remove('show');
-    setTimeout(() => {
-      this.modalController.dismiss();
-    }, 300);
+    this.modalController.dismiss();
   }
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    const contentElement = document.querySelector('ion-content');
+    if (contentElement) {
+      contentElement.classList.add('show'); // Agrega la clase 'show' al elemento raíz del componente
+    }
+  }
 }

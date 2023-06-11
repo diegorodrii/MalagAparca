@@ -18,4 +18,5 @@ export interface User{
     name:string,
     lastname:string,
     picture: string,
+    notificationsViewed?: boolean
 }
