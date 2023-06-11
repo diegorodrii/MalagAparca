@@ -39,7 +39,7 @@ export class MyPlaceDetailComponent implements OnInit {
       id: [null],
       docId: [''],
       number: ['', [Validators.required]],
-      state: ['Vacío', [Validators.required]],
+      state: ['Libre', [Validators.required]],
     });
   }
 

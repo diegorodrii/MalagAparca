@@ -6,6 +6,7 @@ import { FileUploaded, FirebaseService } from './firebase/firebase-service';
 
 import { Parking, Report } from '../models';
 import { UserService } from '..';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,9 @@ export class ParkingService {
   unsubscr;
   constructor(
     private firebase: FirebaseService,
-    private userSVC: UserService
+    private userSVC: UserService,
+    private translateService: TranslateService 
+
   ) {
     this.unsubscr = this.firebase.subscribeToCollection('parkings', this._parkingsSubject, this.mapParking);
     this.checkAndDeleteExpiredParkings(); // Llamar a la función para verificar y eliminar los parkings caducados
@@ -92,6 +95,7 @@ export class ParkingService {
       tenantEmail: parking?.tenantEmail,
       startsAt: parking.startsAt,
       finishsAt: parking.finishsAt,
+      state:this.getParkingState()
     };
     try {
       console.log(parking)
@@ -122,5 +126,8 @@ export class ParkingService {
       });
     }, 60000); // Verificar cada minuto (ajusta el intervalo según tus necesidades)
   }
-  
+  getParkingState(): string {
+    const currentLang = this.translateService.currentLang;
+    return currentLang === 'es' ? 'libre' : 'free';
+  }
 }

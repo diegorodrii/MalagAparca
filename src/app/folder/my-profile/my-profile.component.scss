@@ -1,44 +1,3 @@
-ion-header {
-  ion-toolbar {
-    --ion-color-primary: #3880ff;
-    --ion-color-primary-contrast: #ffffff;
-  }
-}
-
-ion-content {
-  --ion-background-color: #f8f8f8;
-}
-
-.settings-container {
-  padding: 20px;
-}
-
-.settings-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.settings-form ion-item {
-  --padding-start: 0;
-}
-
-.settings-form ion-label {
-  font-weight: bold;
-}
-
-.settings-form ion-input {
-  border-radius: 5px;
-}
-
-.settings-form ion-button {
-  --ion-color-primary: #3880ff;
-  --ion-color-primary-contrast: #ffffff;
-  align-self: center;
-}
-
 ion-toolbar {
   --background: #2c82c9;
   --color: #fff;
@@ -60,4 +19,43 @@ ion-toolbar {
 }
 *{
   font-family: 'MiFuente';
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  .profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-bottom: 20px;
+
+    /* Puedes agregar estilos adicionales para la foto del perfil */
+  }
+
+  .profile-info {
+    text-align: center;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+  }
+
+  .profile-actions {
+    ion-button {
+      margin-bottom: 10px;
+    }
+  }
 }

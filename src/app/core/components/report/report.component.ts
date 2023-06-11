@@ -18,7 +18,9 @@ export class ReportComponent implements OnInit {
 
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
   onEditClick(){
     this.onEdit.emit(this.report);

@@ -5,6 +5,7 @@ import { PlatformService } from '../../services/platform.service';
 import { PhotoItem, PhotoService } from '../../services/photo.service';
 import { BehaviorSubject } from 'rxjs';
 import { Report } from '../../models';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-report-detail',
@@ -12,9 +13,12 @@ import { Report } from '../../models';
   styleUrls: ['./report-detail.component.scss'],
 })
 export class ReportDetailComponent implements OnInit {
+  minDate: string; // Fecha mínima permitida (en formato 'YYYY-MM-DDTHH:mm')
 
   form: FormGroup;
   mode: "New" | "Edit" = "New";
+  allowPastTime = false;
+  
   currentImage = new BehaviorSubject<string>("");
   currentImage$ = this.currentImage.asObservable();
   @Input('report') set report(report: Report) {
@@ -50,6 +54,7 @@ export class ReportDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.minDate = moment().subtract(1, 'hour').format('YYYY-MM-DDTHH:mm');
 
   }
 

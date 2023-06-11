@@ -1,40 +1,26 @@
 ion-card {
+  position: relative; 
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 8px;
   margin: 16px;
+  background-color: #fff0f0;
   box-shadow: 10px 12px 8px rgba(0, 0, 0, 0.1);
 }
+.my-parking-card {
+  background-color: #d8ffdd;
+}
 
-.my-parking-card{
-  background-color: #84a0d8;
-}
-.my-parking-ownerEmail{
-  color:rgb(211, 211, 72);
-}
-.my-parking-myTenantEmail{
-  color:rgb(211, 211, 72);
-}
-.my-parking-notMyTenantEmail{
-  color:rgb(208, 78, 78)
-}
-.green-text{
-  color: rgb(64, 173, 64);
-}
 .place-actions {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 16px;
+
 }
-.state{
-  color:rgb(80, 204, 80)
-}
-.assigned-park {
-  color: #FD5545;
-}
-.assigned-button {
+
+.occupied-button {
   color: #1ac2c8;
   margin-bottom: 8px;
   font-size: 0.8rem;
@@ -50,7 +36,7 @@ ion-card {
 
 .person {
   width: 80px;
-  border: 2px solid #4267B2 ; 
+  border: 2px solid #4267B2;
   height: 80px;
   margin-right: 8px;
   margin-left: 8px;
@@ -81,6 +67,56 @@ ion-card-subtitle {
   text-transform: uppercase;
 }
 
+.assign-action{
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color:#4dc05c;
+}
 .place-action ion-icon {
   margin-right: 4px;
+}
+
+.assigned-button{
+  background-color: #4dc05c;
+}
+
+.status-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-top-left-radius: 8px;
+}
+
+.status-indicator.occupied {
+  background-color: #ec2424; 
+  color: #ffffff;
+}
+
+.status-indicator.free {
+  background-color: #4dc05c; 
+  color: #ffffff; 
+}
+
+
+.ownership-indicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color:#000000;
+  text-transform: uppercase;
+  border-top-left-radius: 8px;
+  background-color: rgb(226, 226, 70);
+}
+
+.your-parking {
+  background-color: transparent;
 }

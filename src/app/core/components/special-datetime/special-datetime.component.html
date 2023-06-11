@@ -13,7 +13,7 @@
       </ion-item>
       <div class="ion-padding" slot="content">
         <ion-datetime #datetime value="{{ (date$ | async) }}" (ionChange)="onDateTimeChanged($event, accordion)"
-          [min]="minDate" display-format="DD/MM/YYYY" picker-format="DD/MM/YYYY"
+          [max]="maxDate" display-format="DD/MM/YYYY" picker-format="DD/MM/YYYY"
           class="datetime-picker"></ion-datetime>
         <div class="buttons-container">
           <ion-button color="danger" (click)="onCancel(datetime, accordion)" class="cancel-button">{{"modal.cancel"| translate}}</ion-button>

@@ -1,7 +1,9 @@
 {
     "parking": {
         "title": "Parking",
-        "description": "Aquí encontrarás aparcamiento por toda Málaga"
+        "description": "Aquí encontrarás aparcamiento por toda Málaga",
+        "propertyBanner":"Tuyo"
+
     },
     "myPark": {
         "title": "Mis Plazas",

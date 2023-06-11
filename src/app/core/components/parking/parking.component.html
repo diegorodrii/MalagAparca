@@ -1,5 +1,11 @@
-<ion-card [ngClass]="{'my-parking-card': userEmail == parking.placeOwner || userEmail == parking.tenantEmail}">
-
+<ion-card>
+  <div class="status-indicator" [ngClass]="{'free': parking.state === 'free' || parking.state === 'libre', 'occupied': parking.state === 'occupied' || parking.state === 'ocupado'}">
+    {{parking.state}}
+  </div>
+  <div class="ownership-indicator" [ngClass]="{'my-parking': userEmail === parking.placeOwner || userEmail === parking.tenantEmail, 'your-parking': userEmail !== parking.placeOwner && userEmail !== parking.tenantEmail}">
+    <span *ngIf="userEmail === parking.placeOwner || userEmail === parking.tenantEmail" class="yellow-bg">{{ 'parking.propertyBanner' | translate }}</span>
+  </div>
+  
   <ion-card-content class="place-actions">
     <div class="person-container">
 
@@ -23,17 +29,14 @@
     </ion-card-title>
 
     <ion-card-title>{{"parking.placeNumber" | translate}}{{(place$ | async)?.number}}</ion-card-title>
-    <ion-card-title>
-      {{"parking.tenantEmail" | translate}}
+    <ion-card-title *ngIf="parking.tenantEmail">{{"parking.tenantEmail" | translate}}
       <ion-label [ngClass]="{
         'my-parking-notMyTenantEmail': userEmail !== parking.tenantEmail && parking.tenantEmail,
-        'my-parking-myTenantEmail': userEmail === parking.tenantEmail && parking.tenantEmail,
-        'green-text': !parking.tenantEmail
+        'my-parking-myTenantEmail': userEmail === parking.tenantEmail && parking.tenantEmail
       }">
-        {{ parking.tenantEmail ? parking.tenantEmail : 'Vacío' }}
+        {{ parking.tenantEmail }}
       </ion-label>
     </ion-card-title>
-    
     
     <ion-card-subtitle>{{parking.startsAt | date:'short':undefined:locale.locale}}</ion-card-subtitle>
     <ion-card-subtitle>{{parking.finishsAt | date:'short':undefined:locale.locale}}</ion-card-subtitle>
@@ -48,8 +51,8 @@
       <ion-icon name="trash"></ion-icon>
       {{'modal.delete' | translate | uppercase}}
     </ion-button>
-    <ion-button *ngIf="parking.state !== 'assigned'" [ngClass]="{'assigned-button': parking.state === 'assigned'}"
-      class="place-action" fill="clear" (click)="onHireClick()" [hidden]="userEmail == parking.placeOwner">
+    <ion-button *ngIf="parking.state !== 'occupied'" 
+      class="assign-action" fill="clear" (click)="onHireClick()" [hidden]="userEmail == parking.placeOwner">
       <ion-icon name="enter-outline"></ion-icon>
       {{'modal.assign' | translate | uppercase}}
     </ion-button>

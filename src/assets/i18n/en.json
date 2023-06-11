@@ -1,10 +1,18 @@
 {
+    "user":{
+        "name":"Name",
+        "lastname":"Lastname",
+        "address":"Address",
+        "phone":"Phone",
+        "picture":"Picture"
+    },
     "parking": {
         "title": "Parking",
         "description": "Here you can find parking around all Málaga",
         "placeNumber":"Place Number: ",
         "tenantEmail":"Tenant Email: ",
-        "ownerEmail":"Owner Email: "
+        "ownerEmail":"Owner Email: ",
+        "propertyBanner":"Yours"
     },
     "myPark": {
         "title": "My Parks",
@@ -12,6 +20,7 @@
     },
     "report": {
         "title": "Reports",
+        "":"Title",
         "description": "Did you have any trouble? Report it!"
     },
     "myProfile": {
@@ -41,12 +50,14 @@
         "number":"Place number: "
     },
     "report-detail":{
-        "title":"Reports",
-        "date":"Incident date",
-        "description":"Incident description"
+        "title":"Report Details",
+        "header":"Title",
+        "date":"Date",
+        "description":"Description"
     },
     "parking-detail":{
         "title":"Place Assignment",
+        
         "number":"Place number",
         "startsAt":"Starts at:",
         "finishsAt":"Finishs at:"

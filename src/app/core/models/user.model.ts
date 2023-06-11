@@ -18,5 +18,7 @@ export interface User{
     name:string,
     lastname:string,
     picture: string,
+    address?:string,
+    phone?:number,
     notificationsViewed?: boolean
 }

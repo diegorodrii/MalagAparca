@@ -9,6 +9,7 @@ import { ParkingService } from 'src/app/core/services/parking.service';
   styleUrls: ['./reports.component.scss'],
 })
 export class ReportsComponent implements OnInit {
+  reports$ = this.reportsSVC.getReports();
 
   constructor(
     private alert:AlertController,

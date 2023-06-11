@@ -31,7 +31,6 @@ export class ParkListComponent implements OnInit {
       componentProps: {
         parking: parking
       },
-      cssClass: "modal-full-right-side"
     });
     modal.present();
     modal.onDidDismiss().then(result => {
@@ -77,7 +76,7 @@ export class ParkListComponent implements OnInit {
           handler: () => {
             parking.tenantEmail = user.email;
             parking.tenantPicture = user.picture;
-            parking.state = 'assigned'; // campo 'state'
+            parking.state = 'occupied'; // campo 'state'
             this.parkingsSVC.updateParking(parking).then(() => {
               console.log("Plaza asignada correctamente");
             }).catch(error => {

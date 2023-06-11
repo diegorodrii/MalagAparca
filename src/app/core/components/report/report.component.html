@@ -6,7 +6,7 @@
       <img *ngIf="report.picture" alt="Person picture" [src]="report.picture" />
     </ion-avatar>
     <ion-card-title class="report-title">{{report.title}}</ion-card-title>
-    <ion-card-subtitle class="report-date">{{report.date}}</ion-card-subtitle>
+    <ion-card-subtitle class="report-date">{{report.date | date:'short':undefined:locale.locale}}</ion-card-subtitle>
     <ion-button class="report-action" fill="clear" (click)="onEditClick()">
       <ion-icon name="create"></ion-icon>
       {{'modal.edit' | translate | uppercase}}

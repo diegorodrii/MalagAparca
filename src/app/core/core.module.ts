@@ -19,6 +19,7 @@ import { ReportComponent } from './components/report/report.component';
 import { ReportDetailComponent } from './components/report-detail/report-detail.component';
 import { ParkingDetailComponent } from './components/parking-detail/parking-detail.component';
 import { MyProfileDetailComponent } from './components/my-profile-detail/my-profile-detail.component';
+import { SpecialDatetimeComponent } from './components/special-datetime/special-datetime.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MyProfileDetailComponent } from './components/my-profile-detail/my-prof
     ParkingDetailComponent,
     ParkSelectableComponent,
     MyProfileDetailComponent,
-    NotificationComponent
+    NotificationComponent,
+    SpecialDatetimeComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +73,9 @@ import { MyProfileDetailComponent } from './components/my-profile-detail/my-prof
     ParkingDetailComponent,
     ParkSelectableComponent,
     MyProfileDetailComponent,
-    NotificationComponent
+    NotificationComponent,
+    SpecialDatetimeComponent
+
 
 
 

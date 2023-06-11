@@ -44,7 +44,6 @@
     ) {
       this.userService.user$.subscribe(user => {
         this.userEmail = user?.email; // Obtener el email del usuario logueado
-        console.log(this.userEmail)
       });
 
     }

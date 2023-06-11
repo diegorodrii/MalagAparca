@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { DocumentData } from 'firebase/firestore';
-import { BehaviorSubject, take } from 'rxjs';
+import { BehaviorSubject, map, take } from 'rxjs';
 import { FileUploaded, FirebaseService } from './firebase/firebase-service';
 
 import { Report } from '../models';
@@ -21,6 +21,7 @@ export class ReportService {
     private firebase: FirebaseService,
     private userSVC: UserService
   ) {
+    
     this.unsubscr = this.firebase.subscribeToCollection('denuncias', this._reportsSubject, this.mapReport);
   }
 
@@ -42,9 +43,18 @@ export class ReportService {
   }
 
   getReports() {
-    return this._reportsSubject.value;
+    const userEmail = this.firebase.getUser().email; // Obtener el email del usuario logueado
+  
+    return this._reportsSubject.pipe(
+      map(reports => reports.filter(report => report.ownerEmail === userEmail))
+    );
   }
-
+  
+  
+  getReportsByUserEmail(email: string): Report[] {
+    return this._reportsSubject.value.filter(report => report.ownerEmail === email);
+  }
+  
   getReportById(id: string): Promise<Report> {
     return new Promise<Report>(async (resolve, reject) => {
       try {

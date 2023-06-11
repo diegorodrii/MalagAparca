@@ -10,7 +10,7 @@
 <ion-content>
 
   <ion-list>
-    <app-report *ngFor="let report of (getReports() | async)" [report]="report" (onEdit)="onEditReport($event)" (onDelete)="onDeleteReport($event)"></app-report>
+    <app-report *ngFor="let report of (reports$ | async)" [report]="report" (onEdit)="onEditReport($event)" (onDelete)="onDeleteReport($event)"></app-report>
   </ion-list> 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="onNewItem()">

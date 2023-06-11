@@ -39,7 +39,6 @@ export class MyParkComponent implements OnInit {
       componentProps: {
         place: place
       },
-      cssClass: "modal-full-right-side"
     });
     modal.present();
     modal.onDidDismiss().then(result => {

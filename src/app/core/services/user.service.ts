@@ -28,13 +28,16 @@ export class UserService {
     private notificationService: NotificationService,
   ) {
     this.init();
-  }
+    console.log('Estado de notificationsViewed:', this._user.value?.notificationsViewed);
 
+  }
+  public get user(): User {
+    return this._user.value;
+  }
   private async init() {
     this.firebase.isLogged$.subscribe(async (logged) => {
       if (logged) {
         const user = (await this.firebase.getDocument('usuarios', this.firebase.getUser().uid)).data as User;
-        user.notificationsViewed = false; // Inicializar el estado de las notificaciones en "false"
         this._user.next(user);
         this._uid.next(this.firebase.getUser().uid);
         this.router.navigate(['home']);

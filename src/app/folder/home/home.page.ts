@@ -17,32 +17,37 @@ export class HomePage {
   language = 1;
   userEmail: string;
   isMobile: boolean;
+  notificationsViewed: boolean;
 
-  constructor(public user:UserService,   
-     private platform: Platform,
-     private translateSVC: TranslateService,
-      private authSVC: AuthGuard, 
-      private router: Router, 
-      private navCtrl: NavController,
-      private modalController: ModalController,
-      private notificationService: NotificationService
+  constructor(
+    private platform: Platform,
+    private translateSVC: TranslateService,
+    private authSVC: AuthGuard,
+    private router: Router,
+    private navCtrl: NavController,
+    private modalController: ModalController,
+    private notificationService: NotificationService,
+    private userService: UserService
 
   ) {
     this.translateSVC.setDefaultLang('en');
   }
-  ngOnInit(){
-    
+  ngOnInit() {
+    this.userService.user$.subscribe(user => {
+      this.notificationsViewed = user.notificationsViewed;
+    });
+    console.log(this.notificationsViewed)
   }
   async openNotificationModal() {
     const notifications = this.notificationService.getNotifications(); // Obtener las notificaciones desde el servicio
-    this.user.markNotificationsViewed(); // Actualizar estado de notificaciones a "vistas"
+    this.userService.markNotificationsViewed(); // Actualizar estado de notificaciones a "vistas"
 
     const modal = await this.modalController.create({
       component: NotificationComponent,
       componentProps: {
         notifications: notifications
       },
-      cssClass:"modal-full-right-side"
+      cssClass: "modal-full-right-side"
     });
     await modal.present();
   }
@@ -58,8 +63,8 @@ export class HomePage {
         break;
     }
   }
-  signOut(){
-    this.user.signOut();
+  signOut() {
+    this.userService.signOut();
     this.router.navigate(['login']);
   }
 
