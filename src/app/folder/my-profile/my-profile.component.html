@@ -9,21 +9,24 @@
 
 
 <ion-content class="ion-padding">
+  
+    <ion-button (click)="onTranslate()">{{ language === 0 ? 'Español' : 'English' }}</ion-button>
+
   <div class="profile-card">
     <div class="img-container">
-      <img *ngIf="!this.user?.picture" alt=""
+      <img class="image-style" *ngIf="!this.user?.picture" alt=""
       src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      <img *ngIf="this.user != undefined" alt="" [src]="this.imageUrl" />
+      <img class="image-style" *ngIf="this.user != undefined" alt="" [src]="this.imageUrl" />
     </div>
     <div class="profile-info">
-      <h2>{{ user.name }}</h2>
+      <h2>{{ user.name }} {{user.lastname}}</h2>
       <p>Email: {{ user.email }}</p>
-      <p>Phone: {{ user.phone }}</p>
-      <p>Address: {{ user.address }}</p>
+      <p>{{"user.phone"|translate}}: {{ user.phone }}</p>
+      <p>{{"user.address" | translate}} {{ user.address }}</p>
     </div>
     <div class="profile-actions">
-      <ion-button expand="block" (click)="openEditModal()">Edit Profile</ion-button>
-      <ion-button expand="block" color="danger" (click)="deleteProfile()">Delete Profile</ion-button>
+      <ion-button expand="block" (click)="openEditModal()">{{"modal.edit"|translate}}</ion-button>
+      <ion-button expand="block" color="danger" (click)="deleteProfile()">{{"modal.delete" | translate}}</ion-button>
     </div>
   </div>
 </ion-content>

@@ -37,7 +37,10 @@ ion-toolbar {
 
     /* Puedes agregar estilos adicionales para la foto del perfil */
   }
-
+  .image-style{
+    max-width: 500px;
+    max-height: 300px;
+  }
   .profile-info {
     text-align: center;
     margin-bottom: 20px;

@@ -14,7 +14,7 @@ export class NotificationService {
 
   private unsubscr;
 
-  constructor(private firebase: FirebaseService) {
+  constructor(private firebase: FirebaseService,) {
     this.unsubscr = this.firebase.subscribeToCollection('notifications', this._notificationsSubject, this.mapNotification.bind(this));
   }
   

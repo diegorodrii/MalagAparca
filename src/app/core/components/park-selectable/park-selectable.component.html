@@ -2,9 +2,9 @@
   <ion-accordion value="first">
     <ion-item slot="header" color="light">
       <ng-container *ngIf="selectedPark != null">
-        <ion-label>{{ selectedPark.number }} - {{ selectedPark.ownerEmail }}</ion-label>
+        <ion-label>{{'place.text' | translate}} - {{ selectedPark.number }}</ion-label>
       </ng-container>
-      <ng-container *ngIf="selectedPark == null">Selecciona el número de plaza a ocupar</ng-container>
+      <ng-container *ngIf="selectedPark == null">{{"parking.selection" | translate}}</ng-container>
     </ion-item>
     <div class="ion-padding" slot="content">
       <ion-list>

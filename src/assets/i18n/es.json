@@ -1,35 +1,93 @@
 {
+    "user":{
+        "name":"Nombre",
+        "lastname":"Apellido",
+        "address":"Dirección",
+        "phone":"Teléfono",
+        "picture":"Foto",
+        "password": "Contraseña",
+        "confirm_password":"Confirmación Contraseña"
+    },
     "parking": {
         "title": "Parking",
-        "description": "Aquí encontrarás aparcamiento por toda Málaga",
-        "propertyBanner":"Tuyo"
-
+        "description": "Aquí puedes encontrar el parking que tiene tu comunidad",
+        "placeNumber":"Número de plaza: ",
+        "tenantEmail":"Email del arrendatario: ",
+        "ownerEmail":"Email del propietario: ",
+        "propertyBanner":"Tuyo",
+        "addParking":"No hay parkings aún",
+        "selection":"Selecciona tu plaza"
     },
     "myPark": {
-        "title": "Mis Plazas",
-        "description": "Tus plazas de aparcamiento se encuentran aquí"
+        "title": "Mis plazas",
+        "description": "Aquí encontrarás las plazas de las que eres propietario",
+        "addPlace": "No tienes plazas todavía"
     },
     "report": {
-        "title": "Denuncia",
-        "description": "¿Has tenido algún problema y quieres denunciarlo? ¡Repórtalo!"
+        "title": "Denuncias",
+        "description": "¿Has tenido algún problema? Repórtalo",
+        "addReport":"No tienes denuncias aún"
     },
     "myProfile": {
         "title": "Mi Perfil",
         "description": "Tu información personal"
     },
     "enter":"Entrar",
-    "location": "Localización",
-    "price": "Precio",
+    "register":"Registrar",
+    "location": "Ubicación",
     "state": "Estado",
     "assigned": "Esta plaza está asignada",
     "notAssigned": "Esta plaza no está asignada",
+    "login":{
+        "noAccountLabel":"¿Aún no tienes una cuenta?",
+        "send":"Acceder"
+    },
+    
     "modal":{
         "edit":"Editar",
         "delete": "Eliminar",
-        "assign":"Asignar",
-        "new":"Añadir"
+        "assign":"Asignación",
+        "new":"Añadir",
+        "close":"Cerrar",
+        "cancel":"Cancelar",
+        "done":"Hecho",
+        "Send":"Registrar"
+
     },
+    
     "place":{
-        "text":"Plaza número "
+        "text":"Número de plaza "
+    },
+    "datetime":{
+        "placheholder":"Elige una fecha"
+    },
+    "my-place-detail":{
+        "title":"Mis Plazas",
+        "number":"Número de la plaza: "
+    },
+    "report-detail":{
+        "title":"Detalle Denuncia",
+        "header":"Título",
+        "date":"Fecha",
+        "description":"Descripción",
+        "image": "Imagen"
+    },
+    "parking-detail":{
+        "title":"Asignamiento Plaza",
+        
+        "number":"Número de plaza",
+        "startsAt":"Empieza a las:",
+        "finishsAt":"Termina a las:"
+    },
+ 
+    "error-mesage":{
+        "durationEnough":"La duración tiene que ser de 30 minutos al menos",
+        "finishsError":"La fecha a la que empieza no puede ser anterior a la que finaliza"
+    },
+    "validators":{
+        "email":"Introduce un correo electrónico válido",
+        "passwordProto":"Introduce una contraseña que tenga al menos 8 caracteres, una mayúscula y una minúscula",
+        "passwordMatch":"Comprueba que estés introduciendo la misma contraseña en ambos campos"
     }
+
 }

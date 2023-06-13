@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs';
 import { MyParkService, ParkingService, ReportService } from 'src/app/core';
 import { MyProfileDetailComponent } from 'src/app/core/components/my-profile-detail/my-profile-detail.component';
@@ -15,6 +16,7 @@ import { UserService } from 'src/app/core/services/user.service';
 export class MyProfileComponent implements OnInit {
   user: User;
   imageUrl: string = ""
+  language = 1;
 
   constructor(
     private modalController: ModalController,
@@ -23,7 +25,9 @@ export class MyProfileComponent implements OnInit {
     private myParkService: MyParkService,
     private reportService: ReportService,
     private parkingService: ParkingService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private translateSVC: TranslateService,
+
   ) { }
   ngOnInit() {
 
@@ -87,5 +91,16 @@ export class MyProfileComponent implements OnInit {
     });
 
     await alert.present();
+  }
+  onTranslate() {
+    this.language = (this.language + 1) % 2;
+    switch (this.language) {
+      case 0:
+        this.translateSVC.setDefaultLang('es');
+        break;
+      case 1:
+        this.translateSVC.setDefaultLang('en');
+        break;
+    }
   }
 } 

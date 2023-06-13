@@ -14,7 +14,7 @@
       <app-report *ngFor="let report of reports" [report]="report" (onEdit)="onEditReport($event)"
         (onDelete)="onDeleteReport($event)"></app-report>
     </ion-list>
-    <ion-img class="image-style" src="../../../assets/complaints.png"></ion-img>
+    <ion-img *ngIf="reports.length === 0"  class="image-style" src="../../../assets/complaints.png"></ion-img>
 
     <div *ngIf="reports.length === 0" class="no-reports-text">
       {{ "report.addReport" | translate }}

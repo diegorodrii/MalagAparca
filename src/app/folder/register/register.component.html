@@ -2,7 +2,7 @@
 
 <ion-content class="login-page">
 
-  <h2 class="login-title">{{"register.title" | translate}}</h2>
+  <h2 class="login-title">{{"register" | translate}}</h2>
 
   <div class="login-form">
     <form [formGroup]="form" (ngSubmit)="onRegister()">
@@ -15,7 +15,7 @@
       </ion-item>
  
       <ion-item>
-        <ion-label position="floating">{{"user.subname" | translate}}<span class="required"
+        <ion-label position="floating">{{"user.lastname" | translate}}<span class="required"
             *ngIf="form.controls.lastname.errors">&nbsp;&#42;</span>
         </ion-label>
         <ion-input type="text" formControlName="lastname"></ion-input>
@@ -55,7 +55,7 @@
           translate}}</span>
       </ion-item>
          <div class="form-button right">
-      <ion-button [disabled]="!form.valid" (click)="onRegister()">{{'register.send' | translate}}</ion-button>
+      <ion-button [disabled]="!form.valid" (click)="onRegister()">{{'modal.send' | translate}}</ion-button>
     </div>  
 
     </form>

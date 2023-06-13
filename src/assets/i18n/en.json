@@ -4,21 +4,31 @@
         "lastname":"Lastname",
         "address":"Address",
         "phone":"Phone",
-        "picture":"Picture"
+        "picture":"Picture",
+        "password": "Password",
+        "confirm_password":"Confirm Password"
     },
     "parking": {
         "title": "Parking",
-        "description": "Here you can find parking around all Málaga",
+        "description": "Here you find the parking your community have",
         "placeNumber":"Place Number: ",
         "tenantEmail":"Tenant Email: ",
         "ownerEmail":"Owner Email: ",
         "propertyBanner":"Yours",
-        "addParking":"There are no parkings yet."
+        "addParking":"There are no parkings yet.",
+        "selection":"Select a place"
     },
     "myPark": {
         "title": "My Parks",
         "description": "The parks you have are here",
         "addPlace": "You have no parks yet."
+    },
+    "notifications":{
+        "title":"Notificaciones",
+        "parkBody1":"",
+        "parkBody2":"",
+        "newAccount":""
+
     },
     "report": {
         "title": "Reports",
@@ -30,24 +40,37 @@
         "title": "My Profile",
         "description": "Your personal information "
     },
-    "enter":"enter",
+    "enter":"Enter",
+    "register":"Register",
     "location": "Location",
     "price": "Price",
     "state": "State",
     "assigned": "This place is assigned",
     "notAssigned": "This place is not assigned",
+    "login":{
+        "noAccountLabel":"Do not have an account yet?",
+        "about-me":"About Me",
+        "send":"Sign in"
+    },
+    
     "modal":{
         "edit":"Edit",
         "delete": "Delete",
         "assign":"Assign",
         "new":"Add",
-        "close":"Close"
+        "close":"Close",
+        "cancel":"Cancel",
+        "done":"Done",
+        "Send":"Register"
 
     },
+    
     "place":{
         "text":"Place number "
     },
-
+    "datetime":{
+        "placheholder":"Choose a date"
+    },
     "my-place-detail":{
         "title":"My Parks",
         "number":"Place number: "
@@ -56,7 +79,8 @@
         "title":"Report Details",
         "header":"Title",
         "date":"Date",
-        "description":"Description"
+        "description":"Description",
+        "image": "Image"
     },
     "parking-detail":{
         "title":"Place Assignment",
@@ -64,6 +88,17 @@
         "number":"Place number",
         "startsAt":"Starts at:",
         "finishsAt":"Finishs at:"
+    },
+ 
+    "error-mesage":{
+        "durationEnough":"The duration has to be 30 minutes at least",
+        "finishsError":"The finish date can't be earlier than the beggining date."
+    },
+
+    "validators":{
+        "email":"Introduce a valid email",
+        "passwordProto":"The password has to be formed by 8 characters, one uppercase, one lowercase and a number ",
+        "passwordMatch":"Be sure you are writing the same password in both inputs"
     }
-    
+
 }

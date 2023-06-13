@@ -13,7 +13,6 @@ import { FirestoreModule } from '@angular/fire/firestore';
 import { AuthGuard } from '.';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
-import { ProfileComponent } from './components/profile/profile.component';
 import { MyPlaceDetailComponent } from './components/my-place-detail/my-place-detail.component';
 import { ReportComponent } from './components/report/report.component';
 import { ReportDetailComponent } from './components/report-detail/report-detail.component';
@@ -26,7 +25,6 @@ import { SpecialDatetimeComponent } from './components/special-datetime/special-
   declarations: [
     MyPlaceComponent,
     ParkingComponent,
-    ProfileComponent,
     MyPlaceDetailComponent,
     ReportComponent,
     ReportDetailComponent,
@@ -65,7 +63,6 @@ import { SpecialDatetimeComponent } from './components/special-datetime/special-
     ReactiveFormsModule,
     MyPlaceComponent,
     ParkingComponent,
-    ProfileComponent,
     MyPlaceDetailComponent,
     ReportComponent,
     ReportDetailComponent,

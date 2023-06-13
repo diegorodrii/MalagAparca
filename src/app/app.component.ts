@@ -10,9 +10,10 @@ import { AuthGuard } from './core/services';
 })
 export class AppComponent {
   language = 1;
-  constructor(private translateSVC: TranslateService, private router: Router    ) {
+  constructor(private translateSVC: TranslateService, private router: Router,  ) {
     this.translateSVC.setDefaultLang('en');
     this.router.navigate(['/']);
+
   }
   
   onTranslate(){
