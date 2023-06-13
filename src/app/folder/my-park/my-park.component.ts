@@ -12,7 +12,7 @@ import { ParkingService } from 'src/app/core/services/parking.service';
 })
 export class MyParkComponent implements OnInit {
   userId: string;
-
+  userPlaces : Place[] =[]
   constructor(
     private placeSVC: MyParkService,
     private parkingsSvc: ParkingService,
@@ -23,10 +23,11 @@ export class MyParkComponent implements OnInit {
 
   ngOnInit() {
     this.userId = this.userService.getLoggedInUserId();
-    console.log(this.userId)
-
+    console.log(this.userId);
+    this.getPlaces().subscribe(places => {
+      this.userPlaces = places.filter(place => this.isUserPlace(place));
+    });
   }
-
   getPlaces() {
     
     return this.placeSVC.places$;

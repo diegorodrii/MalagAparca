@@ -2,30 +2,33 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
-      <ion-title class="header-title">{{ 'myPark.title' | translate }}</ion-title>
+      <ion-title>{{ 'myPark.title' | translate }}</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ng-container *ngIf="(getPlaces() | async) as places">
-    <ion-list *ngIf="places.length > 0" class="place-list">
-      <app-my-place
-        *ngFor="let place of places"
-        [place]="place"
-        (onEdit)="onEditPlace($event)"
-        (onDelete)="onDeletePlace($event)"
-      ></app-my-place>
-    </ion-list>
-    <ion-img *ngIf="places.length === 0"  src="../../../assets/garaje.png" class="image-style"></ion-img>
-    <div *ngIf="places.length === 0" class="no-places-text">
-      {{"myPark.addPlace" | translate}}
+    <ng-container *ngIf="userPlaces.length > 0 ">
+      <ion-list>
+        <app-my-place
+          *ngFor="let place of userPlaces"
+          [place]="place"
+          (onEdit)="onEditPlace($event)"
+          (onDelete)="onDeletePlace($event)"
+        ></app-my-place>
+      </ion-list>
+    </ng-container>
+    <ion-img *ngIf="userPlaces.length === 0" src="../../../assets/garaje.png" class="image-style"></ion-img>
+    <div *ngIf="userPlaces.length === 0" class="no-places-text">
+      {{ "myPark.addPlace" | translate }}
     </div>
   </ng-container>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="fab-button">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="onNewItem()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+
