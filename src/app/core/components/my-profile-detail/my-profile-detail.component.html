@@ -20,10 +20,6 @@
       <ion-input [(ngModel)]="editedUser.lastname"></ion-input>
     </ion-item>
     <ion-item lines="none">
-      <ion-label position="floating" color="primary">{{"user.picture" | translate}}</ion-label>
-      <ion-input [(ngModel)]="editedUser.picture"></ion-input>
-    </ion-item>
-    <ion-item lines="none">
       <ion-label position="floating" color="primary">{{"user.address" | translate}}</ion-label>
       <ion-input [(ngModel)]="editedUser.address"></ion-input>
     </ion-item>
@@ -31,6 +27,8 @@
       <ion-label position="floating" color="primary">{{"user.phone" | translate}}</ion-label>
       <ion-input [(ngModel)]="editedUser.phone"></ion-input>
     </ion-item>
+    <ion-input type="file" (change)="uploadImage($event)" placeholder="Introduce la imagen" [(ngModel)]="editedUser.picture"></ion-input>
+
   </ion-list>
   <ion-button expand="full" color="primary" (click)="saveChanges()">{{"action.saveChanges" | translate}}</ion-button>
 </ion-content>

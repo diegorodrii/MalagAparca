@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { take } from 'rxjs';
 import { MyParkService, ParkingService, ReportService } from 'src/app/core';
 import { MyProfileDetailComponent } from 'src/app/core/components/my-profile-detail/my-profile-detail.component';
 import { User } from 'src/app/core/models/user.model';
+import { StorageService } from 'src/app/core/services/storage.service';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -13,19 +14,33 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class MyProfileComponent implements OnInit {
   user: User;
+  imageUrl: string = ""
 
   constructor(
     private modalController: ModalController,
     private alertController: AlertController,
     private userService: UserService,
-    private myParkService : MyParkService,
+    private myParkService: MyParkService,
     private reportService: ReportService,
-    private parkingService: ParkingService
+    private parkingService: ParkingService,
+    private storageService: StorageService
   ) { }
   ngOnInit() {
+
     this.userService.user$.subscribe(user => {
+      
       this.user = user;
+      this.storageService.getImageUrlByName(this.user!.picture).subscribe(
+        url => {
+          console.log(url);
+          this.imageUrl = url;
+        },
+        error => console.log(error)
+      );
     });
+   
+
+
   }
 
   async openEditModal() {
@@ -38,7 +53,7 @@ export class MyProfileComponent implements OnInit {
 
     await modal.present();
     const { data } = await modal.onWillDismiss();
-    
+
     if (data) {
       // Actualizar el usuario con los nuevos datos
       this.userService.editUser(data);

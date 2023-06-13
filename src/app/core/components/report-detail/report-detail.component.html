@@ -32,6 +32,9 @@
       </ion-label>
     </ion-item>
     <app-special-datetime formControlName="date"></app-special-datetime>
+    <ion-label>Imagen</ion-label>
+    <ion-input type="file" (change)="uploadImage($event)" placeholder="Introduce la imagen" formControlName="picture"></ion-input>
+
   </form>
 </ion-content>
 

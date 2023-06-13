@@ -6,6 +6,7 @@ import { PhotoItem, PhotoService } from '../../services/photo.service';
 import { BehaviorSubject } from 'rxjs';
 import { Report } from '../../models';
 import * as moment from 'moment';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-report-detail',
@@ -41,7 +42,8 @@ export class ReportDetailComponent implements OnInit {
     private photoSvc: PhotoService,
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
-    private modal: ModalController
+    private modal: ModalController,
+    private storageService: StorageService
   ) {
     this.form = this.fb.group({
       id: [null],
@@ -69,6 +71,8 @@ export class ReportDetailComponent implements OnInit {
   onChangeDateTime(dateTime){
     this.form.controls.dateTime.setValue(dateTime);
   }
- 
+  uploadImage($event:any){
+    this.storageService.uploadImage($event)
+  }
 
 }

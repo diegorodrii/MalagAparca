@@ -19,17 +19,20 @@ import { HttpClientWebProvider } from './core/services/http-client-web.provider'
 import { HTTP } from '@awesome-cordova-plugins/http/ngx';
 import { HttpClientProvider } from './core/services/http-client.provider';
 import { FirebaseService } from './core/services/firebase/firebase-service';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 
 
 export function firebaseServiceFactory() {
-  return  new FirebaseWebService();
+  return new FirebaseWebService();
 }
 
 export function httpProviderFactory(
-  httpNative:HTTP,
-  http:HttpClient,
-  platform:Platform) {
-  if(platform.is('mobile') && !platform.is('mobileweb'))
+  httpNative: HTTP,
+  http: HttpClient,
+  platform: Platform) {
+  if (platform.is('mobile') && !platform.is('mobileweb'))
     return new HttpClientNativeProvider(httpNative, http);
   else
     return new HttpClientWebProvider(http);
@@ -38,27 +41,29 @@ export function httpProviderFactory(
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, CoreModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, HTTP,
+  {
+    provide: HttpClientProvider,
+    deps: [HTTP, HttpClient, Platform],
+    useFactory: httpProviderFactory,
+  },
+  {
+    provide: FirebaseService,
+    deps: [],
+    useFactory: firebaseServiceFactory
+  },],
 
-  TranslateModule.forRoot({
-    loader: {
-      provide: TranslateLoader,
-      useFactory:(createTranslateLoader),
-      deps:[HttpClient]
-    }
-  })  ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, HTTP, 
-    {
-      provide: HttpClientProvider,
-      deps: [HTTP, HttpClient, Platform],
-      useFactory: httpProviderFactory,  
-    },
-    {
-      provide: FirebaseService,
-      deps: [],
-      useFactory: firebaseServiceFactory
-    },],
-  
   bootstrap: [AppComponent],
-  exports:[  ]
+  exports: []
 })
-export class AppModule {}
+export class AppModule { }

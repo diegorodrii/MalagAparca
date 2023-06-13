@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { ModalController } from '@ionic/angular';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-my-profile-detail',
@@ -8,12 +9,14 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./my-profile-detail.component.scss'],
 })
 export class MyProfileDetailComponent implements OnInit {
+  images: string[] = [];
 
   user: User;
   editedUser: User;
 
   constructor(
-    private modalController: ModalController
+    private modalController: ModalController,
+    private storageService: StorageService
   ) { }
 
   ngOnInit() {
@@ -26,6 +29,9 @@ export class MyProfileDetailComponent implements OnInit {
 
   close() {
     this.modalController.dismiss();
+  }
+  uploadImage($event:any){
+    this.storageService.uploadImage($event)
   }
 
 }

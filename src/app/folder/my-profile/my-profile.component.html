@@ -10,8 +10,10 @@
 
 <ion-content class="ion-padding">
   <div class="profile-card">
-    <div class="profile-picture">
-      <ion-img src={{user.picture}}></ion-img>
+    <div class="img-container">
+      <img *ngIf="!this.user?.picture" alt=""
+      src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      <img *ngIf="this.user != undefined" alt="" [src]="this.imageUrl" />
     </div>
     <div class="profile-info">
       <h2>{{ user.name }}</h2>

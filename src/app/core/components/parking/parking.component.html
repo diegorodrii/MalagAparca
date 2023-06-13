@@ -10,16 +10,16 @@
     <div class="person-container">
 
       <ion-avatar class="person">
-        <img *ngIf="!(place$ | async)?.ownerPicture" alt="Silhouette of a person's head"
+        <img *ngIf="!ownerPicture" alt="Silhouette of a person's head"
           src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-        <img *ngIf="(place$ | async)?.ownerPicture" alt="Person picture" [src]="(place$ | async)?.ownerPicture" />
+        <img *ngIf="ownerPicture" alt="Person picture" [src]="ownerImage" />
       </ion-avatar>
       <ion-icon name="arrow-back-outline"></ion-icon>
       <ion-icon name="arrow-forward-outline"></ion-icon>
       <ion-avatar class="person">
         <img *ngIf="!parking?.tenantPicture"
           src="https://img.freepik.com/vector-premium/archivos-png-fondo-vector-transparente-fondo-png_302321-1276.jpg?w=2000" />
-        <img *ngIf="parking?.tenantPicture" alt="Person picture" [src]="parking?.tenantPicture" />
+        <img *ngIf="parking?.tenantPicture" alt="Person picture" [src]="tenantImage" />
       </ion-avatar>
     </div>
 

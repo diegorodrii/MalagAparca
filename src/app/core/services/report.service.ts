@@ -94,7 +94,8 @@ export class ReportService {
       title: report.title,
       description: report.description,
       date: report.date,
-      ownerEmail: user?.email
+      ownerEmail: user?.email,
+      picture: report?.picture
     };
     if (report['pictureFile']) {
       var response = await this.uploadImage(report['pictureFile']);

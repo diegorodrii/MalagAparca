@@ -89,7 +89,7 @@ export class UserService {
         await this.firebase.createDocumentWithId('usuarios',
           {
             uid: user.user.uid,
-            picture: "https://ionicframework.com/docs/img/demos/avatar.svg",
+            picture: "C:\\fakepath\\avatar.PNG",
             email: data.email,
             provider: 'firebase',
             token: await user.user.getIdToken(),

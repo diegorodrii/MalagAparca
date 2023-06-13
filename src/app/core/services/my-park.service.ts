@@ -156,5 +156,14 @@ export class MyParkService {
     this.firebase.fileUpload(data, 'text/plain', 'places', '.txt');
   }
 
-
+  getOwnerPictureById(id: string): Promise<string> {
+    return new Promise<string>(async (resolve, reject) => {
+      try {
+        const place = await this.getPlaceById(id);
+        resolve(place.ownerPicture);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
 }
