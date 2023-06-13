@@ -7,6 +7,8 @@ import { FileUploaded, FirebaseService } from './firebase/firebase-service';
 import { Parking, Report } from '../models';
 import { UserService } from '..';
 import { TranslateService } from '@ngx-translate/core';
+import { NotificationService } from './notification.service';
+import { Notification } from '../models/notification.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,8 @@ export class ParkingService {
   constructor(
     private firebase: FirebaseService,
     private userSVC: UserService,
-    private translateService: TranslateService 
+    private translateService: TranslateService,
+    private notificationService: NotificationService
 
   ) {
     this.unsubscr = this.firebase.subscribeToCollection('parkings', this._parkingsSubject, this.mapParking);
@@ -95,15 +98,28 @@ export class ParkingService {
       tenantEmail: parking?.tenantEmail,
       startsAt: parking.startsAt,
       finishsAt: parking.finishsAt,
-      state:this.getParkingState()
+      state: this.getParkingState()
     };
+  
     try {
-      console.log(parking)
       await this.firebase.createDocument('parkings', _parking);
+  
+      // Crear la notificación con los detalles del parking
+      const notification: Notification = {
+        id: 0,
+        uid: parking.docId,
+        title: 'Nuevo parking',
+        body: `${parking.placeOwner} ha agregado un nuevo parking que empieza a las ${parking.startsAt} y acaba a las ${parking.finishsAt}`,
+        date: new Date().toISOString()
+      };
+  
+      // Agregar la notificación
+      this.notificationService.addNotification(notification);
     } catch (error) {
       console.log(error);
     }
   }
+  
 
   async updateParking(parking: Parking) {
     try {

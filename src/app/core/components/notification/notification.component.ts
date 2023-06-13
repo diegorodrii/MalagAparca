@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Notification } from '../../models/notification.model';
 
 @Component({
   selector: 'app-notification',
@@ -19,7 +20,7 @@ export class NotificationComponent implements OnInit {
   ngOnInit() {
     const contentElement = document.querySelector('ion-content');
     if (contentElement) {
-      contentElement.classList.add('show'); // Agrega la clase 'show' al elemento raíz del componente
+      contentElement.classList.add('show'); 
     }
   }
 }

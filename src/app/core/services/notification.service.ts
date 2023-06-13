@@ -47,7 +47,7 @@ export class NotificationService {
       uid: doc.data().uid,
       title: doc.data().title,
       body: doc.data().body,
-      date: new Date().toISOString(),
+      date: doc.data().date
     };
   }
 
