@@ -2,16 +2,25 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
-      <ion-title>{{'report.title' |translate}}</ion-title>
     </ion-buttons>
+    <ion-title>{{ 'report.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-list>
-    <app-report *ngFor="let report of (reports$ | async)" [report]="report" (onEdit)="onEditReport($event)" (onDelete)="onDeleteReport($event)"></app-report>
-  </ion-list> 
+  <ng-container *ngIf="(reports$ | async) as reports">
+    <ion-list *ngIf="reports.length > 0">
+      <app-report *ngFor="let report of reports" [report]="report" (onEdit)="onEditReport($event)"
+        (onDelete)="onDeleteReport($event)"></app-report>
+    </ion-list>
+    <ion-img class="image-style" src="../../../assets/complaints.png"></ion-img>
+
+    <div *ngIf="reports.length === 0" class="no-reports-text">
+      {{ "report.addReport" | translate }}
+    </div>
+  </ng-container>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="onNewItem()">
       <ion-icon name="add"></ion-icon>

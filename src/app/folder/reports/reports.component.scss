@@ -20,19 +20,6 @@ ion-toolbar {
 *{
   font-family: 'MiFuente';
 }
-ion-header {
-  ion-toolbar {
-    ion-title {
-      text-align: center;
-    }
-
-    ion-buttons[slot="end"] {
-      ion-button {
-        margin-right: 10px;
-      }
-    }
-  }
-}
 
 ion-content {
   ion-list {
@@ -49,4 +36,20 @@ ion-content {
       }
     }
   }
+}
+.image-style {
+  width: 100%;
+  max-width: 200px;
+  margin: 20px auto;
+  display: block;
+  height: 300px;
+
+  margin-top: 200px;
+}
+
+.no-reports-text {
+  text-align: center;
+  color: #888888;
+  font-style: italic;
+  margin: 20px;
 }

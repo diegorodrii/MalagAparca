@@ -2,22 +2,30 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-title>{{ 'parking.title' | translate }}</ion-title>
     </ion-buttons>
-    <ion-title>{{ 'parking.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col *ngFor="let parking of (getParkings() | async)" size="12" size-md="6" size-lg="4">
-        <div class="parking-item">
-          <app-parking [parking]="parking" (onEdit)="onEditParking($event)" (onDelete)="onDeleteParking($event)"
-            (onHire)="onHireParking($event)"></app-parking>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ng-container class="park-list"*ngIf="(getParkings() | async) as parkings">
+    <ion-grid *ngIf="parkings.length > 0">
+      <ion-row>
+        <ion-col *ngFor="let parking of parkings" size="12" size-md="6" size-lg="4">
+          <div class="parking-item">
+            <app-parking [parking]="parking" (onEdit)="onEditParking($event)" (onDelete)="onDeleteParking($event)"
+              (onHire)="onHireParking($event)"></app-parking>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-img *ngIf="parkings.length === 0" src="../../../assets/parkingLogo.jpg" class="image-style"></ion-img>
+
+    <div *ngIf="parkings.length === 0" class="no-parkings-text">
+
+      {{"parking.addParking" | translate}}
+    </div>
+  </ng-container>
 </ion-content>
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">

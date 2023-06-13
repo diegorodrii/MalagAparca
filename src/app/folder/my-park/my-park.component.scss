@@ -1,14 +1,33 @@
-ion-label{
-    text-align: center;
-    margin-top: 10px
+.place-list {
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+}
+.image-style {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  height: 300px;
+  display: block;
+  margin-top: 200px;
 }
 
-div{
-    text-align: center;
-    padding: 20px;
-    
+.no-places-text {
+  text-align: center;
+  color: #888888;
+  font-style: italic;
+  margin: 20px;
+
 }
 
+.fab-button {
+  --background: #ff4081;
+}
+
+.fab-icon {
+  color: #ffffff;
+}
 ion-toolbar {
     --background: #2c82c9;
     --color: #fff;

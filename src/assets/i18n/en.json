@@ -12,16 +12,19 @@
         "placeNumber":"Place Number: ",
         "tenantEmail":"Tenant Email: ",
         "ownerEmail":"Owner Email: ",
-        "propertyBanner":"Yours"
+        "propertyBanner":"Yours",
+        "addParking":"There are no parkings yet."
     },
     "myPark": {
         "title": "My Parks",
-        "description": "The parks you have are here"
+        "description": "The parks you have are here",
+        "addPlace": "You have no parks yet."
     },
     "report": {
         "title": "Reports",
         "":"Title",
-        "description": "Did you have any trouble? Report it!"
+        "description": "Did you have any trouble? Report it!",
+        "addReport":"You have no reports yet"
     },
     "myProfile": {
         "title": "My Profile",

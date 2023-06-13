@@ -20,3 +20,19 @@ ion-toolbar {
   *{
     font-family: 'MiFuente';
   }
+  .image-style {
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto;
+    display: block;
+    height: 300px;
+    margin-top: 200px;
+  }
+  
+  .no-parkings-text {
+    text-align: center;
+    color: #888888;
+    font-style: italic;
+    margin: 20px;
+  }
+  
