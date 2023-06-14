@@ -7,22 +7,27 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content class="ion-padding">
-  
-    <ion-button (click)="onTranslate()">{{ language === 0 ? 'Español' : 'English' }}</ion-button>
+  <div class="language-buttons">
+    <button class="language-button" (click)="changeLanguage('es')">
+      <img src="/assets/spain.png" alt="Español">
+    </button>
+    <button class="language-button" (click)="changeLanguage('en')">
+      <img src="/assets/english.png" alt="English">
+    </button>
+  </div>
 
   <div class="profile-card">
     <div class="img-container">
       <img class="image-style" *ngIf="!this.user?.picture" alt=""
-      src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        src="https://ionicframework.com/docs/img/demos/avatar.svg" />
       <img class="image-style" *ngIf="this.user != undefined" alt="" [src]="this.imageUrl" />
     </div>
     <div class="profile-info">
       <h2>{{ user.name }} {{user.lastname}}</h2>
-      <p>Email: {{ user.email }}</p>
-      <p>{{"user.phone"|translate}}: {{ user.phone }}</p>
-      <p>{{"user.address" | translate}} {{ user.address }}</p>
+      <ion-label>Email: {{ user.email }}</ion-label><p></p>
+      <ion-label>{{"user.phone"|translate}}: {{ user.phone }}</ion-label><p></p>
+      <ion-label>{{"user.address" | translate}} {{ user.address }}</ion-label>
     </div>
     <div class="profile-actions">
       <ion-button expand="block" (click)="openEditModal()">{{"modal.edit"|translate}}</ion-button>

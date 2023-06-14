@@ -5,6 +5,7 @@ import { take } from 'rxjs';
 import { MyParkService, ParkingService, ReportService } from 'src/app/core';
 import { MyProfileDetailComponent } from 'src/app/core/components/my-profile-detail/my-profile-detail.component';
 import { User } from 'src/app/core/models/user.model';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { UserService } from 'src/app/core/services/user.service';
 
@@ -26,10 +27,11 @@ export class MyProfileComponent implements OnInit {
     private reportService: ReportService,
     private parkingService: ParkingService,
     private storageService: StorageService,
-    private translateSVC: TranslateService,
+    private translateService: TranslateService,
+    private localStorageService: LocalStorageService
 
   ) { }
-  ngOnInit() {
+  async ngOnInit() {
 
     this.userService.user$.subscribe(user => {
       
@@ -43,7 +45,13 @@ export class MyProfileComponent implements OnInit {
       );
     });
    
-
+    const selectedLanguage = await this.localStorageService.get('selectedLanguage');
+  
+  if (selectedLanguage) {
+    this.translateService.use(selectedLanguage);
+  } else {
+    this.translateService.setDefaultLang('es');
+  }
 
   }
 
@@ -92,15 +100,8 @@ export class MyProfileComponent implements OnInit {
 
     await alert.present();
   }
-  onTranslate() {
-    this.language = (this.language + 1) % 2;
-    switch (this.language) {
-      case 0:
-        this.translateSVC.setDefaultLang('es');
-        break;
-      case 1:
-        this.translateSVC.setDefaultLang('en');
-        break;
-    }
+  changeLanguage(language: string) {
+    this.translateService.use(language);
+    this.localStorageService.set('selectedLanguage', language);
   }
 } 

@@ -26,10 +26,10 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
-// @font-face {
-//     font-family: 'MiFuente';
-//     src: url('../assets/fonts/KiteOne-Regular.ttf') format('truetype');
-//   }
+@font-face {
+    font-family: 'MiFuente';
+    src: url('./assets/fonts/KiteOne-Regular.ttf') format('truetype');
+  }
 
   .modal-full-right-side{
     display:flex;

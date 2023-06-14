@@ -50,8 +50,6 @@ import { SpecialDatetimeComponent } from './components/special-datetime/special-
       }
     }),
     IonicStorageModule.forRoot({
-      name: '__malagaparcadb',
-          driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage]
     }),
     
   ],

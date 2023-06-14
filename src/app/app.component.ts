@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthGuard } from './core/services';
+import { LocalStorageService } from './core/services/local-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -10,22 +11,23 @@ import { AuthGuard } from './core/services';
 })
 export class AppComponent {
   language = 1;
-  constructor(private translateSVC: TranslateService, private router: Router,  ) {
-    this.translateSVC.setDefaultLang('en');
+  constructor(private translateSVC: TranslateService, private router: Router, private translateService: TranslateService,
+    private localStorageService: LocalStorageService
+  ) {
     this.router.navigate(['/']);
 
   }
-  
-  onTranslate(){
-    this.language = (this.language+1)%2;
-    switch(this.language){
-      case 0:
-        this.translateSVC.setDefaultLang('es');
-        break;
-      case 1:
-        this.translateSVC.setDefaultLang('en');
-        break;
-    }
-  }
 
+  async ngOnInit() {
+    await this.localStorageService.init();
+
+    const selectedLanguage = await this.localStorageService.get('selectedLanguage');
+    if (selectedLanguage && selectedLanguage !== 'undefined') { // Verificar si selectedLanguage no es undefined
+      this.translateService.setDefaultLang(selectedLanguage);
+    } else {
+      this.translateService.setDefaultLang('idioma-predeterminado');
+    }
+    this.translateService.use(this.translateService.getDefaultLang());
+
+  }
 }

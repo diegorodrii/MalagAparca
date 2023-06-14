@@ -33,7 +33,7 @@ ion-content.notification-modal {
     ion-item {
       ion-label {
         h2 {
-          font-size: 1.2rem;
+          font-size: 1.7rem;
           font-weight: bold;
           margin: 0;
         }
@@ -54,7 +54,7 @@ ion-label.ion-text-wrap {
 
 h2, p {
   margin: 0;
-  font-size: 16px; /* Ajusta el tamaño de fuente según tus necesidades */
+  font-size: 30px; /* Ajusta el tamaño de fuente según tus necesidades */
   line-height: 1.4;
 }
 
@@ -72,4 +72,7 @@ h2, p {
   100% {
     transform: translateX(0);
   }
+}
+*{
+  font-family: 'MiFuente';
 }

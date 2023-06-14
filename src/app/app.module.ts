@@ -22,6 +22,8 @@ import { FirebaseService } from './core/services/firebase/firebase-service';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { LocalStorageService } from './core/services/local-storage.service';
 
 
 export function firebaseServiceFactory() {
@@ -40,7 +42,8 @@ export function httpProviderFactory(
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, CoreModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
+  imports: [BrowserModule, CoreModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,    IonicStorageModule.forRoot(),
+
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
@@ -61,7 +64,8 @@ export function httpProviderFactory(
     provide: FirebaseService,
     deps: [],
     useFactory: firebaseServiceFactory
-  },],
+  },
+LocalStorageService],
 
   bootstrap: [AppComponent],
   exports: []

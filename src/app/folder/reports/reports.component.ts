@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { Report, ReportDetailComponent, ReportService } from 'src/app/core';
+import {  JsonGenerationService } from 'src/app/core/services/jsonGeneration.service';
 import { ParkingService } from 'src/app/core/services/parking.service';
 
 @Component({
@@ -10,15 +11,28 @@ import { ParkingService } from 'src/app/core/services/parking.service';
 })
 export class ReportsComponent implements OnInit {
   reports$ = this.reportsSVC.getReports();
+  reports: Report[] | undefined
 
   constructor(
     private alert:AlertController,
     private modal:ModalController,
     private reportsSVC:ReportService,
-    private parkingsSVC:ParkingService
+    private jsonService:JsonGenerationService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.reports$.subscribe(reports => {
+      this.reports = reports;
+    });
+  }
+  getReportsFromFirebase() {
+    this.reportsSVC.getReports().subscribe(reports => {
+      // Aquí obtienes los datos de la colección de Firebase
+      console.log(reports);
+      // Puedes asignar los datos a una variable para usarlos en tu plantilla
+      this.reports = reports;
+    });
+  }
   getReports(){
     return this.reportsSVC.reports$;
   }
@@ -106,5 +120,9 @@ export class ReportsComponent implements OnInit {
     this.presentForm(ReportDetailComponent, (data)=>{
       this.reportsSVC.addReport(data.report);
     });
+  }
+  
+  downloadJson(){
+    this.jsonService.generateJSON(this.reports , 'denuncias');
   }
 }

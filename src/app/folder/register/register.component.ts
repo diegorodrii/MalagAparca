@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { UserService } from 'src/app/core';
 import { PasswordValidation } from 'src/app/core/utils/password-validator';
 
 @Component({
@@ -13,7 +14,8 @@ export class RegisterComponent implements OnInit {
   form:FormGroup;
   constructor(
     private formBuilder:FormBuilder,
-    private modalCtrl:ModalController
+    private modalCtrl:ModalController,
+    private userService: UserService
   ) {
     this.form = this.formBuilder.group({
       name:["", Validators.required],
@@ -34,6 +36,7 @@ export class RegisterComponent implements OnInit {
       password:this.form.value.password,
    
     }, 'ok');
+    
   }
 
   hasFormError(error){

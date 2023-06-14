@@ -61,10 +61,16 @@
         "close":"Close",
         "cancel":"Cancel",
         "done":"Done",
-        "Send":"Register"
+        "send":"Register",
+        "savechanges":"Save changes"
 
     },
     
+    "download":{
+        "report":"Descargar Denuncias",
+        "parking":"Descargar Parkings"
+    },
+
     "place":{
         "text":"Place number "
     },
@@ -92,7 +98,8 @@
  
     "error-mesage":{
         "durationEnough":"The duration has to be 30 minutes at least",
-        "finishsError":"The finish date can't be earlier than the beggining date."
+        "finishsError":"The finish date can't be earlier than the beggining date.",
+        "repeatedNumber":"This place has an owner already."
     },
 
     "validators":{

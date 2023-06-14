@@ -3,80 +3,104 @@
     MalagAparca
   </ion-title>
   <ion-buttons slot="end">
-    <ion-label *ngIf="!isMobile">{{userEmail}}</ion-label>
+    <ion-button (click)="openNotificationModal()" [class.blink]="!notificationsViewed">
+      <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+    </ion-button>
     <ion-button (click)="signOut()">
       <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
     </ion-button>
-    <ion-buttons slot="end">
-      <!-- Resto del código -->
-      <ion-button (click)="openNotificationModal()" [class.blink]="!notificationsViewed">
-        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
-      </ion-button>
-      
-    </ion-buttons>
-    
-    
+
   </ion-buttons>
 </ion-toolbar>
 
 <ion-content>
   <ion-grid class="content-grid">
     <ion-row>
-      <ion-col size="12" size-sm="6">
+      <ion-col size-lg="6" size-md="6" size-sm="12" size-xs="12">
         <ion-card>
-          <img src="assets/parkingImage.jpg" />
-          <ion-card-header>
-            <ion-card-title>{{'parking.title' | translate}}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            {{'parking.description' | translate}}
-          </ion-card-content>
-          <ion-button [routerLink]="['/parkList']" expand="full">{{'enter' | translate}}</ion-button>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img class="card-image" src="assets/parkingImage.jpg" />
+              </ion-col>
+              <ion-col>
+                <ion-card-header class="ion-text-left">
+                  <ion-card-title>{{'parking.title' | translate}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="ion-text-left">
+                  {{'parking.description' | translate}}
+                </ion-card-content>
+                <ion-button [routerLink]="['/parkList']" expand="full">{{'enter' | translate}}</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-card>
       </ion-col>
 
-      <ion-col size="12" size-sm="6">
+      <ion-col size-lg="6" size-md="6" size-sm="12" size-xs="12">
         <ion-card>
-          <img src="assets/MiPlaza.png" />
-          <ion-card-header>
-            <ion-card-title>{{'myPark.title' | translate}}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            {{'myPark.description' | translate}}
-          </ion-card-content>
-          <ion-button [routerLink]="['/myPark']" expand="full">{{'enter' | translate}}</ion-button>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img class="card-image" src="assets/MiPlaza.png" />
+              </ion-col>
+              <ion-col>
+                <ion-card-header class="ion-text-left">
+                  <ion-card-title>{{'myPark.title' | translate}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="ion-text-left">
+                  {{'myPark.description' | translate}}
+                </ion-card-content>
+                <ion-button [routerLink]="['/myPark']" expand="full">{{'enter' | translate}}</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-card>
       </ion-col>
     </ion-row>
 
     <ion-row>
-      <ion-col size="12" size-sm="6">
+      <ion-col size-lg="6" size-md="6" size-sm="12" size-xs="12">
         <ion-card>
-          <img src="assets/denuncia.png" />
-          <ion-card-header>
-            <ion-card-title>{{'report.title' | translate}}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            {{'report.description' | translate}}
-          </ion-card-content>
-          <ion-button [routerLink]="['/reports']" expand="full">{{'enter' | translate}}</ion-button>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img src="assets/denuncia.png" class="card-image" />
+              </ion-col>
+              <ion-col>
+                <ion-card-header class="ion-text-left">
+                  <ion-card-title>{{'report.title' | translate}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="ion-text-left">
+                  {{'report.description' | translate}}
+                </ion-card-content>
+                <ion-button [routerLink]="['/reports']" expand="full">{{'enter' | translate}}</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-card>
       </ion-col>
 
-      <ion-col size="12" size-sm="6">
+      <ion-col size-lg="6" size-md="6" size-sm="12" size-xs="12">
         <ion-card>
-          <img src="assets/perfil.jpg" />
-          <ion-card-header>
-            <ion-card-title>{{'myProfile.title' | translate}}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            {{'myProfile.description' | translate}}
-          </ion-card-content>
-          <ion-button [routerLink]="['/myProfile']" expand="full">{{'enter' | translate}}</ion-button>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img src="assets/perfil.jpg" class="card-image" />
+              </ion-col>
+              <ion-col>
+                <ion-card-header class="ion-text-left">
+                  <ion-card-title>{{'myProfile.title' | translate}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="ion-text-left">
+                  {{'myProfile.description' | translate}}
+                </ion-card-content>
+                <ion-button [routerLink]="['/myProfile']" expand="full">{{'enter' | translate}}</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
-
-<router-outlet></router-outlet>
