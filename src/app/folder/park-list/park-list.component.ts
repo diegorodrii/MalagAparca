@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, Platform } from '@ionic/angular';
 import { take } from 'rxjs';
 import { Parking, ParkingService, UserService } from 'src/app/core';
 import { ParkingDetailComponent } from 'src/app/core/components/parking-detail/parking-detail.component';
+import { JsonGenerationService } from 'src/app/core/services/jsonGeneration.service';
 
 @Component({
   selector: 'app-park-list',
@@ -11,14 +12,18 @@ import { ParkingDetailComponent } from 'src/app/core/components/parking-detail/p
 })
 export class ParkListComponent implements OnInit {
 
+  isMobile : boolean;
   constructor(
     private alert: AlertController,
     private modal: ModalController,
     private parkingsSVC: ParkingService,
     private userService: UserService,
+    private jsonService: JsonGenerationService,
+    private platform: Platform
   ) { }
 
   ngOnInit() {
+    this.isMobile = this.platform.is('mobile');
 
   }
   getParkings() {
@@ -146,6 +151,10 @@ export class ParkListComponent implements OnInit {
       this.parkingsSVC.addParking(data.parking);
     });
   }
-
+  downloadJson() {
+    this.getParkings().subscribe(reports => {
+      this.jsonService.generateJSON(reports, 'parkings');
+    });
+  }
 
 }

@@ -16,6 +16,9 @@ ion-toolbar {
         font-size: 1rem;
       }
     }
+    ion-back-button{
+      --color:#fff
+    }
   }
   *{
     font-family: 'MiFuente';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, Platform } from '@ionic/angular';
 import { Report, ReportDetailComponent, ReportService } from 'src/app/core';
 import {  JsonGenerationService } from 'src/app/core/services/jsonGeneration.service';
 import { ParkingService } from 'src/app/core/services/parking.service';
@@ -12,13 +12,18 @@ import { ParkingService } from 'src/app/core/services/parking.service';
 export class ReportsComponent implements OnInit {
   reports$ = this.reportsSVC.getReports();
   reports: Report[] | undefined
+  isMobile: boolean;
 
   constructor(
     private alert:AlertController,
     private modal:ModalController,
     private reportsSVC:ReportService,
-    private jsonService:JsonGenerationService
-  ) { }
+    private jsonService:JsonGenerationService,
+    private platform: Platform
+  ) { 
+    this.isMobile = this.platform.is('mobile');
+
+  }
 
   ngOnInit() {
     this.reports$.subscribe(reports => {
@@ -127,4 +132,5 @@ export class ReportsComponent implements OnInit {
       this.jsonService.generateJSON(reports, 'denuncias');
     });
   }
+  
 }

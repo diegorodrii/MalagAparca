@@ -1,0 +1,57 @@
+[
+  {
+    "id": 0,
+    "docId": "730OcLFxtIosTf50bnqn",
+    "placeId": "YQlbMc5UEHMQKcAWH9Us",
+    "placeOwner": "diego@gmail.com",
+    "tenantEmail": null,
+    "tenantPicture": "",
+    "startsAt": "2023-06-30T11:48+02:00",
+    "finishsAt": "2023-06-30T12:48+02:00",
+    "state": "free"
+  },
+  {
+    "id": 0,
+    "docId": "RfNdUSKpXiIiMdeS7CRW",
+    "placeId": "NWm5QhnSOg5jeoKFRhQt",
+    "placeOwner": "antonio@gmail.com",
+    "tenantEmail": null,
+    "tenantPicture": "",
+    "startsAt": "2023-06-15T19:34+02:00",
+    "finishsAt": "2023-06-16T19:34+02:00",
+    "state": "free"
+  },
+  {
+    "id": 0,
+    "docId": "TmDevHPfqoaXgl9jbteC",
+    "placeId": "ANvB6nbOVvkPlcbFc7EI",
+    "placeOwner": "delcarmen@gmail.com",
+    "tenantEmail": "diego@gmail.com",
+    "tenantPicture": "C:\\fakepath\\parking2-removebg-preview.png",
+    "startsAt": "2023-06-15T15:10+02:00",
+    "finishsAt": "2023-06-30T15:10+02:00",
+    "state": "occupied"
+  },
+  {
+    "id": 0,
+    "docId": "Wn9TlbwQqrdXSY676fGI",
+    "placeId": "YQlbMc5UEHMQKcAWH9Us",
+    "placeOwner": "diego@gmail.com",
+    "tenantEmail": "antonio@gmail.com",
+    "tenantPicture": "C:\\fakepath\\WhatsApp Image 2023-04-18 at 10.31.04.jpeg",
+    "startsAt": "2023-06-15T16:37+02:00",
+    "finishsAt": "2023-06-23T16:37+02:00",
+    "state": "occupied"
+  },
+  {
+    "id": 0,
+    "docId": "pXbc14JGUwhr5ZVFPzNc",
+    "placeId": "BlNhsJacVqyPxlXPvcAC",
+    "placeOwner": "juana@gmail.com",
+    "tenantEmail": null,
+    "tenantPicture": "",
+    "startsAt": "2023-06-20T01:11+02:00",
+    "finishsAt": "2023-06-30T01:11+02:00",
+    "state": "free"
+  }
+]
