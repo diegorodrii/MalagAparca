@@ -122,7 +122,9 @@ export class ReportsComponent implements OnInit {
     });
   }
   
-  downloadJson(){
-    this.jsonService.generateJSON(this.reports , 'denuncias');
+  downloadJson() {
+    this.reportsSVC.getAllReports().subscribe(reports => {
+      this.jsonService.generateJSON(reports, 'denuncias');
+    });
   }
 }

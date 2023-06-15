@@ -49,7 +49,9 @@ export class ReportService {
       map(reports => reports.filter(report => report.ownerEmail === userEmail))
     );
   }
-  
+  getAllReports(){
+    return this._reportsSubject.asObservable();
+  }
   
   getReportsByUserEmail(email: string): Report[] {
     return this._reportsSubject.value.filter(report => report.ownerEmail === email);

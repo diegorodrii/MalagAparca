@@ -3,12 +3,15 @@ import pandas as pd
 import json
 from collections import OrderedDict
 
-ruta_datos = os.path.join(os.path.dirname(__file__), '')
-ruta_datos_json = os.path.join(ruta_datos, 'denuncias.json')
+# Obtiene la ruta del directorio actual
+directorio_actual = os.path.dirname(os.path.abspath(__file__))
+
+# Ruta del archivo JSON
+ruta_json = os.path.join(directorio_actual, 'denuncias.json')
 
 def cargar_datos_desde_json(ruta):
-    with open(ruta) as file:
-        data = json.load(file, object_pairs_hook=OrderedDict)
+    with open(ruta) as archivo:
+        data = json.load(archivo, object_pairs_hook=OrderedDict)
     return data
 
 def limpiar_valor(valor):
@@ -28,11 +31,12 @@ def crear_denuncias_csv(data):
     denuncias_df = pd.DataFrame(denuncias_data)
     
     nombre_archivo_csv = "denuncias.csv"
+    ruta_archivo_csv = os.path.join(directorio_actual, nombre_archivo_csv)
     
-    denuncias_df.to_csv(nombre_archivo_csv, index=False)
-    return nombre_archivo_csv
+    denuncias_df.to_csv(ruta_archivo_csv, index=False)
+    return ruta_archivo_csv
 
-data = cargar_datos_desde_json(ruta_datos_json)
+data = cargar_datos_desde_json(ruta_json)
 archivo_csv = crear_denuncias_csv(data)
 
-print(f"Archivo CSV de denuncias '{archivo_csv}' creado exitosamente.")
+print(f"Archivo CSV '{archivo_csv}' creado en el directorio actual.")
