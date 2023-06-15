@@ -12,6 +12,17 @@
   },
   {
     "id": 0,
+    "docId": "CUW5eILwsgt33qONGPm4",
+    "placeId": "BlNhsJacVqyPxlXPvcAC",
+    "placeOwner": "juana@gmail.com",
+    "tenantEmail": null,
+    "tenantPicture": "",
+    "startsAt": "2023-07-12T17:20+02:00",
+    "finishsAt": "2023-08-16T17:20+02:00",
+    "state": "free"
+  },
+  {
+    "id": 0,
     "docId": "RfNdUSKpXiIiMdeS7CRW",
     "placeId": "NWm5QhnSOg5jeoKFRhQt",
     "placeOwner": "antonio@gmail.com",
@@ -20,17 +31,6 @@
     "startsAt": "2023-06-15T19:34+02:00",
     "finishsAt": "2023-06-16T19:34+02:00",
     "state": "free"
-  },
-  {
-    "id": 0,
-    "docId": "TmDevHPfqoaXgl9jbteC",
-    "placeId": "ANvB6nbOVvkPlcbFc7EI",
-    "placeOwner": "delcarmen@gmail.com",
-    "tenantEmail": "diego@gmail.com",
-    "tenantPicture": "C:\\fakepath\\parking2-removebg-preview.png",
-    "startsAt": "2023-06-15T15:10+02:00",
-    "finishsAt": "2023-06-30T15:10+02:00",
-    "state": "occupied"
   },
   {
     "id": 0,
