@@ -20,6 +20,11 @@ export class UserService {
   public user$ = this._user.asObservable();
   private _uid = new BehaviorSubject<string>(null);
   public uid$ = this._uid.asObservable();
+  private _userId: string; 
+
+  public getUserId(): string {
+    return this._userId;
+  }
 
   constructor(
     private firebase: FirebaseService,
@@ -28,8 +33,6 @@ export class UserService {
     private notificationService: NotificationService,
   ) {
     this.init();
-    console.log('Estado de notificationsViewed:', this._user.value?.notificationsViewed);
-
   }
   public get user(): User {
     return this._user.value;
@@ -40,6 +43,8 @@ export class UserService {
         const user = (await this.firebase.getDocument('usuarios', this.firebase.getUser().uid)).data as User;
         this._user.next(user);
         this._uid.next(this.firebase.getUser().uid);
+        this._userId = this.firebase.getUser().uid; // Asignar el ID del usuario a la variable
+
         this.router.navigate(['home']);
       }
       this._isLogged.next(logged);

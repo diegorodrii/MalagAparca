@@ -2,8 +2,8 @@
     "user":{
         "name":"Nombre",
         "lastname":"Apellido",
-        "address":"Dirección",
-        "phone":"Teléfono",
+        "address":"Dirección: ",
+        "phone":"Teléfono: ",
         "picture":"Foto",
         "password": "Contraseña",
         "confirm_password":"Confirmación Contraseña"
@@ -81,9 +81,9 @@
     },
  
     "error-mesage":{
-        "durationEnough":"La duración tiene que ser de 30 minutos al menos",
-        "finishsError":"La fecha a la que empieza no puede ser anterior a la que finaliza",
-        "repeatedNumber":"This place has an owner already."
+        "durationEnough":"La fecha a la que empieza no puede ser anterior a la que finaliza",
+        "finishsError":"La duración tiene que ser de 30 minutos al menos",
+        "repeatedNumber":"Esta plaza ya ha sido añadida por otro vecino"
     },
     "validators":{
         "email":"Introduce un correo electrónico válido",

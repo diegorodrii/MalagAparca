@@ -10,7 +10,7 @@
       <ion-list>
         <ng-container *ngFor="let park of getParks()">
           <ion-item *ngIf="isUserPlace(park)" button detail (click)="onParkClicked(park, accordion)">
-            <ion-label>{{ park.number }} - {{ park.ownerEmail }}</ion-label>
+            <ion-label>{{'place.text' | translate}} - {{ park.number }} </ion-label>
           </ion-item>
         </ng-container>
       </ion-list>

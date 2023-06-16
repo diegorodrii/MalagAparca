@@ -74,7 +74,7 @@ export class ReportsComponent implements OnInit {
 
     const alert = await this.alert.create({
       header: 'Atención',
-      message: '¿Está seguro de que desear borrar la tarea?',
+      message: '¿Está seguro de que desear borrar la denuncia?',
       buttons: [
         {
           text: 'Cancelar',
@@ -127,10 +127,6 @@ export class ReportsComponent implements OnInit {
     });
   }
   
-  downloadJson() {
-    this.reportsSVC.getAllReports().subscribe(reports => {
-      this.jsonService.generateJSON(reports, 'denuncias');
-    });
-  }
+ 
   
 }

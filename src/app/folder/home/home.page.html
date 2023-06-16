@@ -30,7 +30,7 @@
                 <ion-card-content class="ion-text-left">
                   {{'parking.description' | translate}}
                 </ion-card-content>
-                <ion-button [routerLink]="['/parkList']" expand="full">{{'enter' | translate}}</ion-button>
+                <ion-button name="parking-button"[routerLink]="['/parkList']" expand="full">{{'enter' | translate}}</ion-button>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -51,7 +51,7 @@
                 <ion-card-content class="ion-text-left">
                   {{'myPark.description' | translate}}
                 </ion-card-content>
-                <ion-button [routerLink]="['/myPark']" expand="full">{{'enter' | translate}}</ion-button>
+                <ion-button name="my-places-button"[routerLink]="['/myPark']" expand="full">{{'enter' | translate}}</ion-button>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -95,7 +95,7 @@
                 <ion-card-content class="ion-text-left">
                   {{'myProfile.description' | translate}}
                 </ion-card-content>
-                <ion-button [routerLink]="['/myProfile']" expand="full">{{'enter' | translate}}</ion-button>
+                <ion-button name="my-profile-button"[routerLink]="['/myProfile']" expand="full">{{'enter' | translate}}</ion-button>
               </ion-col>
             </ion-row>
           </ion-grid>

@@ -2,7 +2,7 @@
     "user":{
         "name":"Name",
         "lastname":"Lastname",
-        "address":"Address",
+        "address":"Address: ",
         "phone":"Phone",
         "picture":"Picture",
         "password": "Password",
@@ -67,8 +67,8 @@
     },
     
     "download":{
-        "report":"Descargar Denuncias",
-        "parking":"Descargar Parkings"
+        "report":"Download Denuncias",
+        "parking":"Download Parkings"
     },
 
     "place":{
@@ -97,7 +97,7 @@
     },
  
     "error-mesage":{
-        "durationEnough":"The duration has to be 30 minutes at least",
+        "durationEnough":"The duration has to be 30 minutes at least.",
         "finishsError":"The finish date can't be earlier than the beggining date.",
         "repeatedNumber":"This place has an owner already."
     },

@@ -30,8 +30,8 @@
       <ion-label>{{"user.address" | translate}} {{ user.address }}</ion-label>
     </div>
     <div class="profile-actions">
-      <ion-button expand="block" (click)="openEditModal()">{{"modal.edit"|translate}}</ion-button>
-      <ion-button expand="block" color="danger" (click)="deleteProfile()">{{"modal.delete" | translate}}</ion-button>
+      <ion-button expand="block" name="edit"(click)="openEditModal()">{{"modal.edit"|translate}}</ion-button>
+      <ion-button expand="block" name="delete"color="danger" (click)="deleteProfile()">{{"modal.delete" | translate}}</ion-button>
     </div>
   </div>
 </ion-content>

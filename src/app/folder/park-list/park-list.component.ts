@@ -99,7 +99,7 @@ export class ParkListComponent implements OnInit {
 
     const alert = await this.alert.create({
       header: 'Atención',
-      message: '¿Está seguro de que desear borrar la tarea?',
+      message: '¿Está seguro de que desear borrar esta plaza de parking?',
       buttons: [
         {
           text: 'Cancelar',
