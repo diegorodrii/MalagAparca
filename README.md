@@ -1,4 +1,3 @@
-![image](https://github.com/diegorodrii/MalagAparca/assets/91873618/40a06225-3ccf-455e-b779-127c38f42bf7)
 # MalagAparca
 MalagAparca es una aplicación cuya funcionalidad se basa en la gestión del aparcamiento de una comunidad de vecinos.
 
