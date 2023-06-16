@@ -28,7 +28,7 @@ password_input = WebDriverWait(driver, 10).until(
     EC.presence_of_element_located((By.XPATH, '//ion-input[@formcontrolname="password"]/input'))
 )
 
-email_input.send_keys("manu@gmail.com")
+email_input.send_keys("manuel@gmail.com")
 password_input.send_keys("Diego1234")
 time.sleep(2)
 
@@ -47,7 +47,7 @@ my_places_button.click()
 
 time.sleep(2)
 
-# Hacer clic en el botón "Create a Park" con el número 79
+# Hacer clic en el botón "Create a Park" con el número 77
 create_park_button = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable((By.CSS_SELECTOR, 'ion-icon[name="add"]'))
 )
@@ -59,7 +59,7 @@ time.sleep(2)
 number_input = WebDriverWait(driver, 10).until(
     EC.presence_of_element_located((By.XPATH, '//ion-input[@formcontrolname="number"]/input'))
 )
-number_input.send_keys(79)
+number_input.send_keys(77)
 
 time.sleep(2)
 
