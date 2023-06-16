@@ -1,3 +1,4 @@
+![image](https://github.com/diegorodrii/MalagAparca/assets/91873618/40a06225-3ccf-455e-b779-127c38f42bf7)
 # MalagAparca
 MalagAparca es una aplicación cuya funcionalidad se basa en la gestión del aparcamiento de una comunidad de vecinos.
 
@@ -37,6 +38,33 @@ Podremos añadir nuevas plazas siempre que no estén ya atribuidas a otro usuari
 
 ### Parkings 
 En este apartado se pueden ver las plazas que los vecinos publican. 
+![image](https://github.com/diegorodrii/MalagAparca/assets/91873618/46f3a1a5-c0a5-42d7-b5d9-083d5f9cdfc4)
+
+Podemos también asignar la plaza que hemos registrado anteriormente para publicarla y que otro vecino se la asigne. Como se puede observar, el calendario está bloqueado para las fechas anteriores a la hora actual.
+![image](https://github.com/diegorodrii/MalagAparca/assets/91873618/ba01a9ee-16c1-4aae-a351-b84926fba270)
+
+Así quedaría una plaza ocupada por nosotros y una plaza publicada por nosotros.
+![image](https://github.com/diegorodrii/MalagAparca/assets/91873618/ebbecc57-dc57-481e-a191-62f380775bed)
+
+### Reports
+En "Reports" encontramos las denuncias que ha publicado el usuario que está logueado. 
+![image](https://github.com/diegorodrii/MalagAparca/assets/91873618/4b518943-5344-4921-af1d-3e56b58ee01e)
+
+Cuando se agrega la denuncia se puede incluir una foto. Las fechas futuras a la hora actual están bloqueadas, ya que no se puede denunciar algo que no ha sucedido.
+![image](https://github.com/diegorodrii/MalagAparca/assets/91873618/ca03afc4-6ab8-4dc5-b498-4c789add08f6)
+
+Quedaría así
+![image](https://github.com/diegorodrii/MalagAparca/assets/91873618/b3d3edf9-4dbe-4519-8261-cba6f4c6698c)
+
+### My Profile
+Por último, el apartado de "My Profile". En este apartado se pueden editar los datos del usuario logueado, subir una foto, eliminar el usuario y escoger el idioma en el que se quiera tener la aplicación. Si se borra la cuenta, con ella se borran también las plazas, denuncias y parkings que tuviera este vecino.
+![image](https://github.com/diegorodrii/MalagAparca/assets/91873618/32a07bbb-c56f-488a-a29f-70f6f41c28fb)
+
+# Presentación 
+
+# Vídeo Aplicación
+El vídeo de la aplicación se puede ver [aquí](https://www.youtube.com/watch?v=_IFXb1Pl5aY&ab_channel=DiegoRodr%C3%ADguezBarcos)
+
 # Anteproyecto
 Puedes visualizar el anteproyecto pulsando [aquí](https://www.figma.com/file/bhbYEQFqAV6pZjXq9aW23T/MalagAparca?node-id=0%3A1&t=SBwDo5IEAK5LKLib-1)
 
